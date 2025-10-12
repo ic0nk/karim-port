@@ -22,7 +22,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="flex justify-between items-center p-4 fixed w-full">
+    <header className="flex justify-between items-center p-4 px-20 fixed w-full z-100">
       <div className="text-lg font-bold z-20">
         <Link href="/">
           <Image src="/assets/K.svg" alt="Logo" width={35} height={35} />

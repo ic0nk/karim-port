@@ -1,31 +1,55 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import DarkVeil from "@/components/DarkVeil";
 import Image from "next/image";
 
 const Hero = () => {
+  const [backgroundColor, setBackgroundColor] = useState<[number, number, number]>([0.88, 0.87, 0.86]);
+
+  useEffect(() => {
+    // Function to convert color string to RGB array
+    const colorToRGBArray = (colorStr: string): [number, number, number] => {
+      if (colorStr.startsWith("oklch")) {
+        // For oklch(1 0 0) which is white
+        if (colorStr.includes("1 0 0")) return [1, 1, 1];
+        // For oklch(0.145 0 0) which is near-black
+        if (colorStr.includes("0.145 0 0")) return [0.145, 0.145, 0.145];
+      }
+      
+      const match = colorStr.match(/rgb\((\d+), (\d+), (\d+)\)/);
+      if (match) {
+        const [, r, g, b] = match.map(Number);
+        return [r / 255, g / 255, b / 255];
+      }
+      // Default to a light gray if parsing fails
+      return [0.88, 0.87, 0.86];
+    };
+
+    const bgValue = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
+    setBackgroundColor(colorToRGBArray(bgValue));
+  }, []);
+
   return (
-    <section className="flex flex-col justify-between h-lvh">
-      <div className="justify-self-start text-center mt-40">
+    <section className="relative flex flex-col justify-center h-lvh">
+      <div className="absolute inset-0 -z-10">
+        <DarkVeil
+          hueShift={32}
+          noiseIntensity={0.02}
+          scanlineIntensity={0}
+          scanlineFrequency={0}
+          warpAmount={0.5}
+          speed={1.5}
+          backgroundColor={backgroundColor}
+        />
+      </div>
+      <div className="text-center z-10">
         <h1>PORTFOLIO</h1>
         <h4 className="portfolio-subtitle">KARIM MASSAOUD</h4>
-        <div className="flex justify-center gap-4 mt-8">
-          <button className="btn btn-primary">
-            My Projects
-          </button>
-          <button className="btn btn-secondary">
-            Contact Me
-          </button>
-        </div>
-      </div>
-      <div className="w-full">
-        <Image
-          src="/assets/image 10.png"
-          alt="Gallery image"
-          width={1920}
-          height={1080}
-          className="gallery-image"
-        />
       </div>
     </section>
   );
 };
 
 export default Hero;
+
