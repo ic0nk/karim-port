@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Alice&family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alice&family=Lato:wght@400;700&family=Aldrich&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -18,9 +18,11 @@
 /* Text styles */
 --font-primary: "Alice", serif;
 --font-secondary: "Lato", sans-serif;
+--font-number: 'Aldrich', sans-serif;
 --radius: 0.625rem;
 --background: #E0DEDC;
 --foreground: oklch(0.145 0 0);
+--Secondary-Background: #D2D2D2;
 }
 
 body {
@@ -67,6 +69,7 @@ h5 {
   font-size: 6rem;
   font-weight: bold;
   opacity: 0.5;
+  font-family: var(--font-number);
 }
 
 .body-text-b {
@@ -143,6 +146,16 @@ transform-origin: bottom left;
 
 .nav-link:hover {
 color: var(--accent);
+}
+
+.icon-link {
+  color: var(--accent);
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-link:hover {
+  color: var(--accent-hover);
+  transform: translateY(-5px);
 }
 
 /* Mobile Menu Animations */

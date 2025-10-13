@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import DarkVeil from "@/components/DarkVeil";
 import Image from "next/image";
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
 const Hero = () => {
   const [backgroundColor, setBackgroundColor] = useState<[number, number, number]>([0.88, 0.87, 0.86]);
@@ -46,6 +47,12 @@ const Hero = () => {
       <div className="text-center z-10">
         <h1>PORTFOLIO</h1>
         <h4 className="portfolio-subtitle">KARIM MASSAOUD</h4>
+      </div>
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+        <MdOutlineKeyboardArrowDown
+          fontSize={45}
+          className="animate-bounce text-[var(--accent)]"
+        />
       </div>
     </section>
   );
