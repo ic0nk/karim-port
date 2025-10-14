@@ -7,7 +7,7 @@ import Image from "next/image";
 const About = () => {
 return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center">
-        <div className="text-number absolute top-20 right-0 -mt-0 -mr-25 text-gray-200 font-bold text-9xl transform -rotate-270 origin-top-left">
+        <div className="text-number absolute top-20 right-0 -mt-0 -mr-30 text-gray-200 font-bold text-6xl transform -rotate-270 origin-top-left">
             02
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -17,12 +17,11 @@ return (
                     <div className="w-153 h-px bg-[var(--secondary-text)] opacity-50 mb-2" />
                     <h3 className="font-primary mb-6">CREATIVE DEVELOPMENT</h3>
                 </div>
-                <div>
-                    <p className="text-base text-gray-700 mb-4">
-                    I'm Karim Massoud, a media and design student with a strong focus on
-                    front-end development. I enjoy creating clean, responsive, and
-                    visually engaging digital experiences that combine creativity with
-                    functionality.
+                <div className="min-h-[268px]">
+                    <p className="text-base text-gray-700 mb-4 align-middle">
+                        I’m Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. 
+                        My goal is to grow into a professional front-end developer, turning ideas into impactful designs that connect with people.
+                        I’m Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. 
                     </p>
                     <p className="text-base text-gray-700 mb-8">
                         My goal is to grow into a professional front-end developer, turning
