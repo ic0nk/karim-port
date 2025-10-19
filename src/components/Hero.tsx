@@ -32,7 +32,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative flex flex-col justify-center h-lvh">
+    <section id="hero" className="relative flex flex-col justify-center h-lvh">
       <div className="absolute inset-0 -z-10">
         <DarkVeil
           hueShift={32}

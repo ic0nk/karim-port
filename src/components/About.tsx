@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const About = () => {
 return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center">
+    <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center">
         <div className="text-number absolute top-20 right-0 -mt-0 -mr-30 text-[var(--secondary-text)] text-6xl transform -rotate-270 origin-top-left">
             02
         </div>

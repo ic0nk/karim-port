@@ -1,11 +1,13 @@
 'use client';
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,36 +23,75 @@ const Header = () => {
     };
   }, []);
 
+  // Smooth scroll function
+  const scrollToSection = (sectionId: string) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  // Logo click: if on home, scroll to hero; otherwise navigate home
+  const handleLogoClick = () => {
+    setIsMenuOpen(false);
+    if (pathname === "/") {
+      const hero = document.getElementById("hero");
+      if (hero) {
+        hero.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <header className="flex justify-between items-center p-4 px-20 fixed w-full z-100">
       <div className="text-lg font-bold z-20">
-        <Link href="/">
+        <button onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer">
           <Image src="/assets/K.svg" alt="Logo" width={35} height={35} />
-        </Link>
+        </button>
       </div>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex">
         <ul className="flex gap-20 font-bold">
           <li>
-            <Link href="/USER EXPERIENCE" className="nav-link">
+            <button 
+              onClick={() => scrollToSection('user-experience')} 
+              className="nav-link cursor-pointer"
+            >
               USER EXPERIENCE
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/projects" className="nav-link">
+            <button 
+              onClick={() => scrollToSection('projects')} 
+              className="nav-link cursor-pointer"
+            >
               MY PROJECTS
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/ABOUT" className="nav-link">
+            <button 
+              onClick={() => scrollToSection('about')} 
+              className="nav-link cursor-pointer"
+            >
               ABOUT
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/CONTACT" className="nav-link">
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="nav-link cursor-pointer"
+            >
               CONTACT
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>
@@ -73,40 +114,36 @@ const Header = () => {
         <nav>
           <ul className="flex flex-col items-center gap-10 font-bold text-2xl">
             <li>
-              <Link
-                href="/USER EXPERIENCE"
-                className="nav-link"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => scrollToSection('user-experience')}
+                className="nav-link cursor-pointer"
               >
                 USER EXPERIENCE
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
-                href="/projects"
-                className="nav-link"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="nav-link cursor-pointer"
               >
                 MY PROJECTS
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
-                href="/ABOUT"
-                className="nav-link"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => scrollToSection('about')}
+                className="nav-link cursor-pointer"
               >
                 ABOUT
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
-                href="/CONTACT"
-                className="nav-link"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="nav-link cursor-pointer"
               >
                 CONTACT
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>

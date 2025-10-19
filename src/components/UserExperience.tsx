@@ -69,15 +69,15 @@ const handleClick = (id: number) => {
 };
 
 return (
-    <section className="bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="user-experience" className="bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="text-number absolute top-20 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
             03
         </div>
         <div className="max-w-5xl mx-auto">
             <div className="text-right mb-6">
                 <h4 className='body-text-b'>User Experience</h4>
-                <div className="h-px bg-[var(--secondary-text)] ml-auto max-w-[779px]"/>
-                <h2 className="text-4xl text-left font-primary mb-12 w-[776px] ml-auto ">THE HUMAN SIDE OF DIGITAL DESIGN</h2>
+                <div className="h-px bg-[var(--secondary-text)] ml-auto max-w-[700px]"/>
+                <h3 className="text-4xl text-left font-primary mb-12 w-[700px] ml-auto ">THE HUMAN SIDE OF DIGITAL DESIGN</h3>
             </div>
             <div>
             {experienceData.map((item) => (
