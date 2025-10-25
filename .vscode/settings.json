@@ -1,3 +1,10 @@
 {
-    "CodeGPT.apiKey": "CodeGPT Plus Beta"
+    "CodeGPT.apiKey": "CodeGPT Plus Beta",
+    "tailwindCSS.includeLanguages": {
+        "typescript": "javascript",
+        "typescriptreact": "html",
+        "javascriptreact": "html"
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "editor.quickSuggestions": { "strings": true }
 }

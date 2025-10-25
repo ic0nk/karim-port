@@ -7,7 +7,7 @@ import Image from "next/image";
 const About = () => {
 return (
     <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center overflow-hidden">
-        <div className="text-number absolute top-20 right-4 text-[var(--secondary-text)] text-6xl transform -rotate-270 origin-top-left pointer-events-none select-none" aria-hidden>
+        <div className="text-number absolute top-20 right-2 text-[var(--secondary-text)] text- 1x1 transform -rotate-270 origin-top-left pointer-events-none select-none" aria-hidden>
             02
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">

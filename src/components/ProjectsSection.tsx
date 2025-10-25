@@ -3,32 +3,42 @@
 import React from 'react';
 import { Eye, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+// --- Types ---
+type Project = {
+  name: string;
+  description: string;
+  image: string;
+  liveLink?: string;
+  detailsLink?: string;
+};
 
 const projects = [
   {
-    name: 'Desert Explorer Quads',
-    description: 'Developed a geolocation and telemetry tracking system for off-road vehicles in harsh desert environments, featuring real-time diagnostics and emergency beacon integration.',
+    name: 'Travel World',
+    description: 'A simple, friendly travel website that makes exploring destinations feel fun and effortless.',
     image: '/assets/frame 129.png',
-    liveLink: '#',
+    liveLink: 'https://travel-website-complete-w0th.onrender.com/index.html',
     detailsLink: '/project-details',
   },
   {
-    name: 'Mountain Trek Analytics',
-    description: 'This project focused on data visualization of high-altitude trek performance, biometric readings, and dynamic gear recommendations based on changing weather patterns.',
+    name: 'Triple WAVE',
+    description: 'A friendly guide for international students in Eindhoven find housing, get around, manage finances, and discover local events.',
     image: '/assets/frame 129.png',
-    liveLink: '#',
+    liveLink: 'https://triple-wave.netlify.app/',
     detailsLink: '/project-details',
   },
   {
-    name: 'Urban Transit Planner',
-    description: 'A responsive web application designed to optimize public transportation routes using real-time data feeds, predictive congestion modeling, and personalized user alerts.',
+    name: 'Owen Bryce',
+    description: ' A comprehensive promotional campaign for an emerging folk/indie artist, creating a cohesive brand identity across multiple platforms',
     image: '/assets/frame 129.png',
-    liveLink: '#',
+    liveLink: 'https://karimmassaoudd-portfolio-lastversion.netlify.app/html%20files/branding',
     detailsLink: '/project-details',
   },
 ];
 
-const ProjectCard = ({ project }) => {
+const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const { name, description, image, liveLink, detailsLink } = project;
 
   return (
@@ -36,10 +46,14 @@ const ProjectCard = ({ project }) => {
       
       {/* 1. Project Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src={image}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          priority={false}
+          loading="lazy"
         />
       </div>
 
@@ -64,7 +78,7 @@ const ProjectCard = ({ project }) => {
           href={liveLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center space-x-2 border border-white px-4 py-2 rounded-full backdrop-blur-sm w-fit
+          className="flex items-center justify-center space-x-2 border border-white px-4 py-2 rounded-full w-fit
                      opacity-0 invisible transition-all duration-300 delay-100 ease-out 
                      group-hover:opacity-100 group-hover:visible hover:bg-white/10"
         >

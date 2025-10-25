@@ -104,8 +104,10 @@ export default function DarkVeil({
     const canvas = ref.current as HTMLCanvasElement;
     const parent = canvas.parentElement as HTMLElement;
 
+    // Limit device pixel ratio to avoid excessive GPU/CPU work on high-DPI devices.
+    const maxDPR = 1.5; // compromise between crispness and performance
     const renderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio, 2),
+      dpr: Math.min(window.devicePixelRatio || 1, maxDPR),
       canvas
     });
 
@@ -140,9 +142,24 @@ export default function DarkVeil({
     resize();
 
     const start = performance.now();
-    let frame = 0;
+    let frameId = 0;
+    let isVisible = true;
 
-    const loop = () => {
+    // Pause rendering when the element is offscreen to save CPU/GPU and avoid jank
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        isVisible = entry.isIntersecting;
+        if (!isVisible && frameId) {
+          cancelAnimationFrame(frameId);
+          frameId = 0;
+        } else if (isVisible && !frameId) {
+          tick();
+        }
+      }
+    });
+    io.observe(parent);
+
+    const tick = () => {
       program.uniforms.uTime.value = ((performance.now() - start) / 1000) * speed;
       program.uniforms.uHueShift.value = hueShift;
       program.uniforms.uNoise.value = noiseIntensity;
@@ -151,14 +168,18 @@ export default function DarkVeil({
       program.uniforms.uWarp.value = warpAmount;
       program.uniforms.uBackgroundColor.value = backgroundColor;
       renderer.render({ scene: mesh });
-      frame = requestAnimationFrame(loop);
+      frameId = requestAnimationFrame(tick);
     };
 
-    loop();
+    // Start the loop only when visible
+    if (isVisible) tick();
 
     return () => {
-      cancelAnimationFrame(frame);
+      if (frameId) cancelAnimationFrame(frameId);
       window.removeEventListener('resize', resize);
+      try {
+        io.disconnect();
+      } catch (e) {}
     };
   }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale, backgroundColor]);
   return <canvas ref={ref} className="w-full h-full block" />;
