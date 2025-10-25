@@ -14,16 +14,9 @@ label: string;
 }
 
 interface FormFieldProps {
-<<<<<<< HEAD
-    label: string;
-    children: React.ReactNode;
-    // optional className to allow styling the field container from call sites
-    className?: string;
-=======
 label: string;
 children: React.ReactNode;
 className?: string;
->>>>>>> 3466feab353f92626c9b36c62b85d2710af53e3a
 }
 // --- End Type Definitions ---
 
@@ -41,13 +34,8 @@ const IconLink: React.FC<IconLinkProps> = ({ href, icon: IconComponent, label })
 </a>
 );
 
-<<<<<<< HEAD
-const FormField: React.FC<FormFieldProps> = ({ label, children, className = '' }) => (
-    <div className={"mb-6 " + className}>
-=======
 const FormField: React.FC<FormFieldProps> = ({ label, children, className }) => (
 <div className="mb-6">
->>>>>>> 3466feab353f92626c9b36c62b85d2710af53e3a
     {/* Label: Uses secondary text color and font-secondary */}
     <label className="block text-sm font-semibold mb-2 uppercase text-[var(--secondary-text)] font-[var(--font-secondary)]">
     {label}
