@@ -5,27 +5,27 @@ import { useState } from 'react';
 const experienceData = [
 {
     id: 1,
-    title: 'User research & interviews',
-    description: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
-    fullDescription: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
+    title: 'Understanding Users',
+    description: 'Discover what truly matters to users through empathy and observation.',
+    fullDescription: 'Plan and conduct interviews, gather meaningful insights, and synthesize findings to uncover real user needs. By understanding motivations and pain points, we guide design decisions that result in intuitive and impactful digital experiences.',
 },
 {
     id: 2,
     title: 'User research & interviews',
-    description: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
-    fullDescription: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
+    description: 'Turn raw data into actionable design insights.',
+    fullDescription: 'Analyze user feedback, patterns, and behaviors to identify opportunities for improvement. Research findings become the foundation for design choices that enhance usability, clarity, and engagement.',
 },
 {
     id: 3,
-    title: 'User research & interviews',
-    description: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
-    fullDescription: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions. Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
+    title: 'Prototyping & Testing',
+    description: 'Transform ideas into tangible experiences.',
+    fullDescription: 'Build interactive prototypes to visualize concepts and gather user feedback early. Testing and iteration ensure designs are functional, accessible, and aligned with user expectations.',
 },
 {
     id: 4,
-    title: 'User research & interviews',
-    description: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
-    fullDescription: 'Plan and run interviews, gather insights, and synthesize findings to guide design decisions.Plan and run interviews, gather insights, and synthesize findings to guide design decisions.Plan and run interviews, gather insights, and synthesize findings to guide design decisions.Plan and run interviews, gather insights, and synthesize findings to guide design decisions.Plan and run interviews, gather insights, and synthesize findings to guide design decisions.',
+    title: 'Delivering Meaningful Design',
+    description: 'Create designs that connect with people.',
+    fullDescription: 'Apply human-centered principles to craft experiences that not only look good but also solve real problems. Every design decision is driven by empathy, usability, and measurable value..',
 },
 ];
 
