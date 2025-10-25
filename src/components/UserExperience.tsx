@@ -77,7 +77,7 @@ return (
             <div className="text-right mb-6">
                 <h4 className='body-text-b'>User Experience</h4>
                 <div className="h-px bg-[var(--secondary-text)] ml-auto max-w-[700px]"/>
-                <h3 className="text-4xl text-left font-primary mb-12 w-[700px] ml-auto ">THE HUMAN SIDE OF DIGITAL DESIGN</h3>
+                <h3 className="text-4xl text-left font-primary mb-12 max-w-[700px] w-full ml-auto ">THE HUMAN SIDE OF DIGITAL DESIGN</h3>
             </div>
             <div>
             {experienceData.map((item) => (

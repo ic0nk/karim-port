@@ -103,8 +103,8 @@ const ProjectCard = ({ project }) => {
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative">
-      <div className="text-number absolute top-10 right-0 -mt-0 -mr-30 text-[var(--secondary-text)] text-6xl transform -rotate-270 origin-top-left">
+    <section id="projects" className="py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden">
+      <div className="text-number absolute top-10 right-4 text-[var(--secondary-text)] text-6xl transform -rotate-270 origin-top-left pointer-events-none select-none" aria-hidden>
         04
       </div>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
