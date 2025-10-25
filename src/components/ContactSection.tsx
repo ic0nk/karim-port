@@ -10,34 +10,38 @@ import Image from "next/image";
 interface IconLinkProps {
 href: string;
 icon: React.ElementType;
+label: string;
 }
 
 interface FormFieldProps {
 label: string;
 children: React.ReactNode;
+className?: string;
 }
 // --- End Type Definitions ---
 
 
-const IconLink: React.FC<IconLinkProps> = ({ href, icon: IconComponent }) => (
+const IconLink: React.FC<IconLinkProps> = ({ href, icon: IconComponent, label }) => (
 <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     className="icon-link mx-3 transition-transform duration-300 hover:translate-y-[-5px]"
+    aria-label={label}
+    title={label}
 >
     <IconComponent className="w-6 h-6" />
 </a>
 );
 
-const FormField: React.FC<FormFieldProps> = ({ label, children }) => (
+const FormField: React.FC<FormFieldProps> = ({ label, children, className }) => (
 <div className="mb-6">
     {/* Label: Uses secondary text color and font-secondary */}
     <label className="block text-sm font-semibold mb-2 uppercase text-[var(--secondary-text)] font-[var(--font-secondary)]">
     {label}
     </label>
     {/* Input Container: Uses accent color as background */}
-    <div className="p-1 rounded-[var(--radius)] bg-[var(--accent)]">
+    <div className={`p-1 rounded-[var(--radius)] bg-[var(--accent)] ${className ?? ''}`}>
     {children}
     </div>
 </div>
@@ -81,10 +85,10 @@ return (
                 
                 {/* Social Icons */}
                 <div className="flex justify-center mb-8">
-                <IconLink href="#" icon={FaLinkedin} />
-                <IconLink href="#" icon={MdLocalPhone} />
-                <IconLink href="#" icon={FaGithub} />
-                <IconLink href="#" icon={IoMdMail} />
+                <IconLink href="#" icon={FaLinkedin} label="LinkedIn" />
+                <IconLink href="#" icon={MdLocalPhone} label="Phone" />
+                <IconLink href="#" icon={FaGithub} label="GitHub" />
+                <IconLink href="#" icon={IoMdMail} label="Email" />
                 </div>
                 
                 {/* Tagline: Uses secondary text color and body-text-r style */}
@@ -97,7 +101,7 @@ return (
             <div className="w-full">
                 
                 {/* Title: Uses h2 style, secondary-text color */}
-                <h3 className="text-4xl text-left font-primary mb-12 w-[565px] ml-auto">
+                <h3 className="text-4xl text-left font-primary mb-12 max-w-[565px] w-full ml-auto">
                 GET IN TOUCH FOR PROJECTS AND PARTNERSHIPS
                 </h3>
 
