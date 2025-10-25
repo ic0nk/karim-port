@@ -26,8 +26,9 @@ const PROJECTS: Record<string, any> = {
   }
 };
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = PROJECTS[params.slug];
+export default function ProjectPage(props: any) {
+  const params = props?.params as { slug: string } | undefined;
+  const project = params ? PROJECTS[params.slug] : undefined;
   if (!project) return <div className="p-8">Project not found</div>;
 
   return (
