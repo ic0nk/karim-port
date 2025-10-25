@@ -19,21 +19,17 @@ return (
                 </div>
                 <div className="min-h-[268px]">
                     <p className="text-base text-gray-700 mb-4 align-middle">
-                        I’m Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. 
-                        My goal is to grow into a professional front-end developer, turning ideas into impactful designs that connect with people.
-                        I’m Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. 
+                        I’m Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. <br />
+                        My goal is to grow into a professional front-end developer, turning ideas into impactful designs that connect with people. <br />
                     </p>
-                    <p className="text-base text-gray-700 mb-8">
-                        My goal is to grow into a professional front-end developer, turning
-                        ideas into impactful designs that connect with people.
-                    </p>
+               
                 </div>
                 <div className="flex items-center space-x-6 justify-between">
                     <div className="flex gap-6">
-                        <a href="tel:your-phone-number" className="text-[var(--accent)] hover:text-btn-primary icon-link" aria-label="Call me">
+                        <a href="tel:0616537940" className="text-[var(--accent)] hover:text-btn-primary icon-link" aria-label="Call me">
                         <MdLocalPhone size={24} />
                         </a>
-                        <a href="mailto:your-email@example.com" className="text-[var(--accent)] hover:text-btn-primary icon-link" aria-label="Email me">
+                        <a href="karimmassoud668@gmail.com" className="text-[var(--accent)] hover:text-btn-primary icon-link" aria-label="Email me">
                         <IoMdMail size={24} />
                         </a>
                         <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:text-btn-primary icon-link" aria-label="My LinkedIn profile">
@@ -41,16 +37,19 @@ return (
                         </a>
                     </div>
                     <div>
+                    <a href="#contact">
                         <button className="btn btn-primary">CONTACT ME</button>
+                    </a>
                     </div>
                 </div>
+                
                 </div>
                 <div className="flex justify-center">
                     <div className="bg-[var(--Secondary-Background)] p-4 rounded-lg shadow-lg">
                         <Image
                         src="/assets/image 4.png"
                         alt="Karim Massoud"
-                        width={400}
+                        width={350}
                         height={500}
                         className="rounded-lg"
                         />
