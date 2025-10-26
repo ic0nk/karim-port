@@ -51,7 +51,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center p-4 px-20 fixed w-full z-100">
+    <header className="flex justify-between items-center p-6 px-30 fixed w-full z-100">
       <div className="text-lg font-bold z-20">
         <button onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer">
           <Image src="/assets/K.svg" alt="Logo" width={35} height={35} />
@@ -60,7 +60,7 @@ const Header = () => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex">
-        <ul className="flex gap-20 font-bold">
+        <ul className="flex gap-10 font-bold">
           <li>
             <button 
               onClick={() => scrollToSection('user-experience')} 
@@ -79,18 +79,18 @@ const Header = () => {
           </li>
           <li>
             <button 
-              onClick={() => scrollToSection('about')} 
-              className="nav-link cursor-pointer"
-            >
-              ABOUT
-            </button>
-          </li>
-          <li>
-            <button 
               onClick={() => scrollToSection('contact')} 
               className="nav-link cursor-pointer"
             >
               CONTACT
+            </button>
+          </li>
+           <li>
+            <button 
+              onClick={() => scrollToSection('about')} 
+              className="nav-link cursor-pointer"
+            >
+              ABOUT
             </button>
           </li>
         </ul>

@@ -7,9 +7,13 @@ import Image from "next/image";
 const About = () => {
 return (
     <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center overflow-hidden">
-        <div className="text-number absolute top-20 right-2 text-[var(--secondary-text)] text- 1x1 transform -rotate-270 origin-top-left pointer-events-none select-none" aria-hidden>
-            02
-        </div>
+                {/* Decorative section number - shown on large screens and pinned to the far right */}
+                <div
+                    className="text-number absolute top-1/3 right-0 hidden lg:block text-[var(--secondary-text)] transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
+                    aria-hidden
+                >
+                    02
+                </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
                 <div>
@@ -17,7 +21,7 @@ return (
                     <div className="w-153 h-px bg-[var(--secondary-text)] opacity-50 mb-2" />
                     <h3 className="font-primary mb-6">CREATIVE DEVELOPMENT</h3>
                 </div>
-                <div className="min-h-[268px]">
+                <div className="min-h-[150px]">
                     <p className="text-base text-gray-700 mb-4 align-middle">
                         I’m Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. <br />
                         My goal is to grow into a professional front-end developer, turning ideas into impactful designs that connect with people. <br />
