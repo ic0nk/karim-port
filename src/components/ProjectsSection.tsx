@@ -25,7 +25,8 @@ const projects = [
   {
     name: 'Triple WAVE',
     description: 'A friendly guide for international students in Eindhoven find housing, get around, manage finances, and discover local events.',
-  image: '/assets/Triple Wave Project Background .png',
+  // file in public/assets is named with spaces and .jpg extension
+  image: '/assets/Eindhoven Project Background 2.jpg',
     liveLink: 'https://triple-wave.netlify.app/',
     detailsLink: '/project-details',
   },
