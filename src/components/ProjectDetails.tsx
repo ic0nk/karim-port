@@ -55,7 +55,7 @@ export default function ProjectDetails() {
 				<div className="flex justify-center lg:justify-end">
 					<div className="w-full max-w-md rounded-lg overflow-hidden shadow-lg">
 						<Image
-							src="/assets/travel-world-second-section.png"
+							src="/assets/Travel World Second Section .png"
 							alt="Travelworld mockup"
 							width={800}
 							height={480}
