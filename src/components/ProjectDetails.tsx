@@ -31,7 +31,7 @@ export default function ProjectDetails() {
 			</div>
 
 			{/* Overview - placed after the hero */}
-			<section className="mt-16 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--Secondary-Background)] py-12">
+			<section className="mt-16 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--Secondary-Background)] py-12 mb-16 md:mb-20">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 						<div className="text-left">
@@ -68,7 +68,7 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* Key Screens - redesigned and placed after Overview */}
-			<section className="mt-12 relative lg:pl-0">
+			<section className="mt-20 md:mt-24 relative lg:pl-0 mb-16 md:mb-24">
 				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -left-61 top-1/30 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
   03
 </div>
