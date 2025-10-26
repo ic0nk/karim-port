@@ -1,8 +1,66 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const themes = [
+	{
+		id: 1,
+		title: "Luxury Beach Getaways",
+		images: [
+			"/assets/travelworld_laptop_4k_transparent_crisp 1.png",
+			"/assets/Travel World Second Section .png",
+		],
+	},
+	{
+		id: 2,
+		title: "Mountain Adventures",
+		images: [
+			"/assets/Travel World Second Section .png",
+			"/assets/travelworld_laptop_4k_transparent_crisp 1.png",
+		],
+	},
+	{
+		id: 3,
+		title: "Luxury Cruise Experiences",
+		images: [
+			"/assets/travelworld_laptop_4k_transparent_crisp 1.png",
+			"/assets/Travel World Second Section .png",
+		],
+	},
+];
 
 export default function ProjectDetails() {
+	const [currentThemeIndex, setCurrentThemeIndex] = useState(0);
+	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+	const handlePrevTheme = () => {
+		setCurrentThemeIndex((prev) => (prev === 0 ? themes.length - 1 : prev - 1));
+		setCurrentImageIndex(0);
+	};
+
+	const handleNextTheme = () => {
+		setCurrentThemeIndex((prev) => (prev === themes.length - 1 ? 0 : prev + 1));
+		setCurrentImageIndex(0);
+	};
+
+	const handlePrevImage = () => {
+		const currentTheme = themes[currentThemeIndex];
+		setCurrentImageIndex((prev) =>
+			prev === 0 ? currentTheme.images.length - 1 : prev - 1
+		);
+	};
+
+	const handleNextImage = () => {
+		const currentTheme = themes[currentThemeIndex];
+		setCurrentImageIndex((prev) =>
+			prev === currentTheme.images.length - 1 ? 0 : prev + 1
+		);
+	};
+
+	const currentTheme = themes[currentThemeIndex];
+	const currentImage = currentTheme.images[currentImageIndex];
 	return (
 		<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			{/* Hero */}
@@ -29,7 +87,6 @@ export default function ProjectDetails() {
 					</div>
 				</div>
 			</div>
-
 			{/* Overview - placed after the hero */}
 			<section className="mt-16 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--Secondary-Background)] py-12">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,6 +220,64 @@ export default function ProjectDetails() {
 
 				<p className="mt-6 text-center text-sm text-[var(--secondary-text)] max-w-3xl mx-auto">
 					Featured Destinations — A reusable card component designed for quick scanning. Each card highlights the location, rating, best travel time, trip tags, and price, ending with a clear Book Now CTA to encourage action.
+				</p>
+			</section>
+			
+			{/* Trip Themes Carousel */}
+			<section className="py-16 md:py-20">
+				<div className="w-150 border-b mb-6" />
+				<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8">TRIP THEMES</h2>
+
+				{/* Carousel Container */}
+				<div className="relative flex items-center justify-center gap-6">
+					{/* Left Arrow */}
+					<button
+						onClick={handlePrevTheme}
+						aria-label="Previous theme"
+						className="flex-shrink-0 p-2 rounded-full hover:bg-[var(--Secondary-Background)] transition text-[var(--text)]"
+					>
+						<ChevronLeft size={32} />
+					</button>
+
+					{/* Carousel Images */}
+					<div className="flex-1 max-w-4xl overflow-hidden">
+						<div className="flex gap-6">
+							<div className="flex-1">
+								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg">
+									<Image
+										src={currentImage}
+										alt={`${currentTheme.title} - Image ${currentImageIndex + 1}`}
+										fill
+										className="object-cover"
+									/>
+								</div>
+							</div>
+							<div className="flex-1">
+								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg">
+									<Image
+										src={currentTheme.images[(currentImageIndex + 1) % currentTheme.images.length]}
+										alt={`${currentTheme.title} - Image ${(currentImageIndex + 1) % currentTheme.images.length + 1}`}
+										fill
+										className="object-cover"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{/* Right Arrow */}
+					<button
+						onClick={handleNextTheme}
+						aria-label="Next theme"
+						className="flex-shrink-0 p-2 rounded-full hover:bg-[var(--Secondary-Background)] transition text-[var(--text)]"
+					>
+						<ChevronRight size={32} />
+					</button>
+				</div>
+
+				{/* Description */}
+				<p className="text-center text-sm text-[var(--secondary-text)] mt-6 max-w-2xl mx-auto">
+					Swipe to preview our themes: {themes.map((t) => t.title).join(", ")}.
 				</p>
 			</section>
 		</main>
