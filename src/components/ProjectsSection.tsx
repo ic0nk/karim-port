@@ -118,7 +118,11 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 export const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden">
-      <div className="text-number absolute top-10 right-4 text-[var(--secondary-text)] text-6xl transform -rotate-270 origin-top-left pointer-events-none select-none" aria-hidden>
+      {/* Decorative section number pinned to the far right on large screens */}
+      <div
+        className="text-number absolute top-1/10 right-0 hidden lg:block text-[var(--secondary-text)] text-6xl transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
+        aria-hidden
+      >
         04
       </div>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">

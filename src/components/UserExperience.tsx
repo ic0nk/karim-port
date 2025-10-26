@@ -70,7 +70,7 @@ const handleClick = (id: number) => {
 
 return (
     <section id="user-experience" className="bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-number absolute top-20 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
+        <div className="text-number absolute top-9 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
             03
         </div>
         <div className="max-w-5xl mx-auto">
