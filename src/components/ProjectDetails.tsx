@@ -38,8 +38,8 @@ export default function ProjectDetails() {
 					<div className="w-150 border-b mb-2" />
 					<h2 className="text-[var(--text)] font-primary text-4xl tracking-wide mb-2">OVERVIEW</h2>
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-1 top-1/5 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
-  02
-</div>
+						02
+					</div>
 					<ul className="space-y-3 text-sm max-w-md text-[var(--text)]">
 						<li><span className="font-semibold">Role:</span> UX/UI Design & Front-end</li>
 						<li><span className="font-semibold">Type:</span> Marketing Website (Travel)</li>
@@ -55,7 +55,7 @@ export default function ProjectDetails() {
 				<div className="flex justify-center lg:justify-end">
 					<div className="w-full max-w-md rounded-lg overflow-hidden shadow-lg">
 						<Image
-							src="/assets/travel-world-second-section.png"
+							src="/assets/Rectangle 61.png"
 							alt="Travelworld mockup"
 							width={800}
 							height={480}
@@ -70,8 +70,8 @@ export default function ProjectDetails() {
 			{/* Key Screens - redesigned and placed after Overview */}
 			<section className="mt-12 relative lg:pl-0">
 				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -left-61 top-1/30 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
-  03
-</div>
+					03
+				</div>
 
 				<p className="text-sm text-[var(--secondary-text)]">What the experience looks like</p>
 				<div className="w-150 border-b mb-2" />

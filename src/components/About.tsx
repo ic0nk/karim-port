@@ -26,7 +26,7 @@ return (
                         I’m Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. <br />
                         My goal is to grow into a professional front-end developer, turning ideas into impactful designs that connect with people. <br />
                     </p>
-               
+                
                 </div>
                 <div className="flex items-center space-x-6 justify-between">
                     <div className="flex gap-6">
