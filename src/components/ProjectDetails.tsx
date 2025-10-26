@@ -64,13 +64,13 @@ export default function ProjectDetails() {
 	return (
 		<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			{/* Hero */}
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-lvh">
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-15 items-center h-lvh">
 				<div className="text-left">
-					<h1 className="text-[var(--text)] font-primary text-5xl md:text-6xl leading-tight">
+					<h1 className="text-[var(--text)] font-primary text-5xl md:text-6xl leading-tight text-center">
 						TRAVELWORLD
 					</h1>
-					<div className="w-118 border-b mb-4" />
-					<p className="max-w-sm leading-relaxed">
+					<div className="w-118 border-b mb-4 justify-self-center" />
+					<p className="max-w-407 leading-relaxed text-center justify-self-center">
 						A simple, friendly travel website that makes exploring destinations feel fun and effortless.
 					</p>
 				</div>
@@ -222,7 +222,7 @@ export default function ProjectDetails() {
 					Featured Destinations — A reusable card component designed for quick scanning. Each card highlights the location, rating, best travel time, trip tags, and price, ending with a clear Book Now CTA to encourage action.
 				</p>
 			</section>
-			
+
 			{/* Trip Themes Carousel */}
 			<section className="py-16 md:py-20">
 				<div className="w-150 border-b mb-6" />
