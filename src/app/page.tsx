@@ -174,7 +174,16 @@ export default function Home() {
       </section>
 
       {/* PROJECTS SECTION */}
-      <Projects />
+      <section className="relative">
+        {/* Decorative section number pinned to the far right on large screens */}
+        <div
+          className="text-number absolute top-1/10 right-0 hidden lg:block text-[var(--secondary-text)] text-6xl transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
+          aria-hidden
+        >
+          04
+        </div>
+        <Projects />
+      </section>
 
       {/* CONTACT SECTION */}
       <ContactSection />
