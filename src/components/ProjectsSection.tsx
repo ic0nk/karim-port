@@ -35,12 +35,13 @@ const projects = [
     description: ' A comprehensive promotional campaign for an emerging folk/indie artist, creating a cohesive brand identity across multiple platforms',
   image: '/assets/Owen Bryce Project Background .png',
     liveLink: 'https://karimmassaoudd-portfolio-lastversion.netlify.app/html%20files/branding',
-    detailsLink: '/project-details',
+    detailsLink: '/project-Owen-Bryce',
   },
 ];
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const { name, description, image, liveLink, detailsLink } = project;
+  const detailsHref = detailsLink ?? '#';
 
   return (
     <div className="w-full max-w-[500px] h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto">
@@ -64,12 +65,12 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       />
       
       {/* 3. Non-Hover Content */}
-      <a
-        href={detailsLink}
+      <Link
+        href={detailsHref}
         className="absolute bottom-5 right-5 z-20 text-white font-medium text-sm transition-opacity duration-300 group-hover:opacity-0"
       >
         SEE MORE <ArrowRight className="inline w-4 h-4 ml-1 -translate-y-[1px]" />
-      </a>
+      </Link>
 
       {/* 4. Hover Content */}
       <div className="absolute inset-0 z-20 flex flex-col justify-between p-8 text-white">
@@ -104,12 +105,12 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           </p>
 
           {/* More Details Button */}
-          <a
-            href={detailsLink}
+          <Link
+            href={detailsHref}
             className="text-white font-semibold text-xs tracking-widest block w-fit font-[var(--font-secondary)]"
           >
             MORE DETAILS <ArrowRight className="inline w-4 h-4 ml-1 -translate-y-[1px]" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
