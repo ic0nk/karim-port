@@ -50,11 +50,13 @@ const Header = () => {
     }
   };
 
+  const isWhiteHeader = pathname?.startsWith("/project-Owen-Bryce");
+
   return (
-    <header className="flex justify-between items-center p-6 px-30 fixed w-full z-100">
+    <header className={`flex justify-between items-center p-6 px-30 fixed w-full z-100 ${isWhiteHeader ? "text-white" : ""}`}>
       <div className="text-lg font-bold z-20">
         <button onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer">
-          <Image src="/assets/K.svg" alt="Logo" width={35} height={35} />
+          <Image src={isWhiteHeader ? "/assets/K (W).svg" : "/assets/K.svg"} alt="Logo" width={35} height={35} />
         </button>
       </div>
 
@@ -103,9 +105,9 @@ const Header = () => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          <div className="hamburger-line"></div>
-          <div className="hamburger-line"></div>
-          <div className="hamburger-line"></div>
+          <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
+          <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
+          <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
         </button>
       </div>
 
