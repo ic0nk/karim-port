@@ -480,7 +480,7 @@ export default function OwenBrycePage() {
 			<section className="py-16 md:py-24 bg-[var(--Secondary-Background)]">
 				<div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Rotated section number */}
-					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-[-320px] top-1/2 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
+					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-[-280px] top1/30 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
 						07
 					</div>
 
