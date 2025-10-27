@@ -6,7 +6,6 @@ import Image from "next/image";
 import { MdOutlineKeyboardArrowDown, MdLocalPhone } from 'react-icons/md';
 import { FaLinkedin } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
-import Projects from "@/components/ProjectsSection";
 import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
@@ -182,7 +181,6 @@ export default function Home() {
         >
           04
         </div>
-        <Projects />
       </section>
 
       {/* CONTACT SECTION */}

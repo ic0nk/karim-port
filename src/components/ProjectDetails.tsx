@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Projects from "@/components/ProjectsSection";
 
 const themes = [
 	{
@@ -407,8 +406,6 @@ export default function ProjectDetails() {
 					</div>
 				</div>
 			</section>
-
-			<Projects />
 		</main>
 	);
 }
