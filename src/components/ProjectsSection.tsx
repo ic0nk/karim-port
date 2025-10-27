@@ -119,7 +119,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden">
+    <section id="projects" className="py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header mimicking the provided image */}
