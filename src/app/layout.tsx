@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 
 
 
+
 export const metadata: Metadata = {
   title: "karim",
   description: "karim's portfolio",
