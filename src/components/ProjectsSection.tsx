@@ -28,7 +28,7 @@ const projects = [
   // file in public/assets is named with spaces and .jpg extension
   image: '/assets/Eindhoven Project Background 2.jpg',
     liveLink: 'https://triple-wave.netlify.app/',
-    detailsLink: '/project-details',
+    detailsLink: '/project-triple-wave',
   },
   {
     name: 'Owen Bryce',
@@ -120,13 +120,6 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 export const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden">
-      {/* Decorative section number pinned to the far right on large screens */}
-      <div
-        className="text-number absolute top-1/10 right-0 hidden lg:block text-[var(--secondary-text)] text-6xl transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
-        aria-hidden
-      >
-        04
-      </div>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header mimicking the provided image */}

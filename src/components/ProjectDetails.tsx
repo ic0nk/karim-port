@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Projects from "@/components/ProjectsSection";
 
 const themes = [
 	{
@@ -280,6 +281,134 @@ export default function ProjectDetails() {
 					Swipe to preview our themes: {themes.map((t) => t.title).join(", ")}.
 				</p>
 			</section>
+
+			{/* Special Offers Section */}
+			<section className="py-16 md:py-20">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					{/* Section Header */}
+					<p className="text-sm text-[var(--secondary-text)] mb-4">Take advantage of our limited-time deals and save on your next adventure.</p>
+					<div className="w-150 border-b mb-6" />
+					<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8">SPECIAL OFFERS</h2>
+
+					{/* Special Offers Image */}
+					<div className="relative w-full rounded-lg overflow-hidden shadow-lg">
+						<Image
+							src="/assets/special offer.png"
+							alt="Special Offers"
+							width={1200}
+							height={600}
+							className="w-full h-auto"
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* Project System Section */}
+			<section className="py-16 md:py-20 bg-[var(--Secondary-Background)]">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					{/* Section Header */}
+					<p className="text-sm text-[var(--secondary-text)] mb-4">Role, Tools, Visual Identity, Typography and Logo</p>
+					<div className="w-150 border-b mb-6" />
+					<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-12">PROJECT SYSTEM</h2>
+
+					{/* Content Grid */}
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+						{/* Left Column */}
+						<div className="space-y-12">
+							{/* Role */}
+							<div>
+								<h3 className="text-sm font-semibold text-[var(--secondary-text)] tracking-wide mb-2">ROLE</h3>
+								<p className="text-[var(--accent)] font-semibold">UX/UI DESIGN</p>
+							</div>
+
+							{/* Visual Identity */}
+							<div>
+								<h3 className="text-sm font-semibold text-[var(--secondary-text)] tracking-wide mb-4">VISUAL IDENTITY</h3>
+								<div className="flex gap-3">
+									<div className="w-12 h-12 rounded bg-gray-800" />
+									<div className="w-12 h-12 rounded bg-blue-600" />
+									<div className="w-12 h-12 rounded bg-gray-400" />
+									<div className="w-12 h-12 rounded bg-blue-900" />
+								</div>
+							</div>
+
+							{/* Logo */}
+							<div>
+								<h3 className="text-sm font-semibold text-[var(--secondary-text)] tracking-wide mb-3">LOGO</h3>
+								<div className="inline-block">
+									<span className="text-3xl font-bold">
+										<span className="text-[var(--text)]">Travel</span>
+										<span className="text-[var(--accent)]">World</span>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						{/* Right Column */}
+						<div className="space-y-12">
+							{/* Typography */}
+							<div>
+								<h3 className="text-sm font-semibold text-[var(--secondary-text)] tracking-wide mb-4">TYPOGRAPHY</h3>
+								<div className="space-y-3">
+									<div className="border-b border-[var(--secondary-text)] pb-2">
+										<p className="font-primary text-2xl text-[var(--text)]">ALICE</p>
+									</div>
+									<div className="border-b border-[var(--secondary-text)] pb-2">
+										<p className="font-number text-lg text-[var(--text)]">Aldrich</p>
+									</div>
+									<div className="border-b border-[var(--secondary-text)] pb-2">
+										<p className="font-secondary text-base text-[var(--text)]">Lato</p>
+									</div>
+								</div>
+							</div>
+
+							{/* Tools */}
+							<div>
+								<h3 className="text-sm font-semibold text-[var(--secondary-text)] tracking-wide mb-2">TOOLS</h3>
+								<p className="text-[var(--accent)] font-semibold">FIGMA</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* CTA Section */}
+			<section className="py-16 md:py-20">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					{/* Section Header */}
+					<p className="text-sm text-[var(--secondary-text)] mb-4">Choose a destination below – the live website or the design file</p>
+					<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-12">WHERE DO YOU WANT TO OPEN TRAVEL WORLD?</h2>
+
+					{/* CTA Buttons */}
+					<div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+						{/* Visit Website Button */}
+						<a
+							href="https://travel-website-complete-w0th.onrender.com/index.html"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="flex items-center gap-3 bg-[var(--accent)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition shadow-lg"
+						>
+							<span className="text-2xl">ℹ</span>
+							<span>VISIT WEBSITE</span>
+							<span className="ml-2 bg-white text-[var(--accent)] px-3 py-1 rounded-full text-sm font-semibold">Open Site</span>
+						</a>
+
+						{/* View Figma Button */}
+						<a
+							href="#"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="flex items-center gap-3 bg-[var(--accent)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition shadow-lg"
+						>
+							<span className="text-2xl">📱</span>
+							<span>VIEW FIGMA</span>
+							<span className="ml-2 bg-white text-[var(--accent)] px-3 py-1 rounded-full text-sm font-semibold">Open File</span>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<Projects />
 		</main>
 	);
 }
