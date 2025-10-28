@@ -51,18 +51,43 @@ const FormField: React.FC<FormFieldProps> = ({ label, children, className }) => 
  * Main component to display the Contact Section.
  */
 export const ContactSection: React.FC = () => {
-// Simple handler for the form submission (for demonstration purposes)
-const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+// Submit to API and persist in JSON DB
+const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    console.log('Form Submitted!');
-    // NOTE: Using a custom modal/message box is recommended over alert() in production.
-    alert('Thank you for your message! This is a demo submission.');
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+        name: String(formData.get('name') ?? ''),
+        email: String(formData.get('email') ?? ''),
+        phone: String(formData.get('phone') ?? ''),
+        message: String(formData.get('message') ?? ''),
+    };
+
+    try {
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.ok) {
+            console.error('Submit failed', data);
+            alert('Failed to send. Please check your details and try again.');
+            return;
+        }
+        form.reset();
+        alert('Thanks! Your message has been saved.');
+    } catch (err) {
+        console.error('Network error', err);
+        alert('Network error. Please try again.');
+    }
 };
 
 return (
     <section className="py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
-        <div className="text-number absolute top-30 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
-            05
+        <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
+            04
         </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -111,6 +136,7 @@ return (
                 <FormField label="NAME" className="bg-[var(--accent)]">
                     <input
                     type="text"
+                    name="name"
                     placeholder="Your Name"
                     className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
                     required
@@ -121,6 +147,7 @@ return (
                 <FormField label="YOUR EMAIL">
                     <input
                     type="email"
+                    name="email"
                     placeholder="Your Email"
                     className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
                     required
@@ -131,6 +158,7 @@ return (
                 <FormField label="PHONE">
                     <input
                     type="tel"
+                    name="phone"
                     placeholder="Your Number"
                     className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
                     />
@@ -139,6 +167,7 @@ return (
                 {/* Message Field */}
                 <FormField label="YOUR MESSAGE">
                     <textarea
+                    name="message"
                     placeholder="Tell me all what you want...."
                     rows={6}
                     className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r resize-none"
