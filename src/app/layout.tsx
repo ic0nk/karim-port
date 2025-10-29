@@ -20,6 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* Prevent theme flash: set initial theme class before hydration */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(() => { try { const s = localStorage.getItem('theme'); const m = window.matchMedia('(prefers-color-scheme: dark)').matches; const t = s || (m ? 'dark' : 'light'); const el = document.documentElement; if (t === 'dark') el.classList.add('dark'); else el.classList.remove('dark'); } catch (e) {} })();`,
+        }}
+      />
       <body className="overflow-x-hidden">
         <WelcomeOverlay />
         <Header />

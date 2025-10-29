@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -114,7 +115,7 @@ const Header = () => {
               MY PROJECTS
                   {/* Hover hint: small text below to indicate submenu */}
                   <span
-                    className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 text-[10px] tracking-wide text-[var(--secondary-text)] bg-[var(--background)]/80 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 shadow-sm opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition"
+                    className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 text-[10px] tracking-wide text-[var(--secondary-text)] bg-[var(--background)]/90 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 shadow-sm opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition"
                   >
                     submenu
                   </span>
@@ -124,10 +125,10 @@ const Header = () => {
               ref={projectsMenuRef}
               role="menu"
               aria-label="My Projects submenu"
-              className={`absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl border border-white/10 bg-[var(--background)]/80 backdrop-blur-md shadow-xl ring-1 ring-black/5 transition-all duration-200 ease-out origin-top z-50 p-1 ${isProjectsOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
+              className={`absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl border border-white/10 bg-[var(--background)]/95 backdrop-blur-md shadow-xl ring-1 ring-black/5 transition-all duration-200 ease-out origin-top z-50 p-1 ${isProjectsOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
             >
               {/* caret */}
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 rotate-45 bg-[var(--background)]/80 backdrop-blur-md border-l border-t border-white/10 ring-1 ring-black/5 rounded-sm" />
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 h-4 w-4 rotate-45 bg-[var(--background)]/95 backdrop-blur-md border-l border-t border-white/10 ring-1 ring-black/5 rounded-sm" />
 
               <ul className="py-1 text-sm">
                 <li>
@@ -185,17 +186,20 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Mobile Menu Button */}
-      <div className="md:hidden z-20">
-        <button suppressHydrationWarning
-          className={`hamburger-button ${isMenuOpen ? "open" : ""}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
-          <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
-          <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
-        </button>
+      {/* Right controls: theme toggle + mobile menu */}
+      <div className="flex items-center gap-3 z-20">
+        <ThemeToggle />
+        <div className="md:hidden">
+          <button suppressHydrationWarning
+            className={`hamburger-button ${isMenuOpen ? "open" : ""}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
+            <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
+            <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}

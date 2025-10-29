@@ -26,6 +26,37 @@ html {
 --background: #E0DEDC;
 --foreground: oklch(0.145 0 0);
 --Secondary-Background: #D2D2D2;
+--hero-about-text: var(--text);
+}
+
+/* Dark theme overrides */
+.dark {
+  color-scheme: dark;
+  /* Core surfaces */
+  --background: #0c0f13;            /* near-black, gentle blue tint */
+  --Secondary-Background: #14181d;  /* slightly raised surface */
+  /* Text */
+  --text: #e6e7eb;            /* main text with strong contrast */
+  --secondary-text: #a0a6ad;  /* muted text with enough contrast */
+  --foreground: #e6e7eb;
+  /* Brand */
+  --accent: #1f78ac;          /* brighter for contrast on dark */
+  --accent-hover: #2a8ec9;
+  /* Buttons */
+  --btn-primary: var(--accent);
+  --btn-primary-text: #ffffff;
+  --btn-secondary: #22262b;
+  /* Borders and misc */
+  --border: rgba(255, 255, 255, 0.14);
+  --muted-foreground: var(--secondary-text);
+  --accent-foreground: #ffffff;
+  --hero-about-text: #ffffff; /* Force about sentence to white in dark mode for clarity */
+}
+
+/* Readability tweaks in dark mode */
+.dark .text-number {
+  color: #2b3137;
+  opacity: 0.35;
 }
 
 body {

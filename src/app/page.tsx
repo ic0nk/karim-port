@@ -109,7 +109,7 @@ export default function Home() {
               <h3 className="font-primary mb-6 pop-on-scroll">CREATIVE DEVELOPMENT</h3>
             </div>
             <div className="min-h-[150px]">
-              <p className="text-base text-gray-700 mb-4 align-middle pop-on-scroll">
+              <p className="text-base text-[var(--hero-about-text)] mb-4 align-middle pop-on-scroll">
                 I'm Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. <br />
                 My goal is to grow into a professional front-end developer, turning ideas into impactful designs that connect with people. <br />
               </p>
