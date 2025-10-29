@@ -64,18 +64,18 @@ export default function ProjectDetails() {
 	return (
 		<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			{/* Hero */}
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-15 items-center h-lvh">
+			<div className="reveal-section grid grid-cols-1 lg:grid-cols-2 gap-15 items-center h-lvh">
 				<div className="text-left">
-					<h1 className="text-[var(--text)] font-primary text-5xl md:text-6xl leading-tight text-center">
+					<h1 className="text-[var(--text)] font-primary text-5xl md:text-6xl leading-tight text-center reveal-el">
 						TRAVELWORLD
 					</h1>
-					<div className="w-118 border-b mb-4 justify-self-center" />
-					<p className="max-w-407 leading-relaxed text-center justify-self-center">
+					<div className="w-118 border-b mb-4 justify-self-center reveal-el" />
+					<p className="max-w-407 leading-relaxed text-center justify-self-center reveal-el">
 						A simple, friendly travel website that makes exploring destinations feel fun and effortless.
 					</p>
 				</div>
 				<div className="flex justify-center lg:justify-end">
-					<div className="w-full max-w-3xl">
+					<div className="w-full max-w-3xl pop-on-scroll">
 						<Image
 							src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
 							alt="Travelworld hero mockup"
@@ -88,16 +88,16 @@ export default function ProjectDetails() {
 				</div>
 			</div>
 			{/* Overview - placed after the hero */}
-			<section className="mt-16 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--Secondary-Background)] py-12 mb-16 md:mb-20">
+			<section className="reveal-section mt-16 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--Secondary-Background)] py-12 mb-16 md:mb-20">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 						<div className="text-left">
 					<div className="w-150 border-b mb-2" />
-					<h2 className="text-[var(--text)] font-primary text-4xl tracking-wide mb-2">OVERVIEW</h2>
+					<h2 className="text-[var(--text)] font-primary text-4xl tracking-wide mb-2 reveal-el">OVERVIEW</h2>
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-1 top-1/5 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
 						02
 					</div>
-					<ul className="space-y-3 text-sm max-w-md text-[var(--text)]">
+					<ul className="space-y-3 text-sm max-w-md text-[var(--text)] reveal-el">
 						<li><span className="font-semibold">Role:</span> UX/UI Design & Front-end</li>
 						<li><span className="font-semibold">Type:</span> Marketing Website (Travel)</li>
 						<li><span className="font-semibold">Highlights:</span> Destination cards, special offers, testimonials, clear CTAs</li>
@@ -110,7 +110,7 @@ export default function ProjectDetails() {
 					</ul>
 				</div>
 				<div className="flex justify-center lg:justify-end">
-					<div className="w-full max-w-md rounded-lg overflow-hidden shadow-lg">
+					<div className="w-full max-w-md rounded-lg overflow-hidden shadow-lg pop-on-scroll">
 						<Image
 							src="/assets/Travel World Second Section .png"
 							alt="Travelworld mockup"
@@ -125,14 +125,14 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* Key Screens - redesigned and placed after Overview */}
-			<section className="mt-20 md:mt-24 relative lg:pl-0 mb-16 md:mb-24">
+			<section className="reveal-section mt-20 md:mt-24 relative lg:pl-0 mb-16 md:mb-24">
 				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -left-61 top-1/30 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
 					03
 				</div>
 
-				<p className="text-sm text-[var(--secondary-text)]">What the experience looks like</p>
+				<p className="text-sm text-[var(--secondary-text)] reveal-el">What the experience looks like</p>
 				<div className="w-150 border-b mb-2" />
-				<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mt-2">KEY SCREENS</h2>
+				<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mt-2 reveal-el">KEY SCREENS</h2>
 				<div className="flex items-center justify-between mb-6">
 					<div className="flex-1 text-center">
 					</div>
@@ -143,7 +143,7 @@ export default function ProjectDetails() {
 					<div className="max-w-5xl w-full">
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 							{/* Card 1 */}
-							<div className="bg-white rounded-lg overflow-hidden shadow-sm border">
+							<div className="bg-white rounded-lg overflow-hidden shadow-sm border pop-on-scroll">
 								<div className="h-40 md:h-48 w-full relative">
 									<Image
 										src="/assets/Triple Wave Project Background .png"
@@ -166,7 +166,7 @@ export default function ProjectDetails() {
 							</div>
 
 							{/* Card 2 */}
-							<div className="bg-white rounded-lg overflow-hidden shadow-sm border">
+							<div className="bg-white rounded-lg overflow-hidden shadow-sm border pop-on-scroll">
 								<div className="h-40 md:h-48 w-full relative">
 									<Image
 										src="/assets/Travel World Project Background .png"
@@ -189,7 +189,7 @@ export default function ProjectDetails() {
 							</div>
 
 							{/* Card 3 */}
-							<div className="bg-white rounded-lg overflow-hidden shadow-sm border">
+							<div className="bg-white rounded-lg overflow-hidden shadow-sm border pop-on-scroll">
 								<div className="h-40 md:h-48 w-full relative">
 									<Image
 										src="/assets/Owen Bryce Project Background .png"
@@ -213,7 +213,7 @@ export default function ProjectDetails() {
 						</div>
 
 						<div className="mt-6 flex justify-center">
-							<button className="px-4 py-2 border rounded text-sm text-[var(--accent)]">View All Destinations</button>
+							<button className="px-4 py-2 border rounded text-sm text-[var(--accent)] pop-on-scroll">View All Destinations</button>
 						</div>
 					</div>
 				</div>
@@ -224,9 +224,9 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* Trip Themes Carousel */}
-			<section className="py-16 md:py-20">
+			<section className="reveal-section py-16 md:py-20">
 				<div className="w-150 border-b mb-6" />
-				<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8">TRIP THEMES</h2>
+				<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8 reveal-el">TRIP THEMES</h2>
 
 				{/* Carousel Container */}
 				<div className="relative flex items-center justify-center gap-6">
@@ -242,7 +242,7 @@ export default function ProjectDetails() {
 					{/* Carousel Images */}
 					<div className="flex-1 max-w-4xl overflow-hidden">
 						<div className="flex gap-6">
-							<div className="flex-1">
+							<div className="flex-1 pop-on-scroll">
 								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg">
 									<Image
 										src={currentImage}
@@ -252,7 +252,7 @@ export default function ProjectDetails() {
 									/>
 								</div>
 							</div>
-							<div className="flex-1">
+							<div className="flex-1 pop-on-scroll">
 								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg">
 									<Image
 										src={currentTheme.images[(currentImageIndex + 1) % currentTheme.images.length]}
@@ -282,7 +282,7 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* Special Offers Section */}
-			<section className="py-16 md:py-20">
+			<section className="reveal-section py-16 md:py-20">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Section Header */}
 					<p className="text-sm text-[var(--secondary-text)] mb-4">Take advantage of our limited-time deals and save on your next adventure.</p>
@@ -290,7 +290,7 @@ export default function ProjectDetails() {
 					<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8">SPECIAL OFFERS</h2>
 
 					{/* Special Offers Image */}
-					<div className="relative w-full rounded-lg overflow-hidden shadow-lg">
+					<div className="relative w-full rounded-lg overflow-hidden shadow-lg pop-on-scroll">
 						<Image
 							src="/assets/special offer.png"
 							alt="Special Offers"
@@ -303,7 +303,7 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* Project System Section */}
-			<section className="py-16 md:py-20 bg-[var(--Secondary-Background)]">
+			<section className="reveal-section py-16 md:py-20 bg-[var(--Secondary-Background)]">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Section Header */}
 					<p className="text-sm text-[var(--secondary-text)] mb-4">Role, Tools, Visual Identity, Typography and Logo</p>
@@ -313,7 +313,7 @@ export default function ProjectDetails() {
 					{/* Content Grid */}
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 						{/* Left Column */}
-						<div className="space-y-12">
+						<div className="space-y-12 reveal-el">
 							{/* Role */}
 							<div>
 								<h3 className="text-sm font-semibold text-[var(--secondary-text)] tracking-wide mb-2">ROLE</h3>
@@ -344,7 +344,7 @@ export default function ProjectDetails() {
 						</div>
 
 						{/* Right Column */}
-						<div className="space-y-12">
+						<div className="space-y-12 reveal-el">
 							{/* Typography */}
 							<div>
 								<h3 className="text-sm font-semibold text-[var(--secondary-text)] tracking-wide mb-4">TYPOGRAPHY</h3>
@@ -372,11 +372,11 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* CTA Section */}
-			<section className="py-16 md:py-20">
+			<section className="reveal-section py-16 md:py-20">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Section Header */}
 					<p className="text-sm text-[var(--secondary-text)] mb-4">Choose a destination below – the live website or the design file</p>
-					<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-12">WHERE DO YOU WANT TO OPEN TRAVEL WORLD?</h2>
+					<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-12 reveal-el">WHERE DO YOU WANT TO OPEN TRAVEL WORLD?</h2>
 
 					{/* CTA Buttons */}
 					<div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -385,7 +385,7 @@ export default function ProjectDetails() {
 							href="https://travel-website-complete-w0th.onrender.com/index.html"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-3 bg-[var(--accent)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition shadow-lg"
+							className="flex items-center gap-3 bg-[var(--accent)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition shadow-lg pop-on-scroll"
 						>
 							<span className="text-2xl">ℹ</span>
 							<span>VISIT WEBSITE</span>
@@ -397,7 +397,7 @@ export default function ProjectDetails() {
 							href="#"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-3 bg-[var(--accent)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition shadow-lg"
+							className="flex items-center gap-3 bg-[var(--accent)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition shadow-lg pop-on-scroll"
 						>
 							<span className="text-2xl">📱</span>
 							<span>VIEW FIGMA</span>

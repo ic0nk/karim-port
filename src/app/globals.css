@@ -61,7 +61,22 @@ h4 {
   font-size: 28.5px;
 }
 
-.portfolio-subtitle { font-size: 23px;}
+.portfolio-subtitle { 
+  font-size: 23px;
+}
+
+/* Simple fade-in for hero text (no GSAP) */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-fade {
+  opacity: 0;
+  animation: heroFadeIn 600ms ease-out forwards;
+}
+.hero-fade-delay {
+  animation-delay: 120ms;
+}
 
 h5 {
   font-size: 21.3px;

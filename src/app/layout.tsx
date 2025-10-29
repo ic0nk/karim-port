@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Projects from "@/components/ProjectsSection";
+import WelcomeOverlay from "@/components/WelcomeOverlay";
 
 
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="overflow-x-hidden">
+        <WelcomeOverlay />
         <Header />
         <main>
           {children}

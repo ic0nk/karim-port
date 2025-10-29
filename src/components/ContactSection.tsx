@@ -85,7 +85,7 @@ const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
 };
 
 return (
-    <section className="py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
+    <section className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
         <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
             04
         </div>
@@ -94,22 +94,22 @@ return (
         {/* Header/Section Numbering */}
         <div className="mb-4">            
             {/* Contact Me Label */}
-            <h4 className="body-text-b text-right">
+            <h4 className="body-text-b text-right reveal-el">
                 Contact Me
             </h4>
-            <div className="h-px bg-[var(--secondary-text)] ml-auto max-w-[565px]"/>
+            <div className="h-px bg-[var(--secondary-text)] ml-auto max-w-[565px] reveal-el"/>
         </div>
 
         {/* --- Main Content Grid --- */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
         
             {/* Left Column: Logo and Social Links */}
-            <div className="flex flex-col items-center justify-center justify-self-center self-center pt-10 pb-16 lg:pb-0 lg:pt-0">
+            <div className="flex flex-col items-center justify-center justify-self-center self-center pt-10 pb-16 lg:pb-0 lg:pt-0 reveal-el">
                 {/* Logo/Monogram: Uses h1 style, accent color */}
                 <Image src="/assets/K.svg" alt="Logo" width={100} height={100} className='mb-8'/>
                 
                 {/* Social Icons */}
-                <div className="flex justify-center mb-8">
+                <div className="flex justify-center mb-8 pop-on-scroll">
                 <IconLink href="#" icon={FaLinkedin} label="LinkedIn" />
                 <IconLink href="#" icon={MdLocalPhone} label="Phone" />
                 <IconLink href="#" icon={FaGithub} label="GitHub" />
@@ -117,16 +117,16 @@ return (
                 </div>
                 
                 {/* Tagline: Uses secondary text color and body-text-r style */}
-                <p className="text-base text-[var(--secondary-text)] font-[var(--font-secondary)]">
+                <p className="text-base text-[var(--secondary-text)] font-[var(--font-secondary)] reveal-el">
                     Let's Build Something Great Together
                 </p>
             </div>
             
             {/* Right Column: Contact Form */}
-            <div className="w-full">
+            <div className="w-full reveal-el">
                 
                 {/* Title: Uses h2 style, secondary-text color */}
-                <h3 className="text-4xl text-left font-primary mb-12 max-w-[565px] w-full ml-auto">
+                <h3 className="text-4xl text-left font-primary mb-12 max-w-[565px] w-full ml-auto pop-on-scroll">
                 GET IN TOUCH FOR PROJECTS AND PARTNERSHIPS
                 </h3>
 
@@ -178,7 +178,7 @@ return (
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="btn btn-primary w-full mt-4"
+                    className="btn btn-primary w-full mt-4 pop-on-scroll"
                 >
                     SEND TO ME
                 </button>

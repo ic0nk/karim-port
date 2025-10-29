@@ -55,8 +55,14 @@ const Header = () => {
   return (
     <header className={`flex justify-between items-center p-6 px-30 fixed w-full z-100 ${isWhiteHeader ? "text-white" : ""}`}>
       <div className="text-lg font-bold z-20">
-        <button onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer">
+        <button onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer group relative inline-flex items-center gap-2">
           <Image src={isWhiteHeader ? "/assets/K (W).svg" : "/assets/K.svg"} alt="Logo" width={35} height={35} />
+          {/* Hover-reveal full name next to logo */}
+          <span
+            className={`absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm tracking-wider opacity-0 -translate-x-1 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 ${isWhiteHeader ? 'text-white' : 'text-[var(--accent)]'}`}
+          >
+            KARIM MASSAOUD
+          </span>
         </button>
       </div>
 

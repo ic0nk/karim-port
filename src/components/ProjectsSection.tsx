@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Eye, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -44,7 +44,11 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const detailsHref = detailsLink ?? '#';
 
   return (
-    <div className="w-full max-w-[500px] h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto">
+    <div className="relative [perspective:1000px]">
+      <div
+        className="tilt-card pop-on-scroll w-full max-w-[500px] h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto"
+        style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+      >
       
       {/* 1. Project Image */}
       <div className="absolute inset-0 z-0">
@@ -113,23 +117,56 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           </Link>
         </div>
       </div>
+      </div>
     </div>
   );
 };
 
 export const ProjectsSection = () => {
+  // Scroll-based 3D tilt
+  useLayoutEffect(() => {
+    let cleanup: (() => void) | undefined;
+    (async () => {
+      const gsapModule = await import('gsap');
+      const stModule = await import('gsap/ScrollTrigger');
+      const gsap = (gsapModule as any).default ?? (gsapModule as any);
+      const ScrollTrigger = (stModule as any).ScrollTrigger ?? (stModule as any).default;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const ctx = gsap.context(() => {
+        (gsap.utils.toArray('.tilt-card') as HTMLElement[]).forEach((el: HTMLElement) => {
+          // set initial slight depth
+          gsap.set(el, { z: -60, rotateX: 8 });
+          gsap.to(el, {
+            z: 0,
+            rotateX: 0,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              end: 'top 35%',
+              scrub: 0.5,
+            },
+          });
+        });
+      });
+      cleanup = () => ctx.revert();
+    })();
+    return () => cleanup?.();
+  }, []);
+
   return (
-    <section id="projects" className="py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
+    <section id="projects" className="reveal-section py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header mimicking the provided image */}
         <div className="flex justify-between items-end mb-16 ">
           <div>
             {/* My Projects */}
-            <h4 className="mb-2 text-right body-text-b">My Projects</h4>
-            <div className="w-155 h-px bg-[var(--secondary-text)] opacity-50 mb-2" />
+            <h4 className="mb-2 text-right body-text-b reveal-el">My Projects</h4>
+            <div className="w-155 h-px bg-[var(--secondary-text)] opacity-50 mb-2 reveal-el" />
             {/* BRINGING IDEAS TO LIFE */}
-            <h3 className="font-primary">
+            <h3 className="font-primary reveal-el">
               BRINGING IDEAS TO LIFE
             </h3>
           </div>

@@ -45,14 +45,14 @@ const NavItem: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
 
 return (
     // Outer container uses a dark accent color for the background
-    <footer className="bg-[var(--accent)] pt-16 pb-2 font-[var(--font-secondary)]">
+    <footer id="site-footer" className="reveal-section bg-[var(--accent)] pt-16 pb-2 font-[var(--font-secondary)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Main Content Grid (Social | Nav | Logo) */}
             <div className="grid grid-cols-3 items-center justify-between mb-8">
             
                 {/* Left: Social Icons */}
-                <div className="flex justify-start col-span-1">
+                <div className="flex justify-start col-span-1 reveal-el">
                     <IconLink href="#" icon={FaLinkedin} />
                     <IconLink href="#" icon={MdLocalPhone} />
                     <IconLink href="#" icon={FaGithub} />
@@ -60,7 +60,7 @@ return (
                 </div>
 
                 {/* Center: Navigation Links */}
-                <div className="flex flex-col items-center col-span-1">
+                <div className="flex flex-col items-center col-span-1 reveal-el">
                     {navLinks.map((link) => (
                     <NavItem key={link.name} href={link.href}>
                         {link.name}
@@ -69,14 +69,14 @@ return (
                 </div>
 
                 {/* Right: Monogram Logo */}
-                <div className="flex justify-end col-span-1">
+                <div className="flex justify-end col-span-1 reveal-el">
                     {/* Logo/Monogram: Uses the primary font, is large, and bright white */}
-                    <Image src="/assets/K (W).svg" alt="Logo" width={80} height={80} />
+                    <Image className="footer-logo" src="/assets/K (W).svg" alt="Logo" width={80} height={80} />
                 </div>
             </div>
 
             {/* Bottom: Copyright */}
-            <div className="text-center">
+            <div className="text-center reveal-el">
                 <p className="text-white text-xs opacity-60">
                     © {currentYear} Karimmasaad. All Rights Reserved.
                 </p>
