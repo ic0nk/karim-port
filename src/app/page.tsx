@@ -127,9 +127,8 @@ export default function Home() {
                 </a>
               </div>
               <div>
-                <a href="#contact">
-                  <button className="btn btn-primary pop-on-scroll">CONTACT ME</button>
-                </a>
+                {/* Use a single anchor styled as button to avoid invalid nesting and hydration mismatches */}
+                <a href="#contact" className="btn btn-primary pop-on-scroll" role="button">CONTACT ME</a>
               </div>
             </div>
           </div>

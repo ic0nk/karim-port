@@ -27,6 +27,8 @@ export async function setupHomeAnimations(root: HTMLElement) {
 
       // Section-level fade+slide — smooth and professional
       (gsap.utils.toArray('section.reveal-section') as HTMLElement[]).forEach((sec) => {
+        // Allow sections to opt-out of the global reveal if they provide their own local animation
+        if ((sec as HTMLElement).dataset.once === 'true') return;
         // baseline to avoid layout thrash
         gsap.set(sec, { transformOrigin: 'center center', transformPerspective: 800, force3D: true });
 
@@ -110,29 +112,7 @@ export async function setupHomeAnimations(root: HTMLElement) {
         }
       }
 
-      // Footer-specific timeline (mirror About style)
-      const footer = document.querySelector('#site-footer');
-      if (footer) {
-        const footerEls = footer.querySelectorAll('.reveal-el');
-        if (footerEls.length) gsap.set(footerEls, { autoAlpha: 0, y: 22, filter: 'blur(2px)' });
-        if (footer.querySelector('.footer-logo')) {
-          gsap.set('#site-footer .footer-logo', { autoAlpha: 0, scale: 0.96 });
-        }
-
-        if (REVEAL_REVERSIBLE) {
-          const tlFooter = gsap.timeline({
-            defaults: { ease: 'power2.out' },
-            scrollTrigger: { trigger: '#site-footer', start: 'top 85%', end: 'top 30%', scrub: 0.6 },
-          });
-          if (footerEls.length) tlFooter.to(footerEls, { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.12 }, 0);
-          if (footer.querySelector('.footer-logo')) tlFooter.to('#site-footer .footer-logo', { autoAlpha: 1, scale: 1 }, 0.1);
-        } else {
-          const tlFooter = gsap.timeline({ defaults: { ease: 'power2.out' } });
-          if (footerEls.length) tlFooter.to(footerEls, { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.1, duration: 0.6 }, 0);
-          if (footer.querySelector('.footer-logo')) tlFooter.to('#site-footer .footer-logo', { autoAlpha: 1, scale: 1, duration: 0.7 }, 0.05);
-          ScrollTrigger.create({ trigger: '#site-footer', start: 'top 88%', once: true, animation: tlFooter });
-        }
-      }
+      // Footer animation handled locally in Footer.tsx using useEffect and ScrollTrigger (once-only)
 
       // Note: No GSAP hero animations per request (static hero)
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MdLocalPhone } from "react-icons/md";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
@@ -12,6 +12,47 @@ import Image from "next/image";
  * Uses the accent color from the global CSS for the background.
  */
 export const Footer: React.FC = () => {
+const footerRef = useRef<HTMLElement | null>(null);
+useEffect(() => {
+    let tween: any | undefined;
+    let gsapRef: any; let ScrollTriggerRef: any;
+    let isCancelled = false;
+
+    const run = async () => {
+        const gsapModule = await import('gsap');
+        const stModule = await import('gsap/ScrollTrigger');
+        const gsap: any = (gsapModule as any).default ?? (gsapModule as any);
+        const ScrollTrigger: any = (stModule as any).ScrollTrigger ?? (stModule as any).default;
+        gsap.registerPlugin(ScrollTrigger);
+        gsapRef = gsap; ScrollTriggerRef = ScrollTrigger;
+        if (!footerRef.current || isCancelled) return;
+
+        // Respect reduced motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Simple, elegant reveal: fade + slide up, once only
+        tween = gsap.from(footerRef.current, {
+            y: 50,
+            autoAlpha: 0,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: footerRef.current,
+                start: 'top 90%',
+                toggleActions: 'play none none none',
+                once: true,
+            },
+        });
+    };
+
+    run();
+    return () => {
+        isCancelled = true;
+        if (tween?.scrollTrigger) tween.scrollTrigger.kill();
+        if (tween) tween.kill();
+        // No global cleanup required
+    };
+}, []);
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
@@ -45,7 +86,7 @@ const NavItem: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
 
 return (
     // Outer container uses a dark accent color for the background
-    <footer id="site-footer" className="reveal-section bg-[var(--accent)] pt-16 pb-2 font-[var(--font-secondary)]">
+    <footer ref={footerRef} id="site-footer" className="reveal-section bg-[var(--accent)] pt-16 pb-2 font-[var(--font-secondary)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Main Content Grid (Social | Nav | Logo) */}

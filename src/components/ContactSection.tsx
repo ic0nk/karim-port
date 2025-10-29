@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MdLocalPhone } from "react-icons/md";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
@@ -51,6 +51,40 @@ const FormField: React.FC<FormFieldProps> = ({ label, children, className }) => 
  * Main component to display the Contact Section.
  */
 export const ContactSection: React.FC = () => {
+const sectionRef = useRef<HTMLElement | null>(null);
+useEffect(() => {
+    let tween: any | undefined;
+    let isCancelled = false;
+    const run = async () => {
+        const gsapModule = await import('gsap');
+        const stModule = await import('gsap/ScrollTrigger');
+        const gsap: any = (gsapModule as any).default ?? (gsapModule as any);
+        const ScrollTrigger: any = (stModule as any).ScrollTrigger ?? (stModule as any).default;
+        gsap.registerPlugin(ScrollTrigger);
+        if (!sectionRef.current || isCancelled) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        tween = gsap.from(sectionRef.current, {
+            y: 50,
+            autoAlpha: 0,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 90%',
+                toggleActions: 'play none none none',
+                once: true,
+            },
+        });
+    };
+    run();
+    return () => {
+        isCancelled = true;
+        if (tween?.scrollTrigger) tween.scrollTrigger.kill();
+        if (tween) tween.kill();
+    };
+}, []);
 // Submit to API and persist in JSON DB
 const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -85,7 +119,7 @@ const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
 };
 
 return (
-    <section className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
+    <section ref={sectionRef} data-once="true" className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
         <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
             04
         </div>
@@ -134,7 +168,7 @@ return (
                 
                 {/* Name Field */}
                 <FormField label="NAME" className="bg-[var(--accent)]">
-                    <input
+                    <input suppressHydrationWarning
                     type="text"
                     name="name"
                     placeholder="Your Name"
@@ -145,7 +179,7 @@ return (
 
                 {/* Email Field */}
                 <FormField label="YOUR EMAIL">
-                    <input
+                    <input suppressHydrationWarning
                     type="email"
                     name="email"
                     placeholder="Your Email"
@@ -156,7 +190,7 @@ return (
                 
                 {/* Phone Field */}
                 <FormField label="PHONE">
-                    <input
+                    <input suppressHydrationWarning
                     type="tel"
                     name="phone"
                     placeholder="Your Number"
@@ -166,7 +200,7 @@ return (
                 
                 {/* Message Field */}
                 <FormField label="YOUR MESSAGE">
-                    <textarea
+                    <textarea suppressHydrationWarning
                     name="message"
                     placeholder="Tell me all what you want...."
                     rows={6}
@@ -176,7 +210,7 @@ return (
                 </FormField>
 
                 {/* Submit Button */}
-                <button
+                <button suppressHydrationWarning
                     type="submit"
                     className="btn btn-primary w-full mt-4 pop-on-scroll"
                 >
