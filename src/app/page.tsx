@@ -15,19 +15,47 @@ export default function Home() {
 
   useEffect(() => {
     const colorToRGBArray = (colorStr: string): [number, number, number] => {
+      if (!colorStr) return [0.88, 0.87, 0.86];
       if (colorStr.startsWith("oklch")) {
         if (colorStr.includes("1 0 0")) return [1, 1, 1];
         if (colorStr.includes("0.145 0 0")) return [0.145, 0.145, 0.145];
       }
-      const match = colorStr.match(/rgb\((\d+), (\d+), (\d+)\)/);
+      if (colorStr.startsWith("#")) {
+        const hex = colorStr.replace("#", "");
+        const bigint = Number.parseInt(hex, 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+        return [r / 255, g / 255, b / 255];
+      }
+      const match = colorStr.match(/rgb\s*\((\d+),\s*(\d+),\s*(\d+)\)/i);
       if (match) {
         const [, r, g, b] = match.map(Number);
         return [r / 255, g / 255, b / 255];
       }
       return [0.88, 0.87, 0.86];
     };
-    const bgValue = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
-    setBackgroundColor(colorToRGBArray(bgValue));
+
+    const updateBackground = () => {
+      const bgValue = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
+      setBackgroundColor(colorToRGBArray(bgValue));
+    };
+
+    updateBackground();
+
+    const observer = new MutationObserver(() => updateBackground());
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class', 'data-theme'],
+    });
+
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    media.addEventListener('change', updateBackground);
+
+    return () => {
+      observer.disconnect();
+      media.removeEventListener('change', updateBackground);
+    };
   }, []);
 
   useLayoutEffect(() => {

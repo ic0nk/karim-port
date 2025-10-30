@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { MdLocalPhone } from "react-icons/md";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
@@ -51,75 +51,44 @@ const FormField: React.FC<FormFieldProps> = ({ label, children, className }) => 
  * Main component to display the Contact Section.
  */
 export const ContactSection: React.FC = () => {
-const sectionRef = useRef<HTMLElement | null>(null);
-useEffect(() => {
-    let tween: any | undefined;
-    let isCancelled = false;
-    const run = async () => {
-        const gsapModule = await import('gsap');
-        const stModule = await import('gsap/ScrollTrigger');
-        const gsap: any = (gsapModule as any).default ?? (gsapModule as any);
-        const ScrollTrigger: any = (stModule as any).ScrollTrigger ?? (stModule as any).default;
-        gsap.registerPlugin(ScrollTrigger);
-        if (!sectionRef.current || isCancelled) return;
+const FORM_ENDPOINT = 'https://formspree.io/f/mwpwboko';
+const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+const [feedback, setFeedback] = useState<string>('');
 
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        tween = gsap.from(sectionRef.current, {
-            y: 50,
-            autoAlpha: 0,
-            duration: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-                once: true,
-            },
-        });
-    };
-    run();
-    return () => {
-        isCancelled = true;
-        if (tween?.scrollTrigger) tween.scrollTrigger.kill();
-        if (tween) tween.kill();
-    };
-}, []);
-// Submit to API and persist in JSON DB
 const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    setStatus('loading');
+    setFeedback('');
+
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const payload = {
-        name: String(formData.get('name') ?? ''),
-        email: String(formData.get('email') ?? ''),
-        phone: String(formData.get('phone') ?? ''),
-        message: String(formData.get('message') ?? ''),
-    };
 
     try {
-        const res = await fetch('/api/contact', {
+        const response = await fetch(FORM_ENDPOINT, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
+            headers: { Accept: 'application/json' },
+            body: formData,
         });
 
-        const data = await res.json();
-        if (!res.ok || !data.ok) {
-            console.error('Submit failed', data);
-            alert('Failed to send. Please check your details and try again.');
-            return;
+        const data = await response.json().catch(() => null);
+
+        if (response.ok) {
+            form.reset();
+            setStatus('success');
+            setFeedback('Thanks! Your message has been delivered.');
+        } else {
+            setStatus('error');
+            setFeedback(data?.error ?? 'Submission failed. Please try again.');
         }
-        form.reset();
-        alert('Thanks! Your message has been saved.');
-    } catch (err) {
-        console.error('Network error', err);
-        alert('Network error. Please try again.');
+    } catch (error) {
+        console.error('Form submission error', error);
+        setStatus('error');
+        setFeedback('Network error. Please try again.');
     }
 };
 
 return (
-    <section ref={sectionRef} data-once="true" className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
+    <section className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
         <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
             04
         </div>
@@ -144,10 +113,10 @@ return (
                 
                 {/* Social Icons */}
                 <div className="flex justify-center mb-8 pop-on-scroll">
-                <IconLink href="#" icon={FaLinkedin} label="LinkedIn" />
-                <IconLink href="#" icon={MdLocalPhone} label="Phone" />
-                <IconLink href="#" icon={FaGithub} label="GitHub" />
-                <IconLink href="#" icon={IoMdMail} label="Email" />
+                <IconLink href="https://www.linkedin.com/in/karim-massaoud" icon={FaLinkedin} label="LinkedIn" />
+                <IconLink href="tel:0616537940" icon={MdLocalPhone} label="Call" />
+                <IconLink href="https://github.com/ic0nk" icon={FaGithub} label="GitHub" />
+                <IconLink href="mailto:karimmassoud668@gmail.com" icon={IoMdMail} label="Email" />
                 </div>
                 
                 {/* Tagline: Uses secondary text color and body-text-r style */}
@@ -212,10 +181,16 @@ return (
                 {/* Submit Button */}
                 <button suppressHydrationWarning
                     type="submit"
-                    className="btn btn-primary w-full mt-4 pop-on-scroll"
+                    disabled={status === 'loading'}
+                    className="btn btn-primary w-full mt-4 pop-on-scroll disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                    SEND TO ME
+                    {status === 'loading' ? 'Sending…' : 'SEND TO ME'}
                 </button>
+                {feedback ? (
+                    <p className={`mt-3 text-sm ${status === 'success' ? 'text-green-600' : 'text-red-500'}`}>
+                        {feedback}
+                    </p>
+                ) : null}
                 </form>
             </div>
         </div>

@@ -14,6 +14,8 @@ const Header = () => {
   const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false);
   const projectsBtnRef = useRef<HTMLButtonElement | null>(null);
   const projectsMenuRef = useRef<HTMLDivElement | null>(null);
+  const menuToggleRef = useRef<HTMLButtonElement | null>(null);
+  const mobileProjectsBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,6 +30,24 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (projectsBtnRef.current) {
+      projectsBtnRef.current.setAttribute("aria-expanded", isProjectsOpen ? "true" : "false");
+    }
+  }, [isProjectsOpen]);
+
+  useEffect(() => {
+    if (menuToggleRef.current) {
+      menuToggleRef.current.setAttribute("aria-expanded", isMenuOpen ? "true" : "false");
+    }
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (mobileProjectsBtnRef.current) {
+      mobileProjectsBtnRef.current.setAttribute("aria-expanded", isMobileProjectsOpen ? "true" : "false");
+    }
+  }, [isMobileProjectsOpen]);
 
   // Close desktop submenu on outside click or Esc
   useEffect(() => {
@@ -78,7 +98,7 @@ const Header = () => {
   const isWhiteHeader = pathname?.startsWith("/project-Owen-Bryce");
 
   return (
-    <header suppressHydrationWarning className={`flex justify-between items-center p-6 px-30 fixed w-full z-100 ${isWhiteHeader ? "text-white" : ""}`}>
+    <header suppressHydrationWarning className={`flex items-center justify-between p-6 px-30 fixed w-full z-100 ${isWhiteHeader ? "text-white" : ""}`}>
       <div className="text-lg font-bold z-20">
         <button suppressHydrationWarning onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer group relative inline-flex items-center gap-2">
           <Image src={isWhiteHeader ? "/assets/K (W).svg" : "/assets/K.svg"} alt="Logo" width={35} height={35} />
@@ -92,7 +112,7 @@ const Header = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex">
+      <nav className="hidden md:flex flex-1 justify-end">
         <ul className="flex gap-10 font-bold relative">
           <li>
             <button suppressHydrationWarning
@@ -103,28 +123,25 @@ const Header = () => {
             </button>
           </li>
           <li className="relative">
-                <button
+            <button
               ref={projectsBtnRef}
               suppressHydrationWarning
               onClick={() => setIsProjectsOpen((s) => !s)}
               aria-haspopup="true"
-              aria-expanded={isProjectsOpen}
-                  title="Open submenu"
-                  className="nav-link cursor-pointer relative group"
+              title="Open submenu"
+              className="nav-link cursor-pointer relative group"
             >
               MY PROJECTS
-                  {/* Hover hint: small text below to indicate submenu */}
-                  <span
-                    className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 text-[10px] tracking-wide text-[var(--secondary-text)] bg-[var(--background)]/90 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 shadow-sm opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition"
-                  >
-                    submenu
-                  </span>
+              {/* Hover hint: small text below to indicate submenu */}
+              <span
+                className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-1 text-[10px] tracking-wide text-[var(--secondary-text)] bg-[var(--background)]/90 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/10 shadow-sm opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition"
+              >
+                submenu
+              </span>
             </button>
             {/* Dropdown submenu */}
             <div
               ref={projectsMenuRef}
-              role="menu"
-              aria-label="My Projects submenu"
               className={`absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl border border-white/10 bg-[var(--background)]/95 backdrop-blur-md shadow-xl ring-1 ring-black/5 transition-all duration-200 ease-out origin-top z-50 p-1 ${isProjectsOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
             >
               {/* caret */}
@@ -187,17 +204,18 @@ const Header = () => {
       </nav>
 
       {/* Right controls: theme toggle + mobile menu */}
-      <div className="flex items-center gap-3 z-20">
+      <div className="flex items-center gap-3 z-20 ml-6">
         <ThemeToggle />
         <div className="md:hidden">
           <button suppressHydrationWarning
+            ref={menuToggleRef}
             className={`hamburger-button ${isMenuOpen ? "open" : ""}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
-            <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
-            <div className="hamburger-line" style={isWhiteHeader ? { background: '#ffffff' } : undefined}></div>
+            <div className={`hamburger-line ${isWhiteHeader ? "bg-white" : ""}`}></div>
+            <div className={`hamburger-line ${isWhiteHeader ? "bg-white" : ""}`}></div>
+            <div className={`hamburger-line ${isWhiteHeader ? "bg-white" : ""}`}></div>
           </button>
         </div>
       </div>
@@ -216,9 +234,9 @@ const Header = () => {
             </li>
             <li>
               <button suppressHydrationWarning
+                ref={mobileProjectsBtnRef}
                 onClick={() => setIsMobileProjectsOpen((s) => !s)}
                 aria-haspopup="true"
-                aria-expanded={isMobileProjectsOpen}
                 className="nav-link cursor-pointer"
               >
                 MY PROJECTS
