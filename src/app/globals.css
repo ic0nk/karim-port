@@ -109,6 +109,76 @@ h4 {
   animation-delay: 120ms;
 }
 
+/* Fancy animated gradient title */
+@keyframes gradientX {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.gradient-title {
+  background: linear-gradient(90deg, var(--accent), #8ec5ff, #ffffff, #8ec5ff, var(--accent));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.animate-gradient-x { animation: gradientX 6s ease-in-out infinite; }
+.title-glow-line { height: 3px; background: linear-gradient(90deg, transparent, var(--accent), transparent); filter: blur(0.2px); }
+
+/* Laptop stage background blobs (safe CSS animations, no JS) */
+@keyframes floatSoft {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(6px, -8px, 0) scale(1.04); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.laptop-stage { position: relative; }
+.laptop-stage .stage-bg { position: absolute; inset: 0; z-index: 0; }
+.laptop-stage .screen-glow {
+  position: absolute;
+  left: 12%; right: 12%; top: 8%; bottom: 22%;
+  background: radial-gradient(ellipse at 50% 50%, var(--accent) 0%, transparent 70%);
+  opacity: 0.18;
+  filter: blur(24px);
+}
+.laptop-stage .blob { position: absolute; border-radius: 9999px; opacity: 0.18; filter: blur(40px); animation: floatSoft 9s ease-in-out infinite; background: var(--accent); }
+.laptop-stage .blob-1 { width: 40%; height: 40%; top: 6%; left: 10%; }
+.laptop-stage .blob-2 { width: 36%; height: 36%; bottom: 10%; right: 12%; animation-delay: -2.5s; }
+.laptop-stage .ring-glow {
+  position: absolute; inset: 14% 10% 24% 10%;
+  border-radius: 1.25rem;
+  box-shadow: 0 0 120px 20px var(--accent);
+  opacity: 0.08;
+  filter: blur(10px);
+}
+
+/* Hero mesh background (behind hero only) */
+@keyframes meshDrift {
+  0%   { background-position: 0% 0%, 100% 0%, 0 0, 0 0; }
+  50%  { background-position: 100% 50%, 0% 50%, 10px 8px, 0 0; }
+  100% { background-position: 0% 100%, 100% 100%, 0 0, 0 0; }
+}
+.hero-mesh {
+  z-index: 0;
+  /* Fallback-friendly colors (avoid color-mix/oklab for broader CSS support) */
+  background-image:
+    radial-gradient(60% 80% at 10% 10%, rgba(31, 120, 172, 0.28) 0%, rgba(0,0,0,0) 60%),
+    radial-gradient(80% 60% at 90% 20%, rgba(142, 197, 255, 0.35) 0%, rgba(0,0,0,0) 65%),
+    radial-gradient(50% 50% at 80% 85%, rgba(255, 255, 255, 0.24) 0%, rgba(0,0,0,0) 70%),
+    repeating-linear-gradient(90deg, rgba(92, 92, 92, 0.10) 0 1px, transparent 1px 32px);
+  background-size: 140% 140%, 140% 140%, 120% 120%, auto;
+  filter: blur(0.5px);
+  opacity: 0.25;
+  animation: meshDrift 30s ease-in-out infinite alternate;
+}
+.dark .hero-mesh { opacity: 0.16; }
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-x { animation: none !important; }
+  .laptop-stage .blob { animation: none !important; }
+  .hero-mesh { animation: none !important; }
+}
+
 h5 {
   font-size: 21.3px;
 }

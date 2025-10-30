@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from "lucide-react";
 
 const themes = [
-	{
+	{	
 		id: 1,
 		title: "Luxury Beach Getaways",
 		images: [
@@ -34,6 +34,34 @@ const themes = [
 export default function ProjectDetails() {
 	const [currentThemeIndex, setCurrentThemeIndex] = useState(0);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+	// Featured destinations for the "Key Screens" section
+	const destinations = [
+		{
+			region: "Asia",
+			title: "Bali, Indonesia",
+			price: "$899",
+			image: "/assets/Triple Wave Project Background .png",
+			blurb:
+				"Experience the perfect blend of beautiful beaches, vibrant culture, and spiritual retreats.",
+		},
+		{
+			region: "Europe",
+			title: "Paris, France",
+			price: "$1,099",
+			image: "/assets/Travel World Project Background .png",
+			blurb:
+				"Discover the city of love with its iconic landmarks, world-class cuisine, and artistic heritage.",
+		},
+		{
+			region: "Europe",
+			title: "Santorini, Greece",
+			price: "$1,299",
+			image: "/assets/Owen Bryce Project Background .png",
+			blurb:
+				"Enjoy breathtaking sunsets, white-washed buildings, and crystal-clear waters on this magical island.",
+		},
+	];
 
 	const handlePrevTheme = () => {
 		setCurrentThemeIndex((prev) => (prev === 0 ? themes.length - 1 : prev - 1));
@@ -64,167 +92,180 @@ export default function ProjectDetails() {
 	return (
 		<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			{/* Hero */}
-			<div className="reveal-section grid grid-cols-1 lg:grid-cols-2 gap-15 items-center h-lvh">
-				<div className="text-left">
-					<h1 className="text-[var(--text)] font-primary text-5xl md:text-6xl leading-tight text-center reveal-el">
+			<div className="reveal-section grid grid-cols-1 lg:grid-cols-12 gap-10 items-center min-h-[80vh] relative py-10">
+				{/* Cool hero background layer */}
+				<div className="hero-mesh absolute inset-0 pointer-events-none" aria-hidden="true" />
+				<div className="text-left relative z-10 lg:col-span-5">
+					<p className="text-xs tracking-[0.2em] text-[var(--secondary-text)] mb-2 reveal-el">TRAVEL PROJECT</p>
+					<h1 className="font-primary text-5xl md:text-6xl leading-tight lg:text-left text-center reveal-el gradient-title animate-gradient-x">
 						TRAVELWORLD
 					</h1>
-					<div className="w-118 border-b mb-4 justify-self-center reveal-el" />
-					<p className="max-w-407 leading-relaxed text-center justify-self-center reveal-el">
+					<div className="w-118 title-glow-line mb-4 lg:justify-start justify-self-center reveal-el" />
+					<p className="max-w-407 leading-relaxed lg:text-left text-center reveal-el">
 						A simple, friendly travel website that makes exploring destinations feel fun and effortless.
 					</p>
 				</div>
-				<div className="flex justify-center lg:justify-end">
-					<div className="w-full max-w-3xl pop-on-scroll">
+				<div className="flex justify-center lg:justify-end relative z-10 lg:col-span-7">
+					<div className="laptop-stage w-full max-w-4xl pop-on-scroll">
+						<div className="stage-bg pointer-events-none" aria-hidden="true">
+							<div className="screen-glow" />
+							<div className="blob blob-1" />
+							<div className="blob blob-2" />
+							<div className="ring-glow" />
+						</div>
 						<Image
 							src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
 							alt="Travelworld hero mockup"
 							width={1200}
 							height={700}
-							className="w-full h-auto"
+							className="relative z-10 w-full h-auto"
 							priority
 						/>
 					</div>
 				</div>
-			</div>
-			{/* Overview - placed after the hero */}
-			<section className="reveal-section mt-16 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--Secondary-Background)] py-12 mb-16 md:mb-20">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-						<div className="text-left">
-					<div className="w-150 border-b mb-2" />
-					<h2 className="text-[var(--text)] font-primary text-4xl tracking-wide mb-2 reveal-el">OVERVIEW</h2>
-					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-1 top-1/5 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
+				</div>
+
+				{/* Overview - redesigned */}
+				<section className="reveal-section mt-16 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--Secondary-Background)] py-14 md:py-18 mb-16 md:mb-20">
+					{/* Zigzag number: 02 on the left */}
+					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -left-61 top-6 -rotate-90 select-none pointer-events-none">
 						02
 					</div>
-					<ul className="space-y-3 text-sm max-w-md text-[var(--text)] reveal-el">
-						<li><span className="font-semibold">Role:</span> UX/UI Design & Front-end</li>
-						<li><span className="font-semibold">Type:</span> Marketing Website (Travel)</li>
-						<li><span className="font-semibold">Highlights:</span> Destination cards, special offers, testimonials, clear CTAs</li>
-						<li>
-							<span className="font-semibold">Live Demo:</span>{' '}
-							<a href="https://travel-website-complete-w0th.onrender.com/index.html" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] underline">
-								travel-website-complete-w0th.onrender.com
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div className="flex justify-center lg:justify-end">
-					<div className="w-full max-w-md rounded-lg overflow-hidden shadow-lg pop-on-scroll">
-						<Image
-							src="/assets/Travel World Second Section .png"
-							alt="Travelworld mockup"
-							width={800}
-							height={480}
-							className="w-full h-auto"
-						/>
-					</div>
-						</div>
-					</div>
-				</div>
-			</section>
+					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+						<div className="grid grid-cols-12 gap-8 items-center">
+							{/* Left: copy + quick facts */}
+							<div className="col-span-12 lg:col-span-6 text-left space-y-6">
+								<p className="text-xs tracking-[0.18em] text-[var(--secondary-text)] reveal-el">SECTION 02</p>
+								<div className="w-150 border-b mb-1" />
+								<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl tracking-wide reveal-el">OVERVIEW</h2>
 
-			{/* Key Screens - redesigned and placed after Overview */}
-			<section className="reveal-section mt-20 md:mt-24 relative lg:pl-0 mb-16 md:mb-24">
-				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -left-61 top-1/30 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
-					03
-				</div>
-
-				<p className="text-sm text-[var(--secondary-text)] reveal-el">What the experience looks like</p>
-				<div className="w-150 border-b mb-2" />
-				<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mt-2 reveal-el">KEY SCREENS</h2>
-				<div className="flex items-center justify-between mb-6">
-					<div className="flex-1 text-center">
-					</div>
-					<div className="w-6" />
-				</div>
-
-				<div className="bg-white rounded-3xl p-6 md:p-10 shadow-lg flex justify-center">
-					<div className="max-w-5xl w-full">
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-							{/* Card 1 */}
-							<div className="bg-white rounded-lg overflow-hidden shadow-sm border pop-on-scroll">
-								<div className="h-40 md:h-48 w-full relative">
-									<Image
-										src="/assets/Triple Wave Project Background .png"
-										alt="Bali, Indonesia"
-										fill
-										className="object-cover"
-									/>
-								</div>
-								<div className="p-4">
-									<p className="text-xs text-[var(--secondary-text)]">Asia</p>
-									<h3 className="font-semibold mt-1">Bali, Indonesia</h3>
-									<p className="text-sm text-[var(--secondary-text)] mt-2">Experience the perfect blend of beautiful beaches, vibrant culture, and spiritual retreats.</p>
-									<div className="mt-4 text-sm">
-										<span className="font-semibold">From $899</span>
-										<div className="mt-3">
-											<a className="inline-block px-3 py-1 text-xs border rounded text-[var(--accent)]">Book Now</a>
+								{/* Quick facts cards */}
+								<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+									<div className="rounded-xl border border-white/10 bg-[var(--background)]/70 backdrop-blur-md p-4 reveal-el">
+										<p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-1">ROLE</p>
+										<p className="text-[var(--text)] font-semibold">UX/UI Design & Front‑end</p>
+									</div>
+									<div className="rounded-xl border border-white/10 bg-[var(--background)]/70 backdrop-blur-md p-4 reveal-el">
+										<p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-1">TYPE</p>
+										<p className="text-[var(--text)] font-semibold">Marketing Website (Travel)</p>
+									</div>
+									<div className="rounded-xl border border-white/10 bg-[var(--background)]/70 backdrop-blur-md p-4 sm:col-span-2 reveal-el">
+										<p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-2">HIGHLIGHTS</p>
+										<div className="flex flex-wrap gap-2">
+											<span className="px-2.5 py-1 rounded-full text-xs bg-[var(--Secondary-Background)] text-[var(--text)] border border-white/10">Destination cards</span>
+											<span className="px-2.5 py-1 rounded-full text-xs bg-[var(--Secondary-Background)] text-[var(--text)] border border-white/10">Special offers</span>
+											<span className="px-2.5 py-1 rounded-full text-xs bg-[var(--Secondary-Background)] text-[var(--text)] border border-white/10">Testimonials</span>
+											<span className="px-2.5 py-1 rounded-full text-xs bg-[var(--Secondary-Background)] text-[var(--text)] border border-white/10">Clear CTAs</span>
 										</div>
 									</div>
 								</div>
-							</div>
 
-							{/* Card 2 */}
-							<div className="bg-white rounded-lg overflow-hidden shadow-sm border pop-on-scroll">
-								<div className="h-40 md:h-48 w-full relative">
-									<Image
-										src="/assets/Travel World Project Background .png"
-										alt="Paris, France"
-										fill
-										className="object-cover"
-									/>
-								</div>
-								<div className="p-4">
-									<p className="text-xs text-[var(--secondary-text)]">Europe</p>
-									<h3 className="font-semibold mt-1">Paris, France</h3>
-									<p className="text-sm text-[var(--secondary-text)] mt-2">Discover the city of love with its iconic landmarks, world-class cuisine, and artistic heritage.</p>
-									<div className="mt-4 text-sm">
-										<span className="font-semibold">From $1,099</span>
-										<div className="mt-3">
-											<a className="inline-block px-3 py-1 text-xs border rounded text-[var(--accent)]">Book Now</a>
-										</div>
-									</div>
+								{/* Live Demo CTA */}
+								<div className="reveal-el">
+									<a
+										href="https://travel-website-complete-w0th.onrender.com/index.html"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="inline-flex items-center gap-2 bg-[var(--accent)] text-white px-5 py-3 rounded-lg font-semibold hover:bg-[var(--accent-hover)] transition shadow-lg"
+									>
+										<ExternalLink size={18} />
+										<span>Live Demo</span>
+									</a>
+									<p className="text-[11px] text-[var(--secondary-text)] mt-2">Opens in a new tab</p>
 								</div>
 							</div>
 
-							{/* Card 3 */}
-							<div className="bg-white rounded-lg overflow-hidden shadow-sm border pop-on-scroll">
-								<div className="h-40 md:h-48 w-full relative">
-									<Image
-										src="/assets/Owen Bryce Project Background .png"
-										alt="Santorini, Greece"
-										fill
-										className="object-cover"
-									/>
-								</div>
-								<div className="p-4">
-									<p className="text-xs text-[var(--secondary-text)]">Europe</p>
-									<h3 className="font-semibold mt-1">Santorini, Greece</h3>
-									<p className="text-sm text-[var(--secondary-text)] mt-2">Enjoy breathtaking sunsets, white-washed buildings, and crystal-clear waters on this magical island.</p>
-									<div className="mt-4 text-sm">
-										<span className="font-semibold">From $1,299</span>
-										<div className="mt-3">
-											<a className="inline-block px-3 py-1 text-xs border rounded text-[var(--accent)]">Book Now</a>
-										</div>
+							{/* Right: image card */}
+							<div className="col-span-12 lg:col-span-6">
+								<div className="relative group max-w-xl lg:ml-auto">
+									<div className="absolute -inset-6 bg-[var(--accent)]/20 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition" aria-hidden="true" />
+									<div className="w-full rounded-2xl overflow-hidden border border-white/10 shadow-xl pop-on-scroll bg-[var(--background)]">
+										<Image
+											src="/assets/Travel World Second Section .png"
+											alt="Travelworld mockup"
+											width={1000}
+											height={600}
+											className="w-full h-auto"
+										/>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+				</section>
 
-						<div className="mt-6 flex justify-center">
-							<button className="px-4 py-2 border rounded text-sm text-[var(--accent)] pop-on-scroll">View All Destinations</button>
+			{/* Key Screens - redesigned for better layout */}
+			<section className="reveal-section mt-20 md:mt-24 relative w-screen left-1/2 -translate-x-1/2 bg-[var(--background)] py-16 lg:py-20 mb-16 md:mb-24">
+				{/* Zigzag number: 03 on the right */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-61 top-6 -rotate-90 select-none pointer-events-none">03</div>
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+					{/* Editorial block: big image + text columns */}
+					<div className="grid grid-cols-12 gap-6 items-start">
+						<div className="col-span-12 lg:col-span-7 rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10">
+							<Image src="/assets/Travel World Project Background .png" alt="Travel World" width={1400} height={900} className="w-full h-auto" />
+						</div>
+						<div className="col-span-12 lg:col-span-5 lg:pl-4">
+							<p className="text-sm text-[var(--secondary-text)] mb-2">Overview</p>
+							<h3 className="font-primary text-3xl text-[var(--text)] mb-4">A friendly travel experience</h3>
+							<p className="text-[var(--text)]/90 leading-relaxed mb-3">A simple, friendly travel website that makes exploring destinations feel fun and effortless.</p>
+							<ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+								<li><span className="font-semibold">Role:</span> UX/UI Design & Front‑end</li>
+								<li><span className="font-semibold">Type:</span> Marketing Website (Travel)</li>
+								<li className="sm:col-span-2"><span className="font-semibold">Highlights:</span> Destination cards, special offers, testimonials, clear CTAs</li>
+							</ul>
+							<div className="mt-5">
+								<a href="https://travel-website-complete-w0th.onrender.com/index.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[var(--accent)] text-white px-4 py-2 rounded-md font-semibold hover:bg-[var(--accent-hover)] transition shadow-md">
+									<ExternalLink size={16} />
+									<span>Open Live Demo</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					{/* Pull quote */}
+					<div className="text-center py-10">
+						<p className="font-primary italic text-3xl md:text-5xl leading-snug text-[var(--text)]">“Make exploring destinations fun and effortless.”</p>
+					</div>
+
+					{/* What I did – two columns */}
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+						<div>
+							<h4 className="font-primary italic text-xl text-[var(--text)] mb-3">What I did</h4>
+							<ul className="space-y-2 text-sm text-[var(--secondary-text)]">
+								<li>Designed reusable destination cards with clear hierarchy.</li>
+								<li>Structured special offers with strong visual focus.</li>
+								<li>Clear CTAs and consistent spacing rhythm.</li>
+							</ul>
+						</div>
+						<div>
+							<h4 className="font-primary italic text-xl text-[var(--text)] mb-3">Focus</h4>
+							<ul className="space-y-2 text-sm text-[var(--secondary-text)]">
+								<li>Editorial layout with alternating bands.</li>
+								<li>Better readability in both light and dark mode.</li>
+								<li>Soft motion and no hydration issues.</li>
+							</ul>
+						</div>
+					</div>
+
+					{/* Image strip */}
+					<div className="grid grid-cols-12 gap-6 mt-12">
+						<div className="col-span-12 rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10">
+							<Image src="/assets/travelworld_laptop_4k_transparent_crisp 1.png" alt="Laptop mockup" width={1600} height={900} className="w-full h-auto" />
+						</div>
+						<div className="col-span-12 md:col-span-6 rounded-xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10">
+							<Image src="/assets/Travel World Second Section .png" alt="Section" width={1200} height={700} className="w-full h-auto" />
+						</div>
+						<div className="col-span-12 md:col-span-6 rounded-xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10">
+							<Image src="/assets/Travel World Second Section .png" alt="Section Alt" width={1200} height={700} className="w-full h-auto" />
 						</div>
 					</div>
 				</div>
-
-				<p className="mt-6 text-center text-sm text-[var(--secondary-text)] max-w-3xl mx-auto">
-					Featured Destinations — A reusable card component designed for quick scanning. Each card highlights the location, rating, best travel time, trip tags, and price, ending with a clear Book Now CTA to encourage action.
-				</p>
 			</section>
 
 			{/* Trip Themes Carousel */}
-			<section className="reveal-section py-16 md:py-20">
+			<section className="reveal-section relative w-screen left-1/2 -translate-x-1/2 bg-[var(--background)] py-16 md:py-20">
+				{/* Zigzag number: 04 on the left */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -left-61 top-6 -rotate-90 select-none pointer-events-none">04</div>
 				<div className="w-150 border-b mb-6" />
 				<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8 reveal-el">TRIP THEMES</h2>
 
@@ -282,7 +323,9 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* Special Offers Section */}
-			<section className="reveal-section py-16 md:py-20">
+			<section className="reveal-section relative w-screen left-1/2 -translate-x-1/2 bg-[var(--background)] py-16 md:py-20">
+				{/* Zigzag number: 05 on the right */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-61 top-6 -rotate-90 select-none pointer-events-none">05</div>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Section Header */}
 					<p className="text-sm text-[var(--secondary-text)] mb-4">Take advantage of our limited-time deals and save on your next adventure.</p>
@@ -290,7 +333,7 @@ export default function ProjectDetails() {
 					<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8">SPECIAL OFFERS</h2>
 
 					{/* Special Offers Image */}
-					<div className="relative w-full rounded-lg overflow-hidden shadow-lg pop-on-scroll">
+					<div className="relative w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 pop-on-scroll">
 						<Image
 							src="/assets/special offer.png"
 							alt="Special Offers"
@@ -298,12 +341,15 @@ export default function ProjectDetails() {
 							height={600}
 							className="w-full h-auto"
 						/>
+						<div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/30 to-transparent p-4 text-white text-sm">Limited-time deals to save on your next adventure.</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Project System Section */}
-			<section className="reveal-section py-16 md:py-20 bg-[var(--Secondary-Background)]">
+			<section className="reveal-section relative py-16 md:py-20 bg-[var(--Secondary-Background)]">
+				{/* Zigzag number: 06 on the left */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -left-61 top-6 -rotate-90 select-none pointer-events-none">06</div>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Section Header */}
 					<p className="text-sm text-[var(--secondary-text)] mb-4">Role, Tools, Visual Identity, Typography and Logo</p>
@@ -372,7 +418,9 @@ export default function ProjectDetails() {
 			</section>
 
 			{/* CTA Section */}
-			<section className="reveal-section py-16 md:py-20">
+			<section className="reveal-section relative py-16 md:py-20">
+				{/* Zigzag number: 07 on the right */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-61 top-6 -rotate-90 select-none pointer-events-none">07</div>
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Section Header */}
 					<p className="text-sm text-[var(--secondary-text)] mb-4">Choose a destination below – the live website or the design file</p>
