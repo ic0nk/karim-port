@@ -4,6 +4,10 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
  
 :root {
@@ -193,7 +197,25 @@ h4 {
 .dark .hero-mesh { opacity: 0.16; }
 
 /* Interactive blue hover field used on Travelworld hero */
-/* (removed) blue-hover-field custom hover overlay */
+.blue-hover-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+  mix-blend-mode: screen;
+  /* Use CSS variables --mx/--my set from JS (fallback 50% center) */
+  background:
+    radial-gradient(360px 280px at var(--mx, 50%) var(--my, 50%), rgba(31, 120, 172, 0.28), rgba(31, 120, 172, 0.0) 60%),
+    radial-gradient(140px 120px at calc(var(--mx, 50%)) calc(var(--my, 50%)), rgba(142, 197, 255, 0.30), rgba(142, 197, 255, 0.0) 70%);
+}
+.showcase:hover .blue-hover-field { opacity: 1; }
+.dark .blue-hover-field {
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(360px 280px at var(--mx, 50%) var(--my, 50%), rgba(31, 120, 172, 0.35), rgba(31, 120, 172, 0.0) 60%),
+    radial-gradient(140px 120px at calc(var(--mx, 50%)) calc(var(--my, 50%)), rgba(142, 197, 255, 0.40), rgba(142, 197, 255, 0.0) 70%);
+}
 
 /* Accessibility: respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
