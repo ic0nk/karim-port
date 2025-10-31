@@ -36,6 +36,7 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
 
   return (
     <button
+      suppressHydrationWarning
       type="button"
       onClick={toggle}
       aria-pressed={isDark}

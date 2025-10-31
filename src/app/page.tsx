@@ -97,8 +97,9 @@ export default function Home() {
   return (
     <main ref={rootRef}>
       {/* HERO SECTION */}
-      <section id="hero" className="relative flex flex-col justify-center h-lvh">
-        <div className="absolute inset-0 -z-10">
+      <section id="hero" className="group relative flex flex-col justify-center h-lvh overflow-hidden">
+        {/* Hover veil like before – fades in on hover */}
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-100">
           <DarkVeil
             hueShift={32}
             noiseIntensity={0.02}
@@ -109,7 +110,7 @@ export default function Home() {
             backgroundColor={backgroundColor}
           />
         </div>
-        <div className="text-center z-10">
+        <div className="text-center relative z-10">
           <h1 className="hero-fade">PORTFOLIO</h1>
           <h4 className="portfolio-subtitle hero-fade hero-fade-delay">KARIM MASSAOUD</h4>
         </div>

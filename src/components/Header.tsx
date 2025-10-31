@@ -98,10 +98,17 @@ const Header = () => {
   const isWhiteHeader = pathname?.startsWith("/project-Owen-Bryce");
 
   return (
-    <header suppressHydrationWarning className={`flex items-center justify-between p-6 px-30 fixed w-full z-100 ${isWhiteHeader ? "text-white" : ""}`}>
+    <header
+      suppressHydrationWarning
+      className={`flex items-center justify-between p-6 px-30 fixed w-full z-100 backdrop-blur-md border-b transition-colors duration-300
+      ${isWhiteHeader
+        ? "text-white bg-gradient-to-b from-white/10 to-transparent border-white/10"
+        : "bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10"}
+      `}
+    >
       <div className="text-lg font-bold z-20">
         <button suppressHydrationWarning onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer group relative inline-flex items-center gap-2">
-          <Image src={isWhiteHeader ? "/assets/K (W).svg" : "/assets/K.svg"} alt="Logo" width={35} height={35} />
+          <Image src={isWhiteHeader ? "/assets/K (W).svg" : "/assets/K.svg"} alt="Logo" width={45} height={45} />
           {/* Hover-reveal full name next to logo */}
           <span
             className={`absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm tracking-wider opacity-0 -translate-x-1 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 ${isWhiteHeader ? 'text-white' : 'text-[var(--accent)]'}`}

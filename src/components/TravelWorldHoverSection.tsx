@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import DarkVeil from "./DarkVeil";
 
 export default function TravelWorldHoverSection() {
   const tiles = [
@@ -18,11 +22,59 @@ export default function TravelWorldHoverSection() {
       img: "/assets/Travel World Second Section .png",
     },
   ];
+  // Match the Home hero DarkVeil background color so look is identical
+  const [backgroundColor, setBackgroundColor] = useState<[number, number, number]>([0.88, 0.87, 0.86]);
+
+  useEffect(() => {
+    const colorToRGBArray = (colorStr: string): [number, number, number] => {
+      if (!colorStr) return [0.88, 0.87, 0.86];
+      if (colorStr.startsWith("oklch")) {
+        if (colorStr.includes("1 0 0")) return [1, 1, 1];
+        if (colorStr.includes("0.145 0 0")) return [0.145, 0.145, 0.145];
+      }
+      if (colorStr.startsWith("#")) {
+        const hex = colorStr.replace("#", "");
+        const bigint = Number.parseInt(hex, 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+        return [r / 255, g / 255, b / 255];
+      }
+      const match = colorStr.match(/rgb\s*\((\d+),\s*(\d+),\s*(\d+)\)/i);
+      if (match) {
+        const [, r, g, b] = match.map(Number);
+        return [r / 255, g / 255, b / 255];
+      }
+      return [0.88, 0.87, 0.86];
+    };
+
+    const updateBackground = () => {
+      const bgValue = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
+      setBackgroundColor(colorToRGBArray(bgValue));
+    };
+    updateBackground();
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    media.addEventListener('change', updateBackground);
+    return () => media.removeEventListener('change', updateBackground);
+  }, []);
 
   return (
-    <section className="reveal-section py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-150 border-b mb-6" />
+    <section className="reveal-section group py-12 md:py-16 relative overflow-hidden">
+      {/* Home-hero DarkVeil animation fades in on section hover */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <DarkVeil
+          hueShift={32}
+          noiseIntensity={0.02}
+          scanlineIntensity={0}
+          scanlineFrequency={0}
+          warpAmount={0.5}
+          speed={1.5}
+          backgroundColor={backgroundColor}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div className="w-24 h-1 rounded-full bg-[var(--accent)] mb-6" />
         <h2 className="text-[var(--text)] font-primary text-3xl md:text-4xl mb-8">
           Explore by hovering
         </h2>
