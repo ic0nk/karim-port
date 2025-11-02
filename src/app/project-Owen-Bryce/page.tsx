@@ -3,10 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Power, GripVertical, Eye, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import PageAnimator from "@/components/PageAnimator";
 
 export default function OwenBrycePage() {
 	const [activeTab, setActiveTab] = useState<"instagram" | "quotes" | "spotify" | "feedbacks">("instagram");
+	const rootRef = useRef<HTMLDivElement | null>(null);
+
+	// Animations are initialized once at the page level via PageAnimator wrapper
 
 	// Mini projects gallery data (used at the very end of the page)
 	const projects = [
@@ -38,9 +42,10 @@ export default function OwenBrycePage() {
 	] as const;
 
 	return (
-		<main className="min-h-screen bg-[var(--background)]">
+		<PageAnimator>
+		<main ref={rootRef} className="min-h-screen bg-[var(--background)]">
 			{/* Hero Section */}
-			<section className="relative min-h-[90vh] md:min-h-screen overflow-hidden">
+			<section className="reveal-section relative min-h-[90vh] md:min-h-screen overflow-hidden">
 				{/* Background image */}
 						<Image
 							src="/assets/Owne bryce pic1.png"
@@ -55,24 +60,24 @@ export default function OwenBrycePage() {
 				{/* Content */}
 				<div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[90vh] md:min-h-screen">
 					{/* Badge */}
-					<span className="inline-block bg-[#FFD24D] text-black text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full shadow-md mb-5">
+					<span className="reveal-el inline-block bg-[#FFD24D] text-black text-[11px] font-semibold tracking-wide px-3 py-1 rounded-full shadow-md mb-5">
 						EP Promotion Project
 					</span>
 
 					{/* Title */}
-					<h1 className="text-white font-primary text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+					<h1 className="reveal-el text-white font-primary text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
 						Owen Bryce
 					</h1>
 
 					{/* Subtitle */}
-					<p className="mt-4 max-w-2xl text-sm sm:text-base text-white/90 leading-relaxed">
+					<p className="reveal-el mt-4 max-w-2xl text-sm sm:text-base text-white/90 leading-relaxed">
 						A comprehensive promotional campaign for an emerging folk/indie artist, creating a cohesive brand identity across multiple platforms
 					</p>
 
 					{/* CTA */}
 					<Link
 						href="#content"
-						className="mt-8 inline-flex items-center justify-center px-6 py-3 rounded-md bg-[var(--accent)] text-white text-sm font-semibold tracking-wide shadow hover:opacity-90 transition"
+						className="reveal-el mt-8 inline-flex items-center justify-center px-6 py-3 rounded-md bg-[var(--accent)] text-white text-sm font-semibold tracking-wide shadow hover:opacity-90 transition"
 					>
 						Explore the Project
 					</Link>
@@ -83,16 +88,16 @@ export default function OwenBrycePage() {
 			</section>
 
 			{/* Project Overview */}
-			<section id="content" className="w-full pt-8 md:pt-10 pb-16 md:pb-20">
+			<section id="content" className="reveal-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-[var(--Secondary-Background)] pt-8 md:pt-10 pb-16 md:pb-20">
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mt-4 md:mt-6 relative lg:pl-0 mb-10 md:mb-14 text-left">
-						<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-[-320px] -top-10 -rotate-90 select-none pointer-events-none">
+						<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-[-290px] -top-6 -rotate-90 select-none pointer-events-none">
 							02
 						</div>
-						<h2 className="font-primary text-3xl sm:text-4xl font-bold text-[var(--foreground)]">
+						<h2 className="reveal-el font-primary text-3xl sm:text-4xl font-bold text-[var(--text)]">
 						Project Overview
 						</h2>
-						<div className="h-1 w-16 bg-[var(--accent)] rounded mt-3 mb-8" />
+						<div className="reveal-el h-1 w-16 bg-[var(--accent)] rounded mt-3 mb-8" />
 					</div>
 
 					<div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -137,9 +142,13 @@ export default function OwenBrycePage() {
 			</section>
 
 			{/* The Challenge & Our Strategy */}
-			<section className="py-10 md:py-16 bg-[var(--Secondary-Background)]">
+			<section className="reveal-section relative py-10 md:py-16 bg-[var(--Secondary-Background)]">
+				{/* Rotated section number 03 */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute right-0 top-10 -rotate-90 select-none pointer-events-none">
+					03
+				</div>
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6 md:gap-8">
-					<div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+					<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md p-6 md:p-8">
 						<h3 className="font-primary text-xl sm:text-2xl font-semibold text-[var(--foreground)]">The Challenge</h3>
 						<p className="mt-3 text-[var(--muted-foreground)] text-sm leading-relaxed">
 							Owen Bryce, a talented folk/indie artist, needed to establish his brand identity and promote his debut EP in a crowded music market. With limited resources and recognition, he faced the challenge of standing out and connecting with his target audience across multiple platforms.
@@ -153,7 +162,7 @@ export default function OwenBrycePage() {
 						</ul>
 					</div>
 
-					<div className="bg-white rounded-xl shadow-md p-6 md:p-8">
+					<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md p-6 md:p-8">
 						<h3 className="font-primary text-xl sm:text-2xl font-semibold text-[var(--foreground)]">Our Strategy</h3>
 						<p className="mt-3 text-[var(--muted-foreground)] text-sm leading-relaxed">
 							We developed a multi-platform strategy centered around authentic storytelling and visual consistency. By focusing on Owen’s unique artistic voice and creating a cohesive visual language, we built a promotional campaign that resonated with his target audience.
@@ -170,10 +179,14 @@ export default function OwenBrycePage() {
 			</section>
 
 			{/* Project Components (Tabs) */}
-			<section className="py-12 md:py-20">
+			<section className="reveal-section relative pt-12 md:pt-20 pb-0">
+				{/* Rotated section number 04 */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">
+					04
+				</div>
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="font-primary text-3xl sm:text-4xl font-bold text-[var(--foreground)]">Project Components</h2>
-					<div className="h-1 w-16 bg-[var(--accent)] rounded mt-3" />
+					<h2 className="reveal-el font-primary text-3xl sm:text-4xl font-bold text-[var(--text)]">Project Components</h2>
+					<div className="reveal-el h-1 w-16 bg-[var(--accent)] rounded mt-3" />
 
 					{/* Tabs */}
 					<div className="mt-6 border-b border-black/10 overflow-x-auto">
@@ -290,13 +303,13 @@ export default function OwenBrycePage() {
 
 						{activeTab === "feedbacks" && (
 							<div className="space-y-6">
-								<div className="bg-white rounded-xl shadow-md p-6">
+								<div className="bg-[var(--card)] rounded-xl shadow-md p-6">
 									<h4 className="font-semibold text-[var(--foreground)]">Checkpoint 8 — Feedback Pim and Jo-An in class</h4>
 									<p className="mt-3 text-[var(--muted-foreground)] text-sm leading-relaxed">
 										We talked with our teacher about what we’ve been doing over the last few weeks. We showed the brand guide and the logos we made, explaining our ideas and choices. Our teacher gave helpful advice and told us how to present everything clearly this Friday. This way, we can impress Owen Bryce and have him choose our work for his product.
 									</p>
 								</div>
-								<div className="bg-white rounded-xl shadow-md p-6">
+								<div className="bg-[var(--card)] rounded-xl shadow-md p-6">
 									<h4 className="font-semibold text-[var(--foreground)]">Checkpoint 3 — Standup Josh & Maikel</h4>
 									<p className="mt-3 text-[var(--muted-foreground)] text-sm leading-relaxed">
 										Today, we talked with our teacher about our progress. He asked us some questions about our logo, and we showed him the one Owen Bryce chose. He told us to focus more on his design and make sure it matches the same style and font. We also asked about the website design we’re making for him. He said we need to understand what style and colours he likes so he can see how our work fits his vision.
@@ -306,14 +319,18 @@ export default function OwenBrycePage() {
 						)}
 
 	{/* Visual Assets */}
-			<section className="py-12 md:py-20">
+			<section className="reveal-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 md:py-20 bg-[var(--Secondary-Background)]">
+				{/* Rotated section number 05 */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] dark:text-white/25 absolute right-4 top-10 -rotate-90 select-none pointer-events-none">
+					05
+				</div>
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="font-primary text-3xl sm:text-4xl font-bold text-[var(--foreground)]">Visual Assets</h2>
+					<h2 className="font-primary text-3xl sm:text-4xl font-bold text-[var(--text)]">Visual Assets</h2>
 					<div className="h-1 w-16 bg-[var(--accent)] rounded mt-3 mb-8" />
 
 					<div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
 						{/* Card 1 */}
-						<div className="bg-white rounded-xl shadow-md overflow-hidden">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
 							<div className="relative w-full aspect-[16/10]">
 								<Image src="/assets/Frame 129.png" alt="EP Cover Art preview" fill className="object-cover" />
 							</div>
@@ -324,7 +341,7 @@ export default function OwenBrycePage() {
 						</div>
 
 						{/* Card 2 */}
-						<div className="bg-white rounded-xl shadow-md overflow-hidden">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
 							<div className="relative w-full aspect-[16/10]">
 								<Image src="/assets/Rectangle 61.png" alt="Logo variations preview" fill className="object-cover" />
 							</div>
@@ -335,7 +352,7 @@ export default function OwenBrycePage() {
 						</div>
 
 						{/* Card 3 */}
-						<div className="bg-white rounded-xl shadow-md overflow-hidden">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
 							<div className="relative w-full aspect-[16/10]">
 								<Image src="/assets/Frame 129.png" alt="Social media templates preview" fill className="object-cover" />
 							</div>
@@ -346,7 +363,7 @@ export default function OwenBrycePage() {
 						</div>
 
 						{/* Card 4 */}
-						<div className="bg-white rounded-xl shadow-md overflow-hidden">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
 							<div className="relative w-full aspect-[16/10] bg-black/5" />
 							<div className="p-5">
 								<h3 className="font-semibold text-[var(--foreground)]">Promotional Materials</h3>
@@ -355,7 +372,7 @@ export default function OwenBrycePage() {
 						</div>
 
 						{/* Card 5 */}
-						<div className="bg-white rounded-xl shadow-md overflow-hidden">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
 							<div className="relative w-full aspect-[16/10]">
 								<Image src="/assets/Rectangle 61.png" alt="Merchandise concepts preview" fill className="object-cover" />
 							</div>
@@ -366,7 +383,7 @@ export default function OwenBrycePage() {
 						</div>
 
 						{/* Card 6 */}
-						<div className="bg-white rounded-xl shadow-md overflow-hidden">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
 							<div className="relative w-full aspect-[16/10]">
 								<Image src="/assets/Owne bryce pic1.png" alt="Press kit microphone" fill className="object-cover" />
 							</div>
@@ -383,10 +400,14 @@ export default function OwenBrycePage() {
 			</section>
 				
 			{/* Results & Impact */}
-			<section className="py-12 md:py-20 bg-[var(--Secondary-Background)]">
+			<section className="reveal-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 md:py-20">
+				{/* Rotated section number 06 */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-10 -rotate-90 select-none pointer-events-none">
+					06
+				</div>
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="font-primary text-3xl sm:text-4xl font-bold text-[var(--foreground)]">Results & Impact</h2>
-					<div className="h-1 w-16 bg-[var(--accent)] rounded mt-3 mb-6" />
+					<h2 className="reveal-el font-primary text-3xl sm:text-4xl font-bold text-[var(--text)]">Results & Impact</h2>
+					<div className="reveal-el h-1 w-16 bg-[var(--accent)] rounded mt-3 mb-6" />
 					<p className="text-[var(--muted-foreground)] max-w-4xl leading-relaxed">
 						The comprehensive promotional strategy delivered significant results for Owen Bryce’s EP launch,
 						establishing a strong foundation for his music career and creating meaningful connections with his target audience.
@@ -394,25 +415,25 @@ export default function OwenBrycePage() {
 
 					{/* Stats */}
 					<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-						<div className="bg-white rounded-xl shadow-md p-6 text-center">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md p-6 text-center">
 							<div className="font-primary text-4xl font-extrabold text-[var(--accent)]">45%</div>
 							<p className="mt-3 text-xs text-[var(--muted-foreground)] leading-relaxed">
 								Increase in Instagram followers during the campaign period
 							</p>
 						</div>
-						<div className="bg-white rounded-xl shadow-md p-6 text-center">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md p-6 text-center">
 							<div className="font-primary text-4xl font-extrabold text-[var(--accent)]">12K+</div>
 							<p className="mt-3 text-xs text-[var(--muted-foreground)] leading-relaxed">
 								Spotify streams in the first month after release
 							</p>
 						</div>
-						<div className="bg-white rounded-xl shadow-md p-6 text-center">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md p-6 text-center">
 							<div className="font-primary text-4xl font-extrabold text-[var(--accent)]">28%</div>
 							<p className="mt-3 text-xs text-[var(--muted-foreground)] leading-relaxed">
 								Higher engagement rate compared to industry average
 							</p>
 						</div>
-						<div className="bg-white rounded-xl shadow-md p-6 text-center">
+						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md p-6 text-center">
 							<div className="font-primary text-4xl font-extrabold text-[var(--accent)]">3</div>
 							<p className="mt-3 text-xs text-[var(--muted-foreground)] leading-relaxed">
 								Local press features secured through the campaign
@@ -421,7 +442,7 @@ export default function OwenBrycePage() {
 					</div>
 
 					{/* Testimonial */}
-					<div className="mt-10 md:mt-14 bg-white rounded-xl shadow-md p-6 md:p-8">
+					<div className="pop-on-scroll mt-10 md:mt-14 bg-[var(--card)] rounded-xl shadow-md p-6 md:p-8">
 						<p className="font-primary text-lg md:text-xl leading-relaxed text-[var(--accent)]">
 							"The promotional strategy transformed my EP release from a simple music drop to a comprehensive brand launch.
 							The cohesive approach across platforms helped me connect with my audience in a meaningful way and establish a
@@ -433,25 +454,29 @@ export default function OwenBrycePage() {
 			</section>
 
 			{/* Brand Guide */}
-			<section className="py-12 md:py-20">
+			<section className="reveal-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 md:py-20 bg-[var(--Secondary-Background)]">
+				{/* Rotated section number 07 */}
+				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute right-0 top-10 -rotate-90 select-none pointer-events-none">
+					07
+				</div>
 				<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-					<h2 className="font-primary text-3xl sm:text-4xl font-bold text-[var(--foreground)]">Brand Guide</h2>
-					<div className="h-1 w-16 bg-[var(--accent)] rounded mt-3 mb-4" />
+					<h2 className="reveal-el font-primary text-3xl sm:text-4xl font-bold text-[var(--text)]">Brand Guide</h2>
+					<div className="reveal-el h-1 w-16 bg-[var(--accent)] rounded mt-3 mb-4" />
 					<p className="text-[var(--muted-foreground)] max-w-4xl leading-relaxed">
 						We developed a comprehensive brand guide to ensure consistency across all platforms and materials. This guide established the visual and tonal foundation for Owen Bryce’s artist identity.
 					</p>
 
 					<h3 className="mt-8 font-semibold text-[var(--foreground)]">Color Palette</h3>
 					<div className="mt-4 grid grid-cols-5 gap-4 sm:gap-6">
-						<div className="rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-white" style={{ backgroundColor: "#1A2238" }}>#1A2238</div>
-						<div className="rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-black" style={{ backgroundColor: "#FFC107" }}>#FFC107</div>
-						<div className="rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-white" style={{ backgroundColor: "#26A69A" }}>#26A69A</div>
-						<div className="rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-black" style={{ backgroundColor: "#F5F5F5" }}>#F5F5F5</div>
-						<div className="rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-white" style={{ backgroundColor: "#333333" }}>#333333</div>
+						<div className="pop-on-scroll rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-white" style={{ backgroundColor: "#1A2238" }}>#1A2238</div>
+						<div className="pop-on-scroll rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-black" style={{ backgroundColor: "#FFC107" }}>#FFC107</div>
+						<div className="pop-on-scroll rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-white" style={{ backgroundColor: "#26A69A" }}>#26A69A</div>
+						<div className="pop-on-scroll rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-black" style={{ backgroundColor: "#F5F5F5" }}>#F5F5F5</div>
+						<div className="pop-on-scroll rounded-lg h-16 sm:h-20 shadow-inner flex items-end p-2 text-xs font-mono text-white" style={{ backgroundColor: "#333333" }}>#333333</div>
 					</div>
 
 					<h3 className="mt-8 font-semibold text-[var(--foreground)]">Typography System</h3>
-					<div className="mt-3 bg-white rounded-xl shadow-md p-6 md:p-8">
+					<div className="pop-on-scroll mt-3 bg-[var(--card)] rounded-xl shadow-md p-6 md:p-8">
 						<h4 className="font-primary text-3xl sm:text-4xl font-extrabold text-[var(--foreground)]">Montserrat Bold</h4>
 						<p className="mt-3 text-xl sm:text-2xl font-semibold text-[var(--foreground)]">Used for headings and titles</p>
 						<div className="h-1 w-14 bg-[var(--accent)] rounded mt-2" />
@@ -477,22 +502,22 @@ export default function OwenBrycePage() {
 			</section>
 
 						{/* Open Links CTA */}
-			<section className="py-16 md:py-24 bg-[var(--Secondary-Background)]">
+					<section className="reveal-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-16 md:py-24">
 				<div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 					{/* Rotated section number */}
-					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-[-280px] top1/30 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
-						07
+							<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-[-260px] top-0 -translate-y-1/2 -rotate-90 select-none pointer-events-none">
+								08
 					</div>
 
-					<p className="text-center text-sm text-[var(--muted-foreground)]">Choose a destination below — the live website or the design file</p>
-					<h2 className="mt-2 text-center font-primary text-2xl md:text-4xl font-semibold tracking-wide uppercase text-[var(--foreground)]">
+					<p className="reveal-el text-center text-sm text-[var(--muted-foreground)]">Choose a destination below — the live website or the design file</p>
+					<h2 className="reveal-el mt-2 text-center font-primary text-2xl md:text-4xl font-semibold tracking-wide uppercase text-[var(--text)]">
 						Where do you want to open Owen Bryce?
 					</h2>
 
 					<div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
 						<Link
 							href="#"
-							className="group w-full sm:w-[460px] rounded-xl bg-[#0F5A7A] hover:bg-[#0D4E6A] text-white shadow-md transition-colors px-6 py-5 flex items-center justify-between gap-4"
+							className="pop-on-scroll group w-full sm:w-[460px] rounded-xl bg-[#0F5A7A] hover:bg-[#0D4E6A] text-white shadow-md transition-colors px-6 py-5 flex items-center justify-between gap-4"
 						>
 							<span className="flex items-center gap-4">
 								<span className="w-9 h-9 rounded-full border-2 border-white/30 grid place-items-center">
@@ -507,7 +532,7 @@ export default function OwenBrycePage() {
 
 						<Link
 							href="#"
-							className="group w-full sm:w-[460px] rounded-xl bg-[#0F5A7A] hover:bg-[#0D4E6A] text-white shadow-md transition-colors px-6 py-5 flex items-center justify-between gap-4"
+							className="pop-on-scroll group w-full sm:w-[460px] rounded-xl bg-[#0F5A7A] hover:bg-[#0D4E6A] text-white shadow-md transition-colors px-6 py-5 flex items-center justify-between gap-4"
 						>
 							<span className="flex items-center gap-4">
 								<span className="w-9 h-9 rounded-full border-2 border-white/30 grid place-items-center">
@@ -524,6 +549,7 @@ export default function OwenBrycePage() {
 			</section>
 
 		</main>
+		</PageAnimator>
 	);
 }
 

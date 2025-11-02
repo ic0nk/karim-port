@@ -28,7 +28,7 @@ const projects = [
   // file in public/assets is named with spaces and .jpg extension
   image: '/assets/Eindhoven Project Background 2.jpg',
     liveLink: 'https://triple-wave.netlify.app/',
-    detailsLink: '/project-triple-wave',
+  detailsLink: '/project-triple-wave',
   },
   {
     name: 'Owen Bryce',
@@ -125,6 +125,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 export const ProjectsSection = () => {
   // Scroll-based 3D tilt
   useLayoutEffect(() => {
+    let cancelled = false;
     let cleanup: (() => void) | undefined;
     (async () => {
       const gsapModule = await import('gsap');
@@ -150,9 +151,18 @@ export const ProjectsSection = () => {
           });
         });
       });
-      cleanup = () => ctx.revert();
+
+      if (cancelled) {
+        // If the component unmounted before we finished initializing, revert immediately
+        ctx.revert();
+      } else {
+        cleanup = () => ctx.revert();
+      }
     })();
-    return () => cleanup?.();
+    return () => {
+      cancelled = true;
+      cleanup?.();
+    };
   }, []);
 
   return (

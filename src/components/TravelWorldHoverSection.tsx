@@ -49,13 +49,24 @@ export default function TravelWorldHoverSection() {
     };
 
     const updateBackground = () => {
-      const bgValue = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
+      const root = document.documentElement;
+      const bgValue = getComputedStyle(root).getPropertyValue('--background').trim();
       setBackgroundColor(colorToRGBArray(bgValue));
     };
     updateBackground();
+
+    // Respond to OS theme changes
     const media = window.matchMedia('(prefers-color-scheme: dark)');
     media.addEventListener('change', updateBackground);
-    return () => media.removeEventListener('change', updateBackground);
+
+    // Respond to manual theme toggle (class changes on <html>)
+    const mo = new MutationObserver(updateBackground);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+
+    return () => {
+      media.removeEventListener('change', updateBackground);
+      mo.disconnect();
+    };
   }, []);
 
   return (

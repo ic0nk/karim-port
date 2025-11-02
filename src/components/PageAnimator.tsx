@@ -1,7 +1,9 @@
 "use client";
 
 import { ReactNode, useLayoutEffect, useRef } from "react";
-import { setupHomeAnimations } from "@/lib/scrollAnimations";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 type PageAnimatorProps = {
   children: ReactNode;
@@ -16,10 +18,86 @@ export default function PageAnimator({ children, enable = true }: PageAnimatorPr
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    if (!enable || !rootRef.current) return;
-    let dispose: (() => void) | undefined;
-    setupHomeAnimations(rootRef.current).then((fn) => (dispose = fn));
-    return () => dispose?.();
+    const root = rootRef.current;
+    if (!enable || !root) return;
+
+    // Prevent overlapping inits on the same root during fast route changes
+    if ((root as any).dataset && (root as any).dataset.gsapInit === "1") {
+      return;
+    }
+    try { (root as any).dataset.gsapInit = "1"; } catch {}
+
+    const ctx = gsap.context((self) => {
+      const select = self.selector?.bind(self) ?? ((q: string) => Array.from(root.querySelectorAll(q)));
+
+      // Section reveals (fade+slide) with symmetric up/down behavior
+      (gsap.utils.toArray<HTMLElement>(select("section.reveal-section")) || []).forEach((sec) => {
+        const children = sec.querySelectorAll<HTMLElement>(".reveal-el");
+        gsap.set(sec, { autoAlpha: 0, y: 28 });
+        if (children.length) gsap.set(children, { autoAlpha: 0, y: 20 });
+
+        // Section container
+        gsap.fromTo(
+          sec,
+          { y: 28, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.7,
+            ease: "power2.out",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: sec,
+              start: "top 85%",
+              end: "bottom 25%",
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+
+        // Child reveals
+        if (children.length) {
+          gsap.fromTo(
+            children,
+            { y: 20, autoAlpha: 0 },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.6,
+              ease: "power2.out",
+              immediateRender: false,
+              stagger: 0.08,
+              scrollTrigger: {
+                trigger: sec,
+                start: "top 85%",
+                end: "bottom 25%",
+                toggleActions: "play reverse play reverse",
+              },
+            }
+          );
+        }
+      });
+
+      // Pop-on-scroll elements: small scale-in
+      gsap.set(select(".pop-on-scroll") as HTMLElement[], { scale: 0.9, autoAlpha: 0 });
+      ScrollTrigger.batch(select(".pop-on-scroll"), {
+        start: "top 85%",
+        onEnter: (batch: Element[]) =>
+          gsap.to(batch, { scale: 1, autoAlpha: 1, duration: 0.5, ease: "back.out(1.6)", stagger: 0.06 }),
+        onLeave: (batch: Element[]) =>
+          gsap.to(batch, { scale: 0.9, autoAlpha: 0, duration: 0.3, ease: "power1.inOut", stagger: 0.05 }),
+        onEnterBack: (batch: Element[]) =>
+          gsap.to(batch, { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.4)", stagger: 0.06 }),
+        onLeaveBack: (batch: Element[]) =>
+          gsap.to(batch, { scale: 0.9, autoAlpha: 0, duration: 0.25, ease: "power1.inOut", stagger: 0.05 }),
+      });
+    }, root);
+
+    return () => {
+      try { ctx.revert(); } finally {
+        try { delete (root as any).dataset.gsapInit; } catch {}
+      }
+    };
   }, [enable]);
 
   return (

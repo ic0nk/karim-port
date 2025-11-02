@@ -101,8 +101,8 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 		touchDeltaX.current = 0;
 	};
 
-	// Sync backgroundColor with current CSS --background var (same logic as TravelWorldHoverSection)
-	useEffect(() => {
+		// Sync backgroundColor with current CSS --background var (same logic as TravelWorldHoverSection)
+		useEffect(() => {
 		const colorToRGBArray = (colorStr: string): [number, number, number] => {
 			if (!colorStr) return [0.88, 0.87, 0.86];
 			if (colorStr.startsWith("oklch")) {
@@ -125,23 +125,44 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 			return [0.88, 0.87, 0.86];
 		};
 
-		const updateBackground = () => {
-			const bgValue = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
-			setBackgroundColor(colorToRGBArray(bgValue));
-		};
+			const updateBackground = () => {
+				const root = document.documentElement;
+				const bgValue = getComputedStyle(root).getPropertyValue('--background').trim();
+				setBackgroundColor(colorToRGBArray(bgValue));
+			};
 
-		updateBackground();
-		const media = window.matchMedia('(prefers-color-scheme: dark)');
-		media.addEventListener('change', updateBackground);
-		return () => media.removeEventListener('change', updateBackground);
+			updateBackground();
+
+			// Respond to OS theme changes
+			const media = window.matchMedia('(prefers-color-scheme: dark)');
+			media.addEventListener('change', updateBackground);
+
+			// Respond to manual theme toggle (class changes on <html>)
+			const mo = new MutationObserver(updateBackground);
+			mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+
+			return () => {
+				media.removeEventListener('change', updateBackground);
+				mo.disconnect();
+			};
 	}, []);
 
 
 	useLayoutEffect(() => {
 		if (!enableAnimations || !rootRef.current) return;
+		let cancelled = false;
 		let dispose: (() => void) | undefined;
-		setupHomeAnimations(rootRef.current).then((fn) => (dispose = fn));
-		return () => dispose?.();
+		setupHomeAnimations(rootRef.current).then((fn) => {
+			if (cancelled) {
+				fn();
+			} else {
+				dispose = fn;
+			}
+		});
+		return () => {
+			cancelled = true;
+			dispose?.();
+		};
 	}, [enableAnimations]);
 
 	return (
@@ -164,7 +185,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 					<div className="mx-auto grid w-full max-w-6xl grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-items-center">
 						{/* Left: Title + copy */}
 						<div className="col-span-1 text-center">
-							<h2 className="reveal-el font-primary text-6xl md:text-7xl tracking-wide text-[var(--text)]">TRAVELWORLD</h2>
+							<h2 className="reveal-el font-primary text-6xl md:text-7xl tracking-wide text-[var(--text)]">TRAVEL WORLD</h2>
 							<div className="reveal-el w-28 md:w-95 h-[3px] rounded-full bg-[var(--accent)] mt-2 mb-6 mx-auto" />
 							<p className="reveal-el text-[var(--secondary-text)] text-lg md:text-xl leading-relaxed max-w-md mx-auto text-center">
 								A simple, friendly travel website that makes exploring destinations feel fun and effortless.

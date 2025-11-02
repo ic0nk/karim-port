@@ -18,6 +18,9 @@ html {
 --accent-soft: #6f8a99; /* softer, cleaner divider tint */
 --secondary-text: #5c5c5c;
 --accent-hover: #5c666c;
+/* Card surfaces */
+--card: #ffffff;
+--card-foreground: oklch(0.145 0 0);
 
 /* Button colors */
 --btn-primary: #155b86;
@@ -51,6 +54,8 @@ html {
   /* Core surfaces */
   --background: #0c0f13;            /* near-black, gentle blue tint */
   --Secondary-Background: #14181d;  /* slightly raised surface */
+  --card: #1a1f25;                   /* card surface (slightly raised) */
+  --card-foreground: #e6e7eb;
   /* Text */
   --text: #e6e7eb;            /* main text with strong contrast */
   --secondary-text: #a0a6ad;  /* muted text with enough contrast */
@@ -82,8 +87,8 @@ html {
 
 /* Readability tweaks in dark mode */
 .dark .text-number {
-  color: #2b3137;
-  opacity: 0.35;
+  color: #ffffff; /* brighter and readable on dark backgrounds */
+  opacity: 0.25; /* keep decorative subtlety while improving contrast */
 }
 
 body {

@@ -8,6 +8,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
@@ -28,6 +29,23 @@ const Header = () => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Track theme changes to know when dark mode is active
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const el = document.documentElement;
+    const update = () => setIsDark(el.classList.contains("dark"));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(el, { attributes: true, attributeFilter: ["class"] });
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const mediaListener = () => update();
+    media.addEventListener("change", mediaListener);
+    return () => {
+      observer.disconnect();
+      media.removeEventListener("change", mediaListener);
     };
   }, []);
 
@@ -96,11 +114,12 @@ const Header = () => {
   };
 
   const isWhiteHeader = pathname?.startsWith("/project-Owen-Bryce");
+  const logoSrc = isWhiteHeader && !isDark ? "/assets/K (W).svg" : "/assets/K.svg";
 
   return (
     <header
       suppressHydrationWarning
-      className={`flex items-center justify-between p-6 px-30 fixed w-full z-100 backdrop-blur-md border-b transition-colors duration-300
+      className={`flex items-center justify-between p-6 px-30 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
       ${isWhiteHeader
         ? "text-white bg-gradient-to-b from-white/10 to-transparent border-white/10"
         : "bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10"}
@@ -108,10 +127,10 @@ const Header = () => {
     >
       <div className="text-lg font-bold z-20">
         <button suppressHydrationWarning onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer group relative inline-flex items-center gap-2">
-          <Image src={isWhiteHeader ? "/assets/K (W).svg" : "/assets/K.svg"} alt="Logo" width={50} height={50} />
+          <Image src={logoSrc} alt="Logo" width={50} height={50} />
           {/* Hover-reveal full name next to logo */}
           <span
-            className={`absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm tracking-wider opacity-0 -translate-x-1 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 ${isWhiteHeader ? 'text-white' : 'text-[var(--accent)]'}`}
+            className={`absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm tracking-wider opacity-0 -translate-x-1 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 ${isWhiteHeader && !isDark ? 'text-white' : 'text-[var(--accent)]'}`}
           >
             KARIM MASSAOUD
           </span>
@@ -122,12 +141,13 @@ const Header = () => {
       <nav className="hidden md:flex flex-1 justify-end">
         <ul className="flex gap-10 font-bold relative">
           <li>
-            <button suppressHydrationWarning
-              onClick={() => scrollToSection('user-experience')} 
+            <Link
+              href="/#user-experience"
+              onClick={() => setIsMenuOpen(false)}
               className="nav-link cursor-pointer"
             >
               USER EXPERIENCE
-            </button>
+            </Link>
           </li>
           <li className="relative">
             <button
@@ -168,10 +188,10 @@ const Header = () => {
                 </li>
                 <li>
                   <Link
-                    href="/project-Triple-Wave"
+                    href="/project-triple-wave"
                     role="menuitem"
                     tabIndex={isProjectsOpen ? 0 : -1}
-                    className={`block px-3 py-2 rounded-lg transition-colors ${pathname === '/project-Triple-Wave' ? 'bg-[var(--Secondary-Background)]/70 text-[var(--text)] font-semibold' : 'text-[var(--text)]/90 hover:bg-[var(--Secondary-Background)]/60'}`}
+                    className={`block px-3 py-2 rounded-lg transition-colors ${pathname === '/project-triple-wave' ? 'bg-[var(--Secondary-Background)]/70 text-[var(--text)] font-semibold' : 'text-[var(--text)]/90 hover:bg-[var(--Secondary-Background)]/60'}`}
                     onClick={() => setIsProjectsOpen(false)}
                   >
                     Triple WAVE
@@ -192,20 +212,22 @@ const Header = () => {
             </div>
           </li>
           <li>
-            <button suppressHydrationWarning
-              onClick={() => scrollToSection('contact')} 
+            <Link
+              href="/#contact"
+              onClick={() => setIsMenuOpen(false)}
               className="nav-link cursor-pointer"
             >
               CONTACT
-            </button>
+            </Link>
           </li>
            <li>
-            <button suppressHydrationWarning
-              onClick={() => scrollToSection('about')} 
+            <Link
+              href="/#about"
+              onClick={() => setIsMenuOpen(false)}
               className="nav-link cursor-pointer"
             >
               ABOUT
-            </button>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -220,9 +242,9 @@ const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            <div className={`hamburger-line ${isWhiteHeader ? "bg-white" : ""}`}></div>
-            <div className={`hamburger-line ${isWhiteHeader ? "bg-white" : ""}`}></div>
-            <div className={`hamburger-line ${isWhiteHeader ? "bg-white" : ""}`}></div>
+            <div className={`hamburger-line ${isWhiteHeader && !isDark ? "bg-white" : ""}`}></div>
+            <div className={`hamburger-line ${isWhiteHeader && !isDark ? "bg-white" : ""}`}></div>
+            <div className={`hamburger-line ${isWhiteHeader && !isDark ? "bg-white" : ""}`}></div>
           </button>
         </div>
       </div>
@@ -232,12 +254,13 @@ const Header = () => {
         <nav>
           <ul className="flex flex-col items-center gap-10 font-bold text-2xl">
             <li>
-              <button suppressHydrationWarning
-                onClick={() => scrollToSection('user-experience')}
+              <Link
+                href="/#user-experience"
+                onClick={() => setIsMenuOpen(false)}
                 className="nav-link cursor-pointer"
               >
                 USER EXPERIENCE
-              </button>
+              </Link>
             </li>
             <li>
               <button suppressHydrationWarning
@@ -256,7 +279,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/project-Triple-Wave" className="block px-3 py-2 rounded-md hover:bg-[var(--Secondary-Background)]/60" onClick={() => { setIsMenuOpen(false); setIsMobileProjectsOpen(false); }}>
+                    <Link href="/project-triple-wave" className="block px-3 py-2 rounded-md hover:bg-[var(--Secondary-Background)]/60" onClick={() => { setIsMenuOpen(false); setIsMobileProjectsOpen(false); }}>
                       Triple WAVE
                     </Link>
                   </li>
@@ -269,20 +292,22 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <button suppressHydrationWarning
-                onClick={() => scrollToSection('about')}
+              <Link
+                href="/#about"
+                onClick={() => setIsMenuOpen(false)}
                 className="nav-link cursor-pointer"
               >
                 ABOUT
-              </button>
+              </Link>
             </li>
             <li>
-              <button suppressHydrationWarning
-                onClick={() => scrollToSection('contact')}
+              <Link
+                href="/#contact"
+                onClick={() => setIsMenuOpen(false)}
                 className="nav-link cursor-pointer"
               >
                 CONTACT
-              </button>
+              </Link>
             </li>
           </ul>
         </nav>

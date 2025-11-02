@@ -1,12 +1,12 @@
 'use client';
-import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import DarkVeil from "@/components/DarkVeil";
 import Image from "next/image";
 import { MdOutlineKeyboardArrowDown, MdLocalPhone } from 'react-icons/md';
 import { FaLinkedin } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import ContactSection from '@/components/ContactSection';
-import { setupHomeAnimations } from "@/lib/scrollAnimations";
+import PageAnimator from "@/components/PageAnimator";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -58,12 +58,7 @@ export default function Home() {
     };
   }, []);
 
-  useLayoutEffect(() => {
-    if (!rootRef.current) return;
-    let dispose: (() => void) | undefined;
-    setupHomeAnimations(rootRef.current).then((fn) => (dispose = fn));
-    return () => dispose?.();
-  }, []);
+  // Animation is provided by PageAnimator wrapper for safe single-context GSAP init
 
   // No GSAP hover/scroll animations on hero per request
 
@@ -95,7 +90,8 @@ export default function Home() {
   ];
 
   return (
-    <main ref={rootRef}>
+    <PageAnimator>
+      <main ref={rootRef}>
       {/* HERO SECTION */}
       <section id="hero" className="group relative flex flex-col justify-center h-lvh overflow-hidden">
         {/* Hover veil like before – fades in on hover */}
@@ -215,6 +211,7 @@ export default function Home() {
       {/* CONTACT SECTION */}
       <ContactSection />
     </main>
+    </PageAnimator>
   );
 }
 

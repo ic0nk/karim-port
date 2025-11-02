@@ -1,13 +1,20 @@
 export async function setupHomeAnimations(root: HTMLElement) {
   if (typeof window === 'undefined') return () => {};
 
+  // Re-entry guard: ensure we initialize GSAP only once per root element at a time.
+  // This helps avoid duplicate contexts in StrictMode/double mounts across pages.
+  if ((root as any).dataset && (root as any).dataset.gsapInit === '1') {
+    return () => {};
+  }
+  try { (root as any).dataset.gsapInit = '1'; } catch {}
+
   const gsapModule = await import('gsap');
   const stModule = await import('gsap/ScrollTrigger');
   const gsap: any = (gsapModule as any).default ?? (gsapModule as any);
   const ScrollTrigger: any = (stModule as any).ScrollTrigger ?? (stModule as any).default;
   gsap.registerPlugin(ScrollTrigger);
 
-  const ctx = gsap.context(() => {
+  const ctx = gsap.context((self: any) => {
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: reduce)', () => {
@@ -22,8 +29,13 @@ export async function setupHomeAnimations(root: HTMLElement) {
     });
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Toggle: true enables open/close (reversible) reveals; false runs once-only reveals
-      const REVEAL_REVERSIBLE = true;
+      // Responsive thresholds
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      const START_REVEAL = isMobile ? 'top 92%' : 'top 85%';
+      const START_ABOUT = isMobile ? 'top 94%' : 'top 88%';
+
+  // Toggle: true enables scroll-scrub timelines; false uses enter/leave triggers (reversible both ways)
+  const REVEAL_REVERSIBLE = false;
 
       // Section-level fade+slide — smooth and professional
       (gsap.utils.toArray('section.reveal-section') as HTMLElement[]).forEach((sec) => {
@@ -54,38 +66,49 @@ export async function setupHomeAnimations(root: HTMLElement) {
             .to(lines, { scaleX: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
 
         } else {
-          gsap.from(sec, {
-            autoAlpha: 0,
-            y: 28,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: sec, start: 'top 88%', once: true },
-          });
-
-          // Stagger children marked as reveal-el (once)
+          // Down & up: reveal on entering viewport from either direction; revert on leave (both directions)
           const children = sec.querySelectorAll('.reveal-el');
-          if (children.length) {
-            gsap.from(children, {
-              autoAlpha: 0,
-              y: 20,
-              filter: 'blur(2px)',
-              duration: 0.6,
-              ease: 'power2.out',
-              stagger: 0.08,
-              scrollTrigger: { trigger: sec, start: 'top 88%', once: true },
-              onComplete: () => gsap.set(children, { filter: 'blur(0px)' }),
-            });
-          }
           const lines = sec.querySelectorAll('div.h-px');
-          if (lines.length) {
-            gsap.from(lines, {
-              scaleX: 0,
-              transformOrigin: 'right center',
-              duration: 0.5,
-              ease: 'power2.out',
-              scrollTrigger: { trigger: sec, start: 'top 88%', once: true },
-            });
-          }
+
+          gsap.set(sec, { autoAlpha: 0, y: 28 });
+          if (children.length) gsap.set(children, { autoAlpha: 0, y: 20, filter: 'blur(2px)' });
+          if (lines.length) gsap.set(lines, { scaleX: 0, transformOrigin: 'right center' });
+
+          const playReveal = () => {
+            gsap.to(sec, { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power2.out' });
+            if (children.length) {
+              gsap.to(children, {
+                autoAlpha: 1,
+                y: 0,
+                filter: 'blur(0px)',
+                duration: 0.6,
+                ease: 'power2.out',
+                stagger: 0.08,
+              });
+            }
+            if (lines.length) {
+              gsap.to(lines, { scaleX: 1, duration: 0.5, ease: 'power2.out' });
+            }
+          };
+
+          const revertReveal = () => {
+            gsap.to(sec, { autoAlpha: 0, y: 28, duration: 0.4, ease: 'power1.inOut' });
+            if (children.length) {
+              gsap.to(children, { autoAlpha: 0, y: 20, filter: 'blur(2px)', duration: 0.35, ease: 'power1.inOut', stagger: 0.06 });
+            }
+            if (lines.length) {
+              gsap.to(lines, { scaleX: 0, duration: 0.3, ease: 'power1.inOut' });
+            }
+          };
+
+          ScrollTrigger.create({
+            trigger: sec,
+            start: START_REVEAL,
+            onEnter: playReveal,
+            onEnterBack: playReveal,
+            onLeave: revertReveal,
+            onLeaveBack: revertReveal,
+          });
         }
       });
 
@@ -104,11 +127,17 @@ export async function setupHomeAnimations(root: HTMLElement) {
             tlAbout.to(aboutEls, { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.12 }, 0);
           }
         } else {
-          const tlAbout = gsap.timeline({ defaults: { ease: 'power2.out' } });
-          if (aboutEls.length) {
-            tlAbout.to(aboutEls, { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.1, duration: 0.6 }, 0);
-          }
-          ScrollTrigger.create({ trigger: '#about', start: 'top 88%', once: true, animation: tlAbout });
+          const playAbout = () => {
+            if (aboutEls.length) {
+              gsap.to(aboutEls, { autoAlpha: 1, y: 0, filter: 'blur(0px)', stagger: 0.1, duration: 0.6, ease: 'power2.out' });
+            }
+          };
+          const revertAbout = () => {
+            if (aboutEls.length) {
+              gsap.to(aboutEls, { autoAlpha: 0, y: 24, filter: 'blur(2px)', stagger: 0.08, duration: 0.35, ease: 'power1.inOut' });
+            }
+          };
+          ScrollTrigger.create({ trigger: '#about', start: START_ABOUT, onEnter: playAbout, onEnterBack: playAbout, onLeave: revertAbout, onLeaveBack: revertAbout });
         }
       }
 
@@ -158,10 +187,11 @@ export async function setupHomeAnimations(root: HTMLElement) {
         });
       }
 
-      // Pop-in/out batch animation for elements marked with .pop-on-scroll
+      // Pop-in batch animation for elements marked with .pop-on-scroll
+      // One-way reveal: only play when entering while scrolling down. No reverse on scroll up or leaving.
       gsap.set('.pop-on-scroll', { scale: 0.8, autoAlpha: 0, willChange: 'transform, opacity' });
       ScrollTrigger.batch('.pop-on-scroll', {
-        start: 'top 85%',
+        start: START_REVEAL,
         onEnter: (batch: Element[]) =>
           gsap.to(batch, {
             scale: 1,
@@ -170,24 +200,57 @@ export async function setupHomeAnimations(root: HTMLElement) {
             ease: 'back.out(1.7)',
             stagger: 0.08,
           }),
-        onLeaveBack: (batch: Element[]) =>
+        onEnterBack: (batch: Element[]) =>
           gsap.to(batch, {
-            scale: 0.8,
-            autoAlpha: 0,
-            duration: 0.4,
-            ease: 'back.in(1.2)',
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.6,
+            ease: 'back.out(1.7)',
             stagger: 0.06,
           }),
         onLeave: (batch: Element[]) =>
           gsap.to(batch, {
             scale: 0.8,
             autoAlpha: 0,
+            duration: 0.35,
+            ease: 'back.in(1.2)',
+            stagger: 0.06,
+          }),
+        onLeaveBack: (batch: Element[]) =>
+          gsap.to(batch, {
+            scale: 0.8,
+            autoAlpha: 0,
             duration: 0.3,
-            ease: 'power1.inOut',
+            ease: 'back.in(1.2)',
+            stagger: 0.05,
           }),
       });
+
+      // Keep ScrollTrigger layout in sync on viewport changes
+      let resizeTimer: number | undefined;
+      const onResize = () => {
+        if (resizeTimer) window.clearTimeout(resizeTimer);
+        // debounce to avoid thrashing
+        resizeTimer = window.setTimeout(() => ScrollTrigger.refresh(), 150);
+      };
+      window.addEventListener('resize', onResize);
+      // Also refresh after images load for accurate positions
+      window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true } as any);
+
+      // cleanup on context end
+      self.add(() => {
+        window.removeEventListener('resize', onResize);
+      });
+
+      // Also revert any matchMedia registrations created inside this context
+      // Note: matchMedia contexts registered inside gsap.context are reverted automatically
+      // by ctx.revert(). Calling mm.revert() here can double-revert and create recursion.
     });
   }, root);
 
-  return () => ctx.revert();
+  return () => {
+    try { ctx.revert(); } finally {
+      try { delete (root as any).dataset.gsapInit; } catch {}
+    }
+  };
 }
