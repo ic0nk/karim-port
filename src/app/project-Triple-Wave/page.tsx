@@ -233,7 +233,7 @@ export default function TripleWaveProjectPage() {
 					<div className="max-w-7xl mx-auto px-9 sm:px-6 lg:px-8 min-h-[60vh] flex items-center relative z-10">
 						<div className="mx-auto grid w-full max-w-6xl grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-items-center">
 							<div className="col-span-1 text-center">
-								<h2 className="reveal-el font-primary text-6xl md:text-7xl tracking-wide text-[var(--text)]">TRAVEL WORLD</h2>
+								<h2 className="reveal-el font-primary text-6xl md:text-7xl tracking-wide text-[var(--text)]">TRAVEL </h2>
 								<div className="reveal-el w-28 md:w-95 h-[3px] rounded-full bg-[var(--accent)] mt-2 mb-6 mx-auto" />
 								<p className="reveal-el text-[var(--secondary-text)] text-lg md:text-xl leading-relaxed max-w-md mx-auto text-center">
 									A simple, friendly travel website that makes exploring destinations feel fun and effortless.

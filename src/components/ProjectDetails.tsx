@@ -18,24 +18,24 @@ const themes: Theme[] = [
     id: 1,
     title: "Luxury Beach Getaways",
     images: [
-      "/assets/travelworld_laptop_4k_transparent_crisp 1.png",
-      "/assets/Travel World Second Section .png",
+      "/assets/Luxury Beach Getaways 1.jpg",
+      "/assets/Luxury Beach Getaways 2.webp",
     ],
   },
   {
     id: 2,
     title: "Mountain Adventures",
     images: [
-      "/assets/Travel World Second Section .png",
-      "/assets/travelworld_laptop_4k_transparent_crisp 1.png",
+      "/assets/Mountain Adventures 1.jpg",
+      "/assets/Mountain Adventures 2.jpeg",
     ],
   },
   {
     id: 3,
     title: "Luxury Cruise Experiences",
     images: [
-      "/assets/travelworld_laptop_4k_transparent_crisp 1.png",
-      "/assets/Travel World Second Section .png",
+      "/assets/Luxury Cruise Experiences 1.jpeg",
+      "/assets/Luxury Cruise Experiences 2.jpg",
     ],
   },
 ];
@@ -232,40 +232,42 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
             <div className="col-span-12 lg:col-span-7 space-y-6">
               {/* Quick facts as icon cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="reveal-el rounded-2xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-[var(--Secondary-Background)]/70 shadow-sm hover:shadow-md transition p-5 md:p-6 flex items-start gap-3">
-                  <div className="mt-0.5 rounded-md p-1.5 bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)]"><Briefcase size={16} /></div>
+                <div className="reveal-el flex items-start gap-3">
+                  <div className="rounded-md p-1.5 bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--secondary-text)]"><Briefcase size={16} /></div>
                   <div>
-                    <p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-1">ROLE</p>
-                    <p className="text-[var(--text)] font-semibold">UX/UI Design & Front-end</p>
+                    <p className="text-[14px] md:text-[15px] tracking-wide text-[var(--secondary-text)]/90 mb-2">ROLE</p>
+                    <p className="text-[var(--secondary-text)] text-[18px] md:text-[20px]">UX/UI Design & Front-end</p>
                   </div>
                 </div>
-                <div className="reveal-el rounded-2xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-[var(--Secondary-Background)]/70 shadow-sm hover:shadow-md transition p-5 md:p-6 flex items-start gap-3">
-                  <div className="mt-0.5 rounded-md p-1.5 bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)]"><Tag size={16} /></div>
+                <div className="reveal-el flex items-start gap-3">
+                  <div className="rounded-md p-1.5 bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--secondary-text)]"><Tag size={16} /></div>
                   <div>
-                    <p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-1">TYPE</p>
-                    <p className="text-[var(--text)] font-semibold">Marketing Website (Travel)</p>
+                    <p className="text-[14px] md:text-[15px] tracking-wide text-[var(--secondary-text)]/90 mb-2">TYPE</p>
+                    <p className="text-[var(--secondary-text)] text-[18px] md:text-[20px]">Marketing Website (Travel)</p>
                   </div>
                 </div>
               </div>
 
               {/* Highlights as pills */}
-              <div className="reveal-el rounded-2xl border border-black/5 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm hover:shadow-md transition p-5 md:p-6">
-                <p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-2">HIGHLIGHTS</p>
+              <div className="reveal-el">
+                <p className="text-[14px] md:text-[15px] tracking-wide text-[var(--secondary-text)]/90 mb-4">HIGHLIGHTS</p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Destination cards</span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Special offers</span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Testimonials</span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Clear CTAs</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[16px] md:text-[18px] bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--secondary-text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={16} /> Destination cards</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[16px] md:text-[18px] bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--secondary-text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={16} /> Special offers</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[16px] md:text-[18px] bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--secondary-text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={16} /> Testimonials</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[16px] md:text-[18px] bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--secondary-text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={16} /> Clear CTAs</span>
                 </div>
               </div>
 
             </div>
 
-            {/* Right: video card */}
+            {/* Right: single centered video */}
             <div className="col-span-12 lg:col-span-5">
-              <div className="relative group max-w-xl lg:ml-auto">
+              <div className="relative group max-w-xl mx-auto lg:-mt-9">
                 <div className="absolute -inset-6 bg-[var(--accent)]/20 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition pointer-events-none" aria-hidden="true" />
-                <div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl pop-on-scroll bg-[var(--background)]">
+
+                {/* Single video card centered */}
+                <div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl]">
                   <div className="relative w-full aspect-[16/9]">
                     <video
                       className="absolute inset-0 h-full w-full object-cover"
@@ -301,13 +303,13 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
             <div className="col-span-12 lg:col-span-7 lg:pl-4">
               <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
                 <p className="text-xs tracking-wide text-[var(--secondary-text)] mb-1">Overview</p>
-                <h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A friendly travel experience</h3>
+                <h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A Seamless Travel Experience</h3>
                 <div className="w-24 h-1 rounded-full bg-[var(--accent)] mt-3 mb-4" />
                 <p className="text-[var(--text)]/90 leading-relaxed mb-4">
-                  A simple, friendly travel website that makes exploring destinations feel fun and effortless.
+                 A modern, user-friendly travel website designed to make discovering new destinations enjoyable and effortless.
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-                  <li><span className="font-semibold">Role:</span> UX/UI Design & Front-end</li>
+                  <li><span className="font-semibold">Role:</span> Web Designer & Front-End Developer</li>
                   <li><span className="font-semibold">Type:</span> Marketing Website (Travel)</li>
                   <li className="sm:col-span-2"><span className="font-semibold">Highlights:</span> Destination cards, special offers, testimonials, clear CTAs</li>
                 </ul>
@@ -339,7 +341,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
           {/* Pull quote */}
           <div className="text-center">
             <div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-4" />
-            <p className="reveal-el font-primary text-3xl md:text-5xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">
+            <p className="reveal-el font-primary text-3x9 md:text-6xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">
               “Make exploring destinations fun and effortless.”
             </p>
           </div>
@@ -348,23 +350,24 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             <div className="pop-on-scroll rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
               <div className="flex items-center gap-2 mb-3">
-                <CheckCircle2 size={18} />
-                <h4 className="font-primary text-lg text-[var(--text)]">What I did</h4>
+                <CheckCircle2 size={20} />
+                <h3 className="font-primary text-lg text-[var(--text)]">What I did</h3>
               </div>
               <ul className="space-y-2 text-sm text-[var(--secondary-text)]">
-                <li>Designed reusable destination cards with clear hierarchy.</li>
-                <li>Structured special offers with strong visual focus.</li>
-                <li>Clear CTAs and consistent spacing rhythm.</li>
+                <li>I designed the website in Figma and developed it with a fully functional</li>
+                <li>login system and API integration connected to a MongoDB backend.</li>
+                <li>The project includes three main pages Home, Destinations,</li>
+                <li>and Book Now each designed for easy navigation and a seamless user experience.</li>
               </ul>
             </div>
             <div className="pop-on-scroll rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Target size={18} />
-                <h4 className="font-primary text-lg text-[var(--text)]">Focus</h4>
+                <Target size={20} />
+                <h3  className="font-primary text-lg text-[var(--text)]">Focus</h3>
               </div>
               <ul className="space-y-2 text-sm text-[var(--secondary-text)]">
-                <li>Editorial layout with alternating bands.</li>
-                <li>Better readability in both light and dark mode.</li>
+                <li>My main goal was to create a clean, user-friendly travel website</li>
+                <li>that feels simpler and more enjoyable than typical travel platforms.</li> 
                 <li>Soft motion with no hydration issues.</li>
               </ul>
             </div>
@@ -373,13 +376,13 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
           {/* Image strip */}
           <div className="grid grid-cols-12 gap-6 mt-12">
             <div className="pop-on-scroll col-span-12 rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/travelworld_laptop_4k_transparent_crisp 1.png" alt="Laptop mockup" width={1600} height={900} className="w-full h-auto" />
+              <Image src="/assets/Travel world Background .png" alt="Laptop mockup" width={1600} height={900} className="w-full h-auto" />
             </div>
             <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel World Second Section .png" alt="Section" width={1200} height={700} className="w-full h-auto" />
+              <Image src="/assets/Travel world Third section Picture.png" alt="Section" width={1200} height={700} className="w-full h-auto" />
             </div>
             <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel World Second Section .png" alt="Section Alt" width={1200} height={700} className="w-full h-auto" />
+              <Image src="/assets/Travel world Fourth Picture .png" alt="Section Alt" width={1200} height={700} className="w-full h-auto" />
             </div>
           </div>
         </div>
