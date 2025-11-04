@@ -13,16 +13,10 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: path.resolve(__dirname),
   async redirects() {
     return [
-      // Canonicalize route casing for Triple Wave project (use lowercase as canonical to avoid Windows case issues)
-      {
-        source: "/project-Triple-Wave",
-        destination: "/project-triple-wave",
-        permanent: true,
-      },
       // Legacy nested project paths -> canonical top-level routes
       {
         source: "/projects/triple-wave",
-        destination: "/project-triple-wave",
+        destination: "/project-Triple-Wave",
         permanent: true,
       },
       {

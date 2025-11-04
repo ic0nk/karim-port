@@ -28,7 +28,7 @@ const projects = [
   // file in public/assets is named with spaces and .jpg extension
   image: '/assets/Eindhoven Project Background 2.jpg',
     liveLink: 'https://triple-wave.netlify.app/',
-  detailsLink: '/project-triple-wave',
+  detailsLink: '/project-Triple-Wave',
   },
   {
     name: 'Owen Bryce',

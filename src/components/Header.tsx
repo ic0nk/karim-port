@@ -188,10 +188,10 @@ const Header = () => {
                 </li>
                 <li>
                   <Link
-                    href="/project-triple-wave"
+                    href="/project-Triple-Wave"
                     role="menuitem"
                     tabIndex={isProjectsOpen ? 0 : -1}
-                    className={`block px-3 py-2 rounded-lg transition-colors ${pathname === '/project-triple-wave' ? 'bg-[var(--Secondary-Background)]/70 text-[var(--text)] font-semibold' : 'text-[var(--text)]/90 hover:bg-[var(--Secondary-Background)]/60'}`}
+                    className={`block px-3 py-2 rounded-lg transition-colors ${pathname === '/project-Triple-Wave' ? 'bg-[var(--Secondary-Background)]/70 text-[var(--text)] font-semibold' : 'text-[var(--text)]/90 hover:bg-[var(--Secondary-Background)]/60'}`}
                     onClick={() => setIsProjectsOpen(false)}
                   >
                     Triple WAVE
@@ -279,7 +279,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/project-triple-wave" className="block px-3 py-2 rounded-md hover:bg-[var(--Secondary-Background)]/60" onClick={() => { setIsMenuOpen(false); setIsMobileProjectsOpen(false); }}>
+                    <Link href="/project-Triple-Wave" className="block px-3 py-2 rounded-md hover:bg-[var(--Secondary-Background)]/60" onClick={() => { setIsMenuOpen(false); setIsMobileProjectsOpen(false); }}>
                       Triple WAVE
                     </Link>
                   </li>
