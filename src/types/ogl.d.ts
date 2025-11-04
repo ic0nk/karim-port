@@ -5,4 +5,6 @@ declare module "ogl" {
   export const Geometry: any;
   export const Program: any;
   export const Mesh: any;
+  export const Triangle: any;
+  export const Vec2: any;
 }
