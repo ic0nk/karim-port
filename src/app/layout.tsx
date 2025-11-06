@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Projects from "@/components/ProjectsSection";
 import WelcomeOverlay from "@/components/WelcomeOverlay";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         </main>
         <Projects />
         <Footer />
+        <ScrollToTopButton />
       </body>
     </html>
   );
