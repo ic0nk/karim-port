@@ -101,7 +101,7 @@ export default function PageAnimator({ children, enable = true }: PageAnimatorPr
   }, [enable]);
 
   return (
-    <div ref={rootRef} className="overflow-x-hidden">
+    <div ref={rootRef}>
       {children}
     </div>
   );

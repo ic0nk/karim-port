@@ -8,7 +8,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-  overflow-x: hidden; /* prevent 1px seams from full-bleed transforms */
   /* Hide native scrollbars globally while preserving scroll */
   -ms-overflow-style: none; /* IE and old Edge */
   scrollbar-width: none;    /* Firefox */
@@ -19,7 +18,7 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
- 
+
 :root {
 /* Color styles */
 --text: #5c5c5c;

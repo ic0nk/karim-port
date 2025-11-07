@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="overflow-x-hidden bg-[var(--background)]">
+    <html lang="en" suppressHydrationWarning className="bg-[var(--background)]">
       <head>
         {/* Prevent theme flash: set initial theme class before hydration */}
         <Script id="theme-init" strategy="beforeInteractive">{`
@@ -38,7 +38,7 @@ export default function RootLayout({
           })();
         `}</Script>
       </head>
-      <body className="overflow-x-hidden bg-[var(--background)]">
+      <body className="bg-[var(--background)]">
         <WelcomeOverlay />
         <Header />
         <main>
