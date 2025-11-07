@@ -244,30 +244,16 @@ export default function TripleWaveProjectPage() {
 								</p>
 							</div>
 
-															<div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-16 overflow-hidden">
+															<div className="relative mx-auto w-full max-w-[2400px] px-6 md:px-8 lg:px-5 overflow-hidden">
 																<div className="reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
-																	{/* Laptop with replaceable screen: background image sits behind a transparent-screen laptop overlay */}
-																										  <div className="relative w-full aspect-[16/9] overflow-hidden">
-																											{/* Screen image clipped to the laptop display area so nothing shows outside the frame */}
-																																				<Image
-																												src="/assets/Eindhoven Project Background 2.jpg"
-																												alt="Triple Wave screenshot inside laptop"
-																												fill
-																												priority
-																												className="object-cover"
-																												sizes="100vw"
-																																															style={{ top: "12.8%", left: "11.8%", right: "11.8%", bottom: "32.5%" }}
-																											/>
-																											{/* Laptop frame overlay */}
-																											<Image
-																												src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
-																												alt="Laptop frame"
-																												fill
-																												priority
-																												className="object-contain pointer-events-none"
-																												sizes="100vw"
-																											/>
-																										</div>
+																	<Image
+																		src="/assets/Triplewavelaptop.png"
+																		alt="Laptop frame"
+																		width={2000}
+																		height={1125}
+																		priority
+																		className="w-full h-auto object-contain mix-blend-multiply dark:mix-blend-screen"
+																	/>
 																	<div className="mx-auto mt-8 h-3 w-10/12 rounded-full bg-black/20 blur-[3px]" />
 																</div>
 															</div>
@@ -299,17 +285,19 @@ export default function TripleWaveProjectPage() {
 										<div className="mt-0.5 rounded-md p-1.5 bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)]"><Tag size={16} /></div>
 										<div>
 											<p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-1">TYPE</p>
-											<p className="text-[var(--text)] font-semibold">Marketing Website (Travel)</p>
+											<p className="text-[var(--text)] font-semibold">Student information website (Eindhoven)</p>
 										</div>
 									</div>
 								</div>
 								<div className="reveal-el rounded-2xl border border-black/5 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm hover:shadow-md transition p-5 md:p-6">
 									<p className="text-[11px] tracking-wide text-[var(--secondary-text)] mb-2">HIGHLIGHTS</p>
 									<div className="flex flex-wrap gap-2">
-										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Destination cards</span>
-										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Special offers</span>
+										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Housing options</span>
+										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Transport guides</span>
+										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Budgeting tips</span>
+										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Local events</span>
+										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Quick facts</span>
 										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Testimonials</span>
-										<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] md:text-sm bg-[var(--Secondary-Background)]/70 border border-white/10 text-[var(--text)] shadow-sm transition transform hover:shadow-md hover:scale-[1.03]"><Sparkles size={14} /> Clear CTAs</span>
 									</div>
 								</div>
 							</div>
@@ -318,16 +306,13 @@ export default function TripleWaveProjectPage() {
 								<div className="relative group max-w-xl lg:ml-auto">
 									<div className="absolute -inset-6 bg-[var(--accent)]/20 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition pointer-events-none" aria-hidden="true" />
 									<div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl pop-on-scroll bg-[var(--background)]">
-										<div className="relative w-full aspect-[16/9] overflow-hidden">
-											<video
-												className="absolute inset-0 h-full w-full object-cover"
-												src="https://videos.pexels.com/video-files/856988/856988-hd_1280_720_25fps.mp4"
-												poster="/assets/Travel World Second Section .png"
-												playsInline
-												muted
-												autoPlay
-												loop
-												preload="metadata"
+										<div className="relative w-full aspect-[5/2] overflow-hidden">
+											<Image
+												src="/assets/Overview Triple Wave .png"
+												alt="Triple Wave Overview"
+												fill
+												className="object-cover"
+												sizes="(max-width: 768	px) 100vw, (max-width: 1024px) 50vw, 40vw"
 											/>
 										</div>
 									</div>
@@ -343,15 +328,16 @@ export default function TripleWaveProjectPage() {
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 							<div className="col-span-12 lg:col-span-5 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 border border-white/10">
-								<Image src="/assets/Travel World Project Background .png" alt="Travel World" width={1400} height={900} className="w-full h-auto" />
+								<Image src="/assets/Eindhoven Triple Wave .png"
+								 alt="Travel World" width={100} height={300} className="w-full h-auto max-h-150 object-cover" />
 							</div>
 							<div className="col-span-12 lg:col-span-7 lg:pl-4">
 								<div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
-									<p className="text-xs tracking-wide text-[var(--secondary-text)] mb-1">Overview</p>
+									<p className="text-xs tracking-wide text-[var(--secondary-text)] mb-1">Project Summary</p>
 									<h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A friendly travel experience</h3>
 									<div className="w-24 h-1 rounded-full bg-[var(--accent)] mt-3 mb-4" />
 									<p className="text-[var(--text)]/90 leading-relaxed mb-4">
-										A simple, friendly travel website that makes exploring destinations feel fun and effortless.
+										A bold, modern website for Triple Wave that makes exploring services and content feel smooth and intuitive.
 									</p>
 									<ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
 										<li><span className="font-semibold">Role:</span> UX/UI Design & Front-end</li>
