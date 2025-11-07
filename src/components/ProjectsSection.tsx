@@ -46,7 +46,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <div className="relative [perspective:1000px]">
       <div
-        className="tilt-card pop-on-scroll w-full max-w-[500px] h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto"
+        className="tilt-card pop-on-scroll w-full max-w-[500px] h-[480px] md:h-[560px] lg:h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto"
         style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
       >
       

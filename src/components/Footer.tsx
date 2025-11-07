@@ -56,10 +56,10 @@ useEffect(() => {
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-    { name: 'User Experience', href: '#ux' },
-    { name: 'My Projects', href: '#projects' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'User Experience', href: '/#user-experience' },
+    { name: 'My Projects', href: '/#projects' },
+    { name: 'About', href: '/#about' },
+    { name: 'Contact', href: '/#contact' },
 ];
 
 const IconLink = ({ href, icon: IconComponent }: { href: string; icon: React.ElementType }) => (
@@ -86,14 +86,14 @@ const NavItem: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
 
 return (
     // Outer container uses a dark accent color for the background
-    <footer ref={footerRef} id="site-footer" className="reveal-section bg-[var(--accent)] pt-16 pb-2 font-[var(--font-secondary)]">
+    <footer ref={footerRef} id="site-footer" className="reveal-section bg-[var(--accent)] pt-16 pb-4 font-[var(--font-secondary)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Main Content Grid (Social | Nav | Logo) */}
-            <div className="grid grid-cols-3 items-center justify-between mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-6 md:gap-8 mb-8 text-center md:text-left">
             
                 {/* Left: Social Icons */}
-                <div className="flex justify-start col-span-1 reveal-el">
+                <div className="flex justify-center md:justify-start col-span-1 reveal-el">
                     <IconLink href="#" icon={FaLinkedin} />
                     <IconLink href="#" icon={MdLocalPhone} />
                     <IconLink href="#" icon={FaGithub} />
@@ -101,7 +101,7 @@ return (
                 </div>
 
                 {/* Center: Navigation Links */}
-                <div className="flex flex-col items-center col-span-1 reveal-el">
+                <div className="flex flex-col items-center col-span-1 reveal-el order-3 md:order-none">
                     {navLinks.map((link) => (
                     <NavItem key={link.name} href={link.href}>
                         {link.name}
@@ -110,14 +110,14 @@ return (
                 </div>
 
                 {/* Right: Monogram Logo */}
-                <div className="flex justify-end col-span-1 reveal-el">
+                <div className="flex justify-center md:justify-end col-span-1 reveal-el order-2 md:order-none">
                     {/* Logo/Monogram: Uses the primary font, is large, and bright white */}
                     <Image className="footer-logo" src="/assets/K (W).svg" alt="Logo" width={80} height={80} />
                 </div>
             </div>
 
             {/* Bottom: Copyright */}
-            <div className="text-center reveal-el">
+            <div className="text-center reveal-el mt-4">
                 <p className="text-white text-xs opacity-60">
                     © {currentYear} Karimmasaad. All Rights Reserved.
                 </p>

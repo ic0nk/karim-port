@@ -88,7 +88,7 @@ const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
 };
 
 return (
-    <section className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
+    <section className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-x-hidden" id="contact">
         <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
             04
         </div>

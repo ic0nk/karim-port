@@ -43,6 +43,9 @@ const themes: Theme[] = [
 export default function TripleWaveProjectPage() {
 	const rootRef = useRef<HTMLDivElement | null>(null);
 
+	// Clip used to constrain the screenshot inside the laptop display area
+	const laptopScreenClip = "inset(12.8% 11.8% 32.5% 11.8% round 12px)";
+
 	// Shared background color for DarkVeil, synced with CSS --background
 	const [backgroundColor, setBackgroundColor] = useState<[number, number, number]>([0.88, 0.87, 0.86]);
 
@@ -233,32 +236,47 @@ export default function TripleWaveProjectPage() {
 					<div className="max-w-7xl mx-auto px-9 sm:px-6 lg:px-8 min-h-[60vh] flex items-center relative z-10">
 						<div className="mx-auto grid w-full max-w-6xl grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-items-center">
 							<div className="col-span-1 text-center">
-								<h2 className="reveal-el font-primary text-6xl md:text-7xl tracking-wide text-[var(--text)]">TRAVEL </h2>
+								<h2 className="reveal-el font-primary text-6xl md:text-7xl tracking-wide text-[var(--text)]">TRIPLE WAVE</h2>
 								<div className="reveal-el w-28 md:w-95 h-[3px] rounded-full bg-[var(--accent)] mt-2 mb-6 mx-auto" />
 								<p className="reveal-el text-[var(--secondary-text)] text-lg md:text-xl leading-relaxed max-w-md mx-auto text-center">
-									A simple, friendly travel website that makes exploring destinations feel fun and effortless.
+									A friendly guide for international students in Eindhoven find housing, get around, manage finances, and discover local events.
+
 								</p>
 							</div>
 
-							  <div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-16 overflow-hidden">
-								<div className="reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
-									<Image
-										src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
-										alt="Travel World laptop mockup"
-										width={2000}
-										height={1125}
-										priority
-										className="w-full h-auto object-contain"
-									/>
-									<div className="mx-auto mt-8 h-3 w-10/12 rounded-full bg-black/20 blur-[3px]" />
-								</div>
-							</div>
+															<div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-16 overflow-hidden">
+																<div className="reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
+																	{/* Laptop with replaceable screen: background image sits behind a transparent-screen laptop overlay */}
+																										  <div className="relative w-full aspect-[16/9] overflow-hidden">
+																											{/* Screen image clipped to the laptop display area so nothing shows outside the frame */}
+																																				<Image
+																												src="/assets/Eindhoven Project Background 2.jpg"
+																												alt="Triple Wave screenshot inside laptop"
+																												fill
+																												priority
+																												className="object-cover"
+																												sizes="100vw"
+																																															style={{ top: "12.8%", left: "11.8%", right: "11.8%", bottom: "32.5%" }}
+																											/>
+																											{/* Laptop frame overlay */}
+																											<Image
+																												src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
+																												alt="Laptop frame"
+																												fill
+																												priority
+																												className="object-contain pointer-events-none"
+																												sizes="100vw"
+																											/>
+																										</div>
+																	<div className="mx-auto mt-8 h-3 w-10/12 rounded-full bg-black/20 blur-[3px]" />
+																</div>
+															</div>
 						</div>
 					</div>
 				</section>
 
 				{/* Overview */}
-				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20">
+				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">02</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="mb-8">
@@ -300,7 +318,7 @@ export default function TripleWaveProjectPage() {
 								<div className="relative group max-w-xl lg:ml-auto">
 									<div className="absolute -inset-6 bg-[var(--accent)]/20 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition pointer-events-none" aria-hidden="true" />
 									<div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl pop-on-scroll bg-[var(--background)]">
-										<div className="relative w-full aspect-[16/9]">
+										<div className="relative w-full aspect-[16/9] overflow-hidden">
 											<video
 												className="absolute inset-0 h-full w-full object-cover"
 												src="https://videos.pexels.com/video-files/856988/856988-hd_1280_720_25fps.mp4"
@@ -320,7 +338,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Editorial block + content */}
-				<section className="reveal-section relative py-16 md:py-20">
+				<section className="reveal-section relative py-16 md:py-20 overflow-x-hidden">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-0 top-6 -rotate-90 select-none pointer-events-none">03</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -358,7 +376,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Supporting content band */}
-				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20">
+				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20 overflow-x-hidden">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-5 -rotate-90 select-none pointer-events-none">04</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 						<div className="text-center">
@@ -393,7 +411,25 @@ export default function TripleWaveProjectPage() {
 
 						<div className="grid grid-cols-12 gap-6 mt-12">
 							<div className="pop-on-scroll col-span-12 rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-								<Image src="/assets/travelworld_laptop_4k_transparent_crisp 1.png" alt="Laptop mockup" width={1600} height={900} className="w-full h-auto" />
+								{/* Layered laptop mockup with new Triple Wave screenshot */}
+								<div className="relative w-full aspect-[16/9]">
+									{/* Screen image clipped to the laptop display */}
+									<Image
+										src="/assets/Eindhoven Project Background 2.jpg"
+										alt="Triple Wave screenshot"
+										fill
+										className="object-cover"
+										sizes="100vw"
+										style={{ top: "12.8%", left: "11.8%", right: "11.8%", bottom: "32.5%" }}
+									/>
+									<Image
+										src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
+										alt="Laptop frame"
+										fill
+										className="object-contain pointer-events-none"
+										sizes="100vw"
+									/>
+								</div>
 							</div>
 							<div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
 								<Image src="/assets/Travel World Second Section .png" alt="Section" width={1200} height={700} className="w-full h-auto" />
@@ -406,7 +442,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Trip Themes */}
-				<section className="reveal-section relative w-full py-16 md:py-20">
+				<section className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden">
 					<div className="hidden lg:block text-number text-9x1 text-[var(--secondary-text)] absolute -right-0 top-0 -rotate-90 select-none pointer-events-none">05</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<p className="reveal-el text-[11px] tracking-[0.18em] text-[var(--secondary-text)] uppercase mb-2">Curated journeys</p>
@@ -477,7 +513,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Special offers */}
-				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20">
+				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">06</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<p className="reveal-el text-sm text-[var(--secondary-text)] mb-4">Take advantage of our limited-time deals and save on your next adventure.</p>
@@ -516,7 +552,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* CTA */}
-				<section className="reveal-section relative w-full py-16 md:py-20">
+				<section className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-1 top-0 -rotate-90 select-none pointer-events-none">07</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="w-24 h-1 rounded-full bg-[var(--accent)] mb-3" />

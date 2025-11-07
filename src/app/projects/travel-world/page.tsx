@@ -245,7 +245,7 @@ export default function TravelWorldPage() {
       </section>
 
       {/* Overview */}
-      <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20">
+  <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden">
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">02</div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
@@ -296,7 +296,7 @@ export default function TravelWorldPage() {
       </section>
 
       {/* Supporting band + quote + cards + images */}
-      <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20">
+  <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20 overflow-x-hidden">
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-5 -rotate-90 select-none pointer-events-none">04</div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center">
@@ -336,7 +336,7 @@ export default function TravelWorldPage() {
       </section>
 
       {/* Trip Themes */}
-      <section className="reveal-section relative w-full py-16 md:py-20">
+  <section className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden">
         <div className="hidden lg:block text-number text-9x1 text-[var(--secondary-text)] absolute -right-0 top-0 -rotate-90 select-none pointer-events-none">05</div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="reveal-el text-[11px] tracking-[0.18em] text-[var(--secondary-text)] uppercase mb-2">Curated journeys</p>
@@ -369,7 +369,7 @@ export default function TravelWorldPage() {
       </section>
 
       {/* Special Offers */}
-      <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20">
+  <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden">
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">06</div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="reveal-el text-sm text-[var(--secondary-text)] mb-4">Take advantage of our limited-time deals and save on your next adventure.</p>
@@ -405,7 +405,7 @@ export default function TravelWorldPage() {
       </section>
 
       {/* CTA */}
-      <section className="reveal-section relative w-full py-16 md:py-20">
+  <section className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden">
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-1 top-0 -rotate-90 select-none pointer-events-none">07</div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="w-24 h-1 rounded-full bg-[var(--accent)] mb-3" />

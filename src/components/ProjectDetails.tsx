@@ -211,7 +211,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
       {/* Overview */}
       <section
-        className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20"
+        className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden"
       >
 
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">
@@ -289,7 +289,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
       {/* Key Screens - editorial block */}
       {/* Editorial block: refined layout with smaller image and a clean content card */}
-      <section className="reveal-section relative py-16 md:py-20">
+  <section className="reveal-section relative py-16 md:py-20 overflow-x-hidden">
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-0 top-6 -rotate-90 select-none pointer-events-none">
           03
         </div>
@@ -331,7 +331,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
       </section>
 
       {/* Key Screens - supporting content (polished band) */}
-      <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20">
+  <section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20 overflow-x-hidden">
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-5 -rotate-90 select-none pointer-events-none">
           04
         </div>
@@ -390,7 +390,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
       {/* Trip Themes - editorial band with dual images */}
       <section
-        className="reveal-section relative w-full py-16 md:py-20"
+        className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden"
       >
         <div className="hidden lg:block text-number text-9x1 text-[var(--secondary-text)] absolute
          -right-0 top-0 -rotate-90 select-none pointer-events-none">05</div>
@@ -469,7 +469,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
       {/* Special Offers - card list (full-width band) */}
       <section
-        className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20"
+        className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden"
       >
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute
          left-0 top-6 -rotate-90 select-none pointer-events-none">06</div>
@@ -537,7 +537,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
       {/* CTA Section - transparent background (no band) */}
       <section
-        className="reveal-section relative w-full py-16 md:py-20"
+        className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden"
       >
         <div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute
          -right-1 top-0 -rotate-90 select-none pointer-events-none">07</div>

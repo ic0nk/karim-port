@@ -7,6 +7,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import ContactSection from '@/components/ContactSection';
 import PageAnimator from "@/components/PageAnimator";
+import ProfileCard from "@/components/ProfileCard";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -91,11 +92,11 @@ export default function Home() {
 
   return (
     <PageAnimator>
-      <main ref={rootRef}>
+      <main ref={rootRef} className="overflow-x-hidden">
       {/* HERO SECTION */}
-      <section id="hero" className="group relative flex flex-col justify-center h-lvh overflow-hidden">
+  <section id="hero" className="group relative flex flex-col justify-center h-lvh overflow-hidden">
         {/* Hover veil like before – fades in on hover */}
-        <div className="pointer-events-none absolute inset-0 z-0 opacity-100">
+  <div className="pointer-events-none absolute -inset-2 transform-gpu z-0 opacity-100">
           <DarkVeil
             hueShift={32}
             noiseIntensity={0.02}
@@ -119,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT SECTION */}
-  <section id="about" className="reveal-section relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center overflow-hidden">
+  <section id="about" className="reveal-section relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center overflow-hidden overflow-x-hidden">
         <div
           className="text-number absolute top-1/3 right-0 hidden lg:block text-[var(--secondary-text)] transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
           aria-hidden
@@ -158,13 +159,24 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="bg-[var(--Secondary-Background)] p-4 rounded-lg shadow-lg pop-on-scroll">
-              <Image
-                src="/assets/image 4.png"
-                alt="Karim Massoud"
-                width={350}
-                height={500}
-                className="rounded-lg"
+            <div className="pop-on-scroll">
+              {/* Profile Card with 3D tilt and holographic background */}
+              {/* Using the same image as the original profile picture */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* Client component imported below */}
+              <ProfileCard
+                name="Karim Massoud"
+                title="Creative Developer"
+                handle="karimmassaoud"
+                status="Online"
+                contactText="Contact Me"
+                avatarUrl="/assets/image 4.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() =>
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
               />
             </div>
           </div>
@@ -172,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* USER EXPERIENCE SECTION */}
-  <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative">
+  <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden">
         <div className="text-number absolute top-9 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
           03
         </div>
