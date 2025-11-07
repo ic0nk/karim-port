@@ -192,7 +192,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
               </p>	
             </div>
 
-            {/* Right: Large laptop image */}<div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-16 overflow-hidden">
+            {/* Right: Large laptop image */}<div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-12 overflow-hidden">
               <div className="reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
                 <Image
                 src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
