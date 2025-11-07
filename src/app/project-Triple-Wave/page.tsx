@@ -351,6 +351,7 @@ export default function TripleWaveProjectPage() {
 											rel="noopener noreferrer"
 											className="inline-flex items-center gap-2 bg-[var(--accent)] text-white px-5 py-2.5 rounded-md font-semibold hover:bg-[var(--accent-hover)] transition shadow-md"
 										>
+			
 											<ExternalLink size={16} />
 											<span>Open Live Demo</span>
 										</a>
