@@ -217,9 +217,9 @@ export default function TripleWaveProjectPage() {
 	}, []);
 
 	return (
-		<div ref={rootRef} className="relative overflow-x-hidden space-y-16 md:space-y-24">
+		<div ref={rootRef} className="relative space-y-16 md:space-y-24">
 				{/* Main Travel World project details (inlined) */}
-			<main className="relative overflow-x-hidden space-y-16 md:space-y-24">
+			<main className="relative space-y-16 md:space-y-24">
 				{/* Hero */}
 				<section className="reveal-section group relative bg-[var(--background)] py-20 md:py-50 min-h-screen w-full overflow-hidden">
 					<div className="pointer-events-none absolute inset-0 z-0 opacity-100">
@@ -276,7 +276,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Overview */}
-				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden">
+				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">02</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="mb-8">
@@ -338,7 +338,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Editorial block + content */}
-				<section className="reveal-section relative py-16 md:py-20 overflow-x-hidden">
+				<section className="reveal-section relative py-16 md:py-20">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-0 top-6 -rotate-90 select-none pointer-events-none">03</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -376,7 +376,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Supporting content band */}
-				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20 overflow-x-hidden">
+				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 lg:py-20">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-5 -rotate-90 select-none pointer-events-none">04</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 						<div className="text-center">
@@ -442,7 +442,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Trip Themes */}
-				<section className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden">
+				<section className="reveal-section relative w-full py-16 md:py-20">
 					<div className="hidden lg:block text-number text-9x1 text-[var(--secondary-text)] absolute -right-0 top-0 -rotate-90 select-none pointer-events-none">05</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<p className="reveal-el text-[11px] tracking-[0.18em] text-[var(--secondary-text)] uppercase mb-2">Curated journeys</p>
@@ -513,7 +513,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* Special offers */}
-				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20 overflow-x-hidden">
+				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">06</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<p className="reveal-el text-sm text-[var(--secondary-text)] mb-4">Take advantage of our limited-time deals and save on your next adventure.</p>
@@ -552,7 +552,7 @@ export default function TripleWaveProjectPage() {
 				</section>
 
 				{/* CTA */}
-				<section className="reveal-section relative w-full py-16 md:py-20 overflow-x-hidden">
+				<section className="reveal-section relative w-full py-16 md:py-20">
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute -right-1 top-0 -rotate-90 select-none pointer-events-none">07</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="w-24 h-1 rounded-full bg-[var(--accent)] mb-3" />
