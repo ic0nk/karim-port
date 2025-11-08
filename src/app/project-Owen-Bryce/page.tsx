@@ -106,7 +106,7 @@ export default function OwenBrycePage() {
 						{/* Overview image */}
 						<div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl shadow-lg bg-black/5">
 							<Image
-								src="/assets/Owne bryce pic1.png"
+								src="/assets/Owen bryce4.png"
 								alt="Owen Bryce microphone and lights"
 								fill
 								className="object-cover"
@@ -236,7 +236,7 @@ export default function OwenBrycePage() {
 								</div>
 								<div className="lg:col-span-6">
 									<div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
-										<Image src="" alt="Instagram preview" fill className="object-cover" />
+										<Image src="/assets/Instagram Owen Bryce .png" alt="Instagram preview" fill className="object-cover" />
 									</div>
 								</div>
 							</div>
@@ -262,7 +262,7 @@ export default function OwenBrycePage() {
 								</div>
 								<div className="lg:col-span-6 order-1 lg:order-2">
 									<div className="relative w-full aspect-[16/12] rounded-xl overflow-hidden shadow-lg">
-										<Image src="/assets/Rectangle 61.png" alt="Quotes and posters collage" fill className="object-cover" />
+										<Image src="/assets/Inspiration Owen Bryce .png" alt="Quotes and posters collage" fill className="object-cover" />
 									</div>
 								</div>
 							</div>
@@ -291,7 +291,7 @@ export default function OwenBrycePage() {
 									<div className="rounded-xl overflow-hidden shadow-lg bg-black/5">
 										<iframe
 											title="Spotify playlist"
-											src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
+											src="https://open.spotify.com/embed/artist/3IdIvobX95JU1jBjlYML9h?utm_source=generator"
 											width="100%"
 											height="380"
 											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -321,7 +321,7 @@ export default function OwenBrycePage() {
 						)}
 
 	{/* Visual Assets */}
-			<section className="reveal-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 md:py-20 bg-[var(--Secondary-Background)]">
+		<section className="reveal-section relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-12 md:py-20 bg-[var(--Secondary-Background)]">
 				{/* Rotated section number 05 */}
 				<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] dark:text-white/25 absolute right-4 top-10 -rotate-90 select-none pointer-events-none">
 					05
@@ -333,8 +333,15 @@ export default function OwenBrycePage() {
 					<div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
 						{/* Card 1 */}
 						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
-							<div className="relative w-full aspect-[16/10]">
-								<Image src="/assets/Frame 129.png" alt="EP Cover Art preview" fill className="object-cover" />
+							<div className="relative w-full aspect-[13/10]">
+							<Image
+								src="/assets/EP Cover Owen Bryce .png"
+								alt="EP Cover Art preview"
+								fill
+								quality={90}
+								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+								className="object-cover"
+							/>
 							</div>
 							<div className="p-5">
 								<h3 className="font-semibold text-[var(--foreground)]">EP Cover Art</h3>
@@ -344,8 +351,15 @@ export default function OwenBrycePage() {
 
 						{/* Card 2 */}
 						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
-							<div className="relative w-full aspect-[16/10]">
-								<Image src="/assets/Rectangle 61.png" alt="Logo variations preview" fill className="object-cover" />
+							<div className="relative w-full aspect-[13/10]">
+							<Image
+								src="/assets/Logo Owen Bryce .png"
+								alt="Logo variations preview"
+								fill
+								quality={90}
+								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+								className="object-cover"
+							/>
 							</div>
 							<div className="p-5">
 								<h3 className="font-semibold text-[var(--foreground)]">Logo Variations</h3>
@@ -355,8 +369,15 @@ export default function OwenBrycePage() {
 
 						{/* Card 3 */}
 						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
-							<div className="relative w-full aspect-[16/10]">
-								<Image src="/assets/Frame 129.png" alt="Social media templates preview" fill className="object-cover" />
+							<div className="relative w-full aspect-[13/10]">
+							<Image
+								src="/assets/Social Media Owen Bcryce .png"
+								alt="Social media templates preview"
+								fill
+								quality={90}
+								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+								className="object-cover"
+							/>
 							</div>
 							<div className="p-5">
 								<h3 className="font-semibold text-[var(--foreground)]">Social Media Templates</h3>
@@ -366,17 +387,33 @@ export default function OwenBrycePage() {
 
 						{/* Card 4 */}
 						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
-							<div className="relative w-full aspect-[16/10] bg-black/5" />
-							<div className="p-5">
-								<h3 className="font-semibold text-[var(--foreground)]">Promotional Materials</h3>
-								<p className="mt-2 text-sm text-[var(--muted-foreground)]">Posters, digital ads, and event materials with consistent branding elements.</p>
-							</div>
+						<div className="relative w-full aspect-[13/10] bg-black/5">
+							<Image
+								src="/assets/Posters Owen Bryce .png"
+								alt="Promotional materials preview"
+								fill
+								quality={90}
+								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+								className="object-cover"
+							/>
+						</div>
+						<div className="p-5">
+							<h3 className="font-semibold text-[var(--foreground)]">Promotional Materials</h3>
+							<p className="mt-2 text-sm text-[var(--muted-foreground)]">Posters, digital ads, and event materials with consistent branding elements.</p>
+						</div>
 						</div>
 
 						{/* Card 5 */}
 						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
-							<div className="relative w-full aspect-[16/10]">
-								<Image src="/assets/Rectangle 61.png" alt="Merchandise concepts preview" fill className="object-cover" />
+							<div className="relative w-full aspect-[13/10]">
+							<Image
+								src="/assets/clothes Owen Brcye .png"
+								alt="Merchandise concepts preview"
+								fill
+								quality={90}
+								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+								className="object-cover"
+							/>
 							</div>
 							<div className="p-5">
 								<h3 className="font-semibold text-[var(--foreground)]">Merchandise Concepts</h3>
@@ -386,8 +423,15 @@ export default function OwenBrycePage() {
 
 						{/* Card 6 */}
 						<div className="pop-on-scroll bg-[var(--card)] rounded-xl shadow-md overflow-hidden">
-							<div className="relative w-full aspect-[16/10]">
-								<Image src="/assets/Owne bryce pic1.png" alt="Press kit microphone" fill className="object-cover" />
+							<div className="relative w-full aspect-[13/10]">
+							<Image
+								src="/assets/Colors Owen Bryce .png"
+								alt="Press kit palette"
+								fill
+								quality={90}
+								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+								className="object-cover"
+							/>
 							</div>
 							<div className="p-5">
 								<h3 className="font-semibold text-[var(--foreground)]">Press Kit</h3>
@@ -518,7 +562,9 @@ export default function OwenBrycePage() {
 
 					<div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
 						<Link
-							href="#"
+							href="https://karimmassaoudd-portfolio-lastversion.netlify.app/html%20files/branding"
+							target="_blank"
+							rel="noopener noreferrer"
 							className="pop-on-scroll group w-full sm:w-[460px] rounded-xl bg-[#0F5A7A] hover:bg-[#0D4E6A] text-white shadow-md transition-colors px-6 py-5 flex items-center justify-between gap-4"
 						>
 							<span className="flex items-center gap-4">
@@ -533,7 +579,9 @@ export default function OwenBrycePage() {
 						</Link>
 
 						<Link
-							href="#"
+							href="https://www.figma.com/design/wwf7JufGQ256bQkzw13hPi/Owen-Bryce-Project?node-id=0-1&p=f&t=78KazWtBFSIHW0DS-0"
+							target="_blank"
+							rel="noopener noreferrer"
 							className="pop-on-scroll group w-full sm:w-[460px] rounded-xl bg-[#0F5A7A] hover:bg-[#0D4E6A] text-white shadow-md transition-colors px-6 py-5 flex items-center justify-between gap-4"
 						>
 							<span className="flex items-center gap-4">

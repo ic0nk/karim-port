@@ -72,15 +72,21 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
     setCurrentImageIndex(0);
   };
 
-  // Auto-advance carousel (pause on hover)
+  // Auto-advance carousel frames to the right (pause on hover)
   useEffect(() => {
     if (isPaused) return;
+    const imageCount = themes[currentThemeIndex]?.images.length ?? 1;
     const id = setInterval(() => {
-      setCurrentThemeIndex((i) => (i + 1) % themes.length);
-      setCurrentImageIndex(0);
-    }, 5000);
+      setCurrentImageIndex((idx) => {
+        const nextIdx = (idx + 1) % imageCount;
+        if (nextIdx === 0) {
+          setCurrentThemeIndex((themeIdx) => (themeIdx + 1) % themes.length);
+        }
+        return nextIdx;
+      });
+    }, 2000);
     return () => clearInterval(id);
-  }, [isPaused]);
+  }, [currentThemeIndex, isPaused]);
 
   // Touch swipe handlers (mobile)
   const onTouchStart = (e: React.TouchEvent) => {
@@ -193,16 +199,32 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
               </p>	
             </div>
 
-            {/* Right: Large laptop image */}<div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-12 overflow-hidden">
-              <div className="reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
+            {/* Right: Large laptop image */}
+            <div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-12 overflow-hidden">
+              <div className="relative reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
                 <Image
-                src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
-                alt="Travel World laptop mockup"
-                width={2000}
-                height={1125}
-                priority
-                className="w-full h-auto object-contain"
+                  src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
+                  alt="Travel World laptop mockup"
+                  width={2000}
+                  height={1125}
+                  priority
+                  className="w-full h-auto object-contain"
                 />
+                {/* Screen content overlay to showcase updated imagery */}
+                <div
+                  className="absolute overflow-hidden rounded-[14px] shadow-[0_8px_20px_rgba(0,0,0,0.22)]"
+                  style={{ left: "11%", top: "7%", width: "78%", height: "70%" }}
+                >
+                  <Image
+                    src="/assets/Travel World22.jpg"
+                    alt="Travel World experience preview"
+                    fill
+                    quality={95}
+                    sizes="(min-width: 1024px) 40vw, (min-width: 768px) 60vw, 90vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
                 <div className="mx-auto mt-8 h-3 w-10/12 rounded-full bg-black/20 blur-[3px]" />
               </div>
             </div>
@@ -267,21 +289,18 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
             {/* Right: single centered video */}
             <div className="col-span-12 lg:col-span-5">
-              <div className="relative group max-w-xl mx-auto lg:-mt-9">
-                <div className="absolute -inset-6 bg-[var(--accent)]/20 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition pointer-events-none" aria-hidden="true" />
+              <div className="relative group max-w-xl mx-auto lg:-mt-30">
 
-                {/* Single video card centered */}
+                {/* Single image card centered */}
                 <div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl]">
                   <div className="relative w-full aspect-[16/9]">
-                    <video
-                      className="absolute inset-0 h-full w-full object-cover"
-                      src="https://videos.pexels.com/video-files/856988/856988-hd_1280_720_25fps.mp4"
-                      poster="/assets/Travel World Second Section .png"
-                      playsInline
-                      muted
-                      autoPlay
-                      loop
-                      preload="metadata"
+                    <Image
+                      src="/assets/Travel world laptop2.jpg"
+                      alt="Travel World promotional still"
+                      fill
+                      quality={95}
+                      sizes="(min-width: 1024px) 40vw, (min-width: 768px) 60vw, 90vw"
+                      className="object-cover"
                     />
                   </div>
                 </div>
@@ -380,13 +399,34 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
           {/* Image strip */}
           <div className="grid grid-cols-12 gap-6 mt-12">
             <div className="pop-on-scroll col-span-12 rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel world Background .png" alt="Laptop mockup" width={1600} height={900} className="w-full h-auto" />
+              <Image
+                src="/assets/Travel world Background .png"
+                alt="Laptop mockup"
+                width={1000}
+                height={900}
+                quality={95}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)] relative min-h-[260px]">
+              <Image
+                src="/assets/Travel world Third section Picture.png"
+                alt="Section"
+                fill
+                quality={95}
+                sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
             </div>
             <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel world Third section Picture.png" alt="Section" width={1200} height={700} className="w-full h-auto" />
-            </div>
-            <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel world Fourth Picture .png" alt="Section Alt" width={1200} height={700} className="w-full h-auto" />
+              <Image
+                src="/assets/Travel world Fourth Picture .png"
+                alt="Section Alt"
+                width={1200}
+                height={900}
+                quality={95}
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -429,6 +469,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
                   src={currentImage}
                   alt={`${currentTheme.title} - Image ${currentImageIndex + 1}`}
                   fill
+                  quality={95}
                   className="object-cover transition-opacity duration-500"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
@@ -440,6 +481,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
                   src={currentTheme.images[(currentImageIndex + 1) % currentTheme.images.length]}
                   alt={`${currentTheme.title} - Image ${((currentImageIndex + 1) % currentTheme.images.length) + 1}`}
                   fill
+                  quality={95}
                   className="object-cover transition-opacity duration-500"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />

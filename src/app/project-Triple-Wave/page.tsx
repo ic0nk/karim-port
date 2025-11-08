@@ -75,7 +75,7 @@ export default function TripleWaveProjectPage() {
 		const id = window.setInterval(() => {
 			setCurrentThemeIndex((i) => (i + 1) % themes.length);
 			setCurrentImageIndex(0);
-		}, 5000);
+		}, 2000);
 		return () => window.clearInterval(id);
 	}, [isPaused]);
 

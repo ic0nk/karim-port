@@ -18,7 +18,7 @@ const projects = [
   {
     name: 'Travel World',
     description: 'A simple, friendly travel website that makes exploring destinations feel fun and effortless.',
-  image: '/assets/Travel World Project Background .png', 
+    image: '/assets/Travel world Fourth Picture .png',
     liveLink: 'https://travel-website-complete-w0th.onrender.com/index.html',
     detailsLink: '/project-details',
   },
@@ -26,20 +26,20 @@ const projects = [
     name: 'Triple WAVE',
     description: 'A friendly guide for international students in Eindhoven find housing, get around, manage finances, and discover local events.',
   // file in public/assets is named with spaces and .jpg extension
-  image: '/assets/Eindhoven Project Background 2.jpg',
+  image: '/assets/Triple Wvee.jpg',
     liveLink: 'https://triple-wave.netlify.app/',
   detailsLink: '/project-Triple-Wave',
   },
   {
     name: 'Owen Bryce',
     description: ' A comprehensive promotional campaign for an emerging folk/indie artist, creating a cohesive brand identity across multiple platforms',
-  image: '/assets/Owen Bryce Project Background .png',
+  image: '/assets/owen bryce4.png',
     liveLink: 'https://karimmassaoudd-portfolio-lastversion.netlify.app/html%20files/branding',
     detailsLink: '/project-Owen-Bryce',
   },
 ];
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectCard: React.FC<{ project: Project; priority?: boolean }> = ({ project, priority = false }) => {
   const { name, description, image, liveLink, detailsLink } = project;
   const detailsHref = detailsLink ?? '#';
 
@@ -57,9 +57,10 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           alt={name}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
+          quality={95}
+          priority={priority}
+          loading={priority ? undefined : 'lazy'}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          priority={false}
-          loading="lazy"
         />
       </div>
 
@@ -186,7 +187,7 @@ export const ProjectsSection = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <ProjectCard key={project.name} project={project} priority={index === 0} />
           ))}
         </div>
         

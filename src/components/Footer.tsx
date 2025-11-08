@@ -1,130 +1,181 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { MdLocalPhone } from "react-icons/md";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { IoMdMail } from "react-icons/io";
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { IoMdMail } from 'react-icons/io';
+import { MdLocalPhone } from 'react-icons/md';
+import { HiOutlineMapPin } from 'react-icons/hi2';
 
-/**
- * Footer Component
- * Displays social links, navigation, monogram, and copyright.
- * Uses the accent color from the global CSS for the background.
- */
 export const Footer: React.FC = () => {
-const footerRef = useRef<HTMLElement | null>(null);
-useEffect(() => {
-    let tween: any | undefined;
-    let gsapRef: any; let ScrollTriggerRef: any;
-    let isCancelled = false;
+    const footerRef = useRef<HTMLElement | null>(null);
 
-    const run = async () => {
-        const gsapModule = await import('gsap');
-        const stModule = await import('gsap/ScrollTrigger');
-        const gsap: any = (gsapModule as any).default ?? (gsapModule as any);
-        const ScrollTrigger: any = (stModule as any).ScrollTrigger ?? (stModule as any).default;
-        gsap.registerPlugin(ScrollTrigger);
-        gsapRef = gsap; ScrollTriggerRef = ScrollTrigger;
-        if (!footerRef.current || isCancelled) return;
+    useEffect(() => {
+        let tween: any | undefined;
+        let isCancelled = false;
 
-        // Respect reduced motion
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const run = async () => {
+            const gsapModule = await import('gsap');
+            const stModule = await import('gsap/ScrollTrigger');
+            const gsap: any = (gsapModule as any).default ?? (gsapModule as any);
+            const ScrollTrigger: any = (stModule as any).ScrollTrigger ?? (stModule as any).default;
+            gsap.registerPlugin(ScrollTrigger);
+            if (!footerRef.current || isCancelled) return;
 
-        // Simple, elegant reveal: fade + slide up, once only
-        tween = gsap.from(footerRef.current, {
-            y: 50,
-            autoAlpha: 0,
-            duration: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: footerRef.current,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-                once: true,
-            },
-        });
-    };
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    run();
-    return () => {
-        isCancelled = true;
-        if (tween?.scrollTrigger) tween.scrollTrigger.kill();
-        if (tween) tween.kill();
-        // No global cleanup required
-    };
-}, []);
-const currentYear = new Date().getFullYear();
+            tween = gsap.from(footerRef.current, {
+                y: 60,
+                autoAlpha: 0,
+                duration: 1.1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: footerRef.current,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                    once: true,
+                },
+            });
+        };
 
-const navLinks = [
-    { name: 'User Experience', href: '/#user-experience' },
-    { name: 'My Projects', href: '/#projects' },
-    { name: 'About', href: '/#about' },
-    { name: 'Contact', href: '/#contact' },
-];
+        run();
+        return () => {
+            isCancelled = true;
+            if (tween?.scrollTrigger) tween.scrollTrigger.kill();
+            if (tween) tween.kill();
+        };
+    }, []);
 
-const IconLink = ({ href, icon: IconComponent }: { href: string; icon: React.ElementType }) => (
-    <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    // Use a custom hover effect to match the subtle transition feel
-    className="text-white mx-3 transition-transform duration-300 hover:scale-110"
-    >
-    <IconComponent className="w-6 h-6" />
-    </a>
-);
+    const currentYear = new Date().getFullYear();
 
-const NavItem: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
-    <a
-    href={href}
-    // Use the secondary font for the navigation links
-    className="text-white text-sm uppercase tracking-wider font-[var(--font-secondary)] hover:text-gray-300 transition-colors duration-200 block mb-2"
-    >
-    {children}
-    </a>
-);
+    const navLinks = [
+        { label: 'User Experience', href: '/#user-experience' },
+        { label: 'My Projects', href: '/#projects' },
+        { label: 'About', href: '/#about' },
+        { label: 'Contact', href: '/#contact' },
+    ];
 
-return (
-    // Outer container uses a dark accent color for the background
-    <footer ref={footerRef} id="site-footer" className="reveal-section bg-[var(--accent)] pt-16 pb-4 font-[var(--font-secondary)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            {/* Main Content Grid (Social | Nav | Logo) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-6 md:gap-8 mb-8 text-center md:text-left">
-            
-                {/* Left: Social Icons */}
-                <div className="flex justify-center md:justify-start col-span-1 reveal-el">
-                    <IconLink href="#" icon={FaLinkedin} />
-                    <IconLink href="#" icon={MdLocalPhone} />
-                    <IconLink href="#" icon={FaGithub} />
-                    <IconLink href="#" icon={IoMdMail} />
-                </div>
+    const socialLinks = [
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/karim-massaoud', icon: FaLinkedin },
+        { label: 'GitHub', href: 'https://github.com/ic0nk', icon: FaGithub },
+        { label: 'Phone', href: 'tel:0616537940', icon: MdLocalPhone },
+        { label: 'Email', href: 'mailto:karimmassoud668@gmail.com', icon: IoMdMail },
+    ];
 
-                {/* Center: Navigation Links */}
-                <div className="flex flex-col items-center col-span-1 reveal-el order-3 md:order-none">
-                    {navLinks.map((link) => (
-                    <NavItem key={link.name} href={link.href}>
-                        {link.name}
-                    </NavItem>
-                    ))}
-                </div>
+        const contactMethods = [
+            { label: 'Email', value: 'karimmassoud668@gmail.com', href: 'mailto:karimmassoud668@gmail.com', icon: IoMdMail },
+            { label: 'Phone', value: '+31 6 1653 7940', href: 'tel:0616537940', icon: MdLocalPhone },
+            { label: 'Location', value: 'Netherlands · Remote friendly', icon: HiOutlineMapPin },
+        ];
 
-                {/* Right: Monogram Logo */}
-                <div className="flex justify-center md:justify-end col-span-1 reveal-el order-2 md:order-none">
-                    {/* Logo/Monogram: Uses the primary font, is large, and bright white */}
-                    <Image className="footer-logo" src="/assets/K (W).svg" alt="Logo" width={80} height={80} />
-                </div>
+        const IconLink = ({ href, icon: IconComponent, label }: { href: string; icon: React.ElementType; label: string }) => (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+                className="group flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-[var(--text)] transition duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/15"
+            aria-label={label}
+            title={label}
+        >
+            <IconComponent className="h-5 w-5" />
+        </a>
+    );
+
+    const NavItem: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
+        <Link
+                href={href}
+                className="block text-sm uppercase tracking-[0.18em] text-[var(--text)] transition-colors duration-200 hover:text-[var(--accent)]"
+            scroll
+        >
+            {children}
+        </Link>
+    );
+
+    return (
+        <footer
+            ref={footerRef}
+            id="site-footer"
+                className="reveal-section relative overflow-hidden border-t border-white/10 bg-gradient-to-b from-[var(--Secondary-Background)]/95 via-[var(--footer-secondary)]/90 to-[var(--background)] py-16 text-[var(--text)] font-secondary"
+        >
+            <div className="pointer-events-none absolute inset-0">
+                <div className="absolute -right-10 top-[-6rem] h-64 w-64 rounded-full bg-[var(--accent)]/25 blur-3xl" />
+                <div className="absolute bottom-[-8rem] left-[-6rem] h-72 w-72 rounded-full bg-white/10 blur-[140px]" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
             </div>
 
-            {/* Bottom: Copyright */}
-            <div className="text-center reveal-el mt-4">
-                <p className="text-white text-xs opacity-60">
-                    © {currentYear} Karimmasaad. All Rights Reserved.
-                </p>
+            <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 sm:px-8">
+                <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
+                    <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                            <Image src="/assets/K.svg" alt="Karim Massaoud logo" width={72} height={72} className="drop-shadow-[0_10px_30px_rgba(21,91,134,0.35)] dark:drop-shadow-[0_10px_30px_rgba(31,120,172,0.5)]" />
+                                            <div>
+                                                <p className="text-sm font-semibold uppercase tracking-[0.38em] text-[var(--secondary-text)]">Portfolio of</p>
+                                                <p className="text-2xl font-semibold tracking-wide text-[var(--text)]">Karim Massaoud</p>
+                                            </div>
+                        </div>
+                                    <p className="max-w-lg text-sm leading-relaxed text-[var(--text)]">
+                            Digital product designer and front-end developer crafting immersive user experiences, thoughtful brand systems, and interactive moments that convert.
+                        </p>
+                                    <div className="glow-bleed glow-static flex flex-wrap gap-3">
+                            {socialLinks.map((link) => (
+                                <IconLink key={link.label} {...link} />
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="space-y-5">
+                                    <p className="text-xs uppercase tracking-[0.3em] text-[var(--secondary-text)]">Navigate</p>
+                        <div className="flex flex-col gap-3">
+                            {navLinks.map((link) => (
+                                <NavItem key={link.label} href={link.href}>
+                                    {link.label}
+                                </NavItem>
+                            ))}
+                        </div>
+                                    <div className="mt-8 rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-xs uppercase tracking-[0.25em] text-[var(--secondary-text)]">
+                            Available for select collaborations from {currentYear} onwards.
+                        </div>
+                    </div>
+
+                    <div className="space-y-5">
+                                    <p className="text-xs uppercase tracking-[0.3em] text-[var(--secondary-text)]">Get in touch</p>
+                                    <div className="space-y-4 text-sm text-[var(--text)]">
+                            {contactMethods.map(({ label, value, href, icon: Icon }) => (
+                                <div key={label} className="flex items-start gap-3">
+                                    <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                                        <Icon className="h-4 w-4" />
+                                    </div>
+                                    {href ? (
+                                        <a href={href} className="transition-colors duration-200 hover:text-[var(--accent)]">
+                                                        <span className="block text-xs uppercase tracking-[0.2em] text-[var(--secondary-text)]">{label}</span>
+                                            <span>{value}</span>
+                                        </a>
+                                    ) : (
+                                        <div>
+                                                        <span className="block text-xs uppercase tracking-[0.2em] text-[var(--secondary-text)]">{label}</span>
+                                            <span>{value}</span>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                                    <Link
+                                        href="/#contact"
+                                        className="glow-bleed inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-xs uppercase tracking-[0.25em] text-[var(--text)] transition hover:border-white/40 hover:bg-white/20"
+                        >
+                            Start a project
+                        </Link>
+                    </div>
+                </div>
+
+                            <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-[11px] uppercase tracking-[0.28em] text-[var(--secondary-text)] md:flex-row">
+                    <p>© {currentYear} Karim Massaoud. All rights reserved.</p>
+                    <p>Crafted with Next.js · Deployed globally</p>
+                </div>
             </div>
-        </div>
-    </footer>
-);
+        </footer>
+    );
 };
 
 export default Footer;
