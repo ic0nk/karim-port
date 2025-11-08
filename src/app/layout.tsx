@@ -5,7 +5,6 @@ import "@/components/ProfileCard.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Projects from "@/components/ProjectsSection";
-import WelcomeOverlay from "@/components/WelcomeOverlay";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 
@@ -39,7 +38,6 @@ export default function RootLayout({
         `}</Script>
       </head>
       <body className="bg-[var(--background)]">
-        <WelcomeOverlay />
         <Header />
         <main>
           {children}
