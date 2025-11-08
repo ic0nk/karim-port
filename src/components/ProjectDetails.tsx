@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { setupHomeAnimations } from "@/lib/scrollAnimations";
 import DarkVeil from "@/components/DarkVeil";
 import { ChevronLeft, ChevronRight, ExternalLink, Briefcase, Tag, Sparkles, CheckCircle2, Target } from "lucide-react";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 
 type Theme = {
@@ -207,6 +208,9 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
             </div>
           </div>
         </div>
+        <div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
+          <MdOutlineKeyboardArrowDown className="scroll-cue__icon" />
+        </div>
       </section>
 
       {/* Overview */}
@@ -303,7 +307,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
             <div className="col-span-12 lg:col-span-7 lg:pl-4">
               <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
                 <p className="text-xs tracking-wide text-[var(--secondary-text)] mb-1">Overview</p>
-                <h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A Seamless Travel Experience</h3>
+                <h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A SEAMLESS TRAVEL EXPERIENCE</h3>
                 <div className="w-24 h-1 rounded-full bg-[var(--accent)] mt-3 mb-4" />
                 <p className="text-[var(--text)]/90 leading-relaxed mb-4">
                  A modern, user-friendly travel website designed to make discovering new destinations enjoyable and effortless.
@@ -340,9 +344,9 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
           {/* Pull quote */}
           <div className="text-center">
-            <div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-4" />
-            <p className="reveal-el font-primary text-3x9 md:text-6xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">
-              “Make exploring destinations fun and effortless.”
+            <div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-10" />
+            <p className="reveal-el font-primary text-3x9 md:text-5xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">
+              “MAKE EXPLORING DESTINATIONS FUN AND EFFORTLESS.”
             </p>
           </div>
 
@@ -445,7 +449,8 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
             <button
               onClick={handleNextTheme}
               aria-label="Next theme"
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-[var(--Secondary-Background)]/70 hover:bg-[var(--Secondary-Background)] text-[var(--text)] shadow-lg border border-white/10 backdrop-blur"
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full 
+              bg-[var(--Secondary-Background)]/70 hover:bg-[var(--Secondary-Background)] text-[var(--text)] shadow-lg border border-white/10 backdrop-blur"
             >
               <ChevronRight size={28} />
             </button>

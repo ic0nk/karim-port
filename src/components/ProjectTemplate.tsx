@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { ChevronDown } from 'lucide-react';
 
 type Props = {
   title: string;
@@ -10,7 +11,7 @@ type Props = {
 
 export default function ProjectTemplate({ title, subtitle, heroImage, description, children }: Props) {
   return (
-    <section className="reveal-section max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+    <section className="reveal-section relative max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
       {/* Hero */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12">
         <div className="flex flex-col justify-center text-left">
@@ -29,6 +30,10 @@ export default function ProjectTemplate({ title, subtitle, heroImage, descriptio
             </div>
           ) : null}
         </div>
+      </div>
+
+      <div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
+        <ChevronDown className="scroll-cue__icon" />
       </div>
 
       {/* Content */}

@@ -83,7 +83,9 @@ export default function OwenBrycePage() {
 					</Link>
 
 					{/* Down arrow cue */}
-					<ChevronDown className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 w-6 h-6 animate-bounce" />
+					<div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
+						<ChevronDown className="scroll-cue__icon" />
+					</div>
 				</div>
 			</section>
 
@@ -234,7 +236,7 @@ export default function OwenBrycePage() {
 								</div>
 								<div className="lg:col-span-6">
 									<div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
-										<Image src="/assets/Frame 129.png" alt="Instagram preview" fill className="object-cover" />
+										<Image src="" alt="Instagram preview" fill className="object-cover" />
 									</div>
 								</div>
 							</div>

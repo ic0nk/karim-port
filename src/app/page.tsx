@@ -111,11 +111,8 @@ export default function Home() {
           <h1 className="hero-fade">PORTFOLIO</h1>
           <h4 className="portfolio-subtitle hero-fade hero-fade-delay">KARIM MASSAOUD</h4>
         </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-arrow">
-          <MdOutlineKeyboardArrowDown
-            fontSize={45}
-            className="animate-bounce text-[var(--accent)]"
-          />
+        <div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
+          <MdOutlineKeyboardArrowDown className="scroll-cue__icon" size={34} />
         </div>
       </section>
 
@@ -171,7 +168,7 @@ export default function Home() {
                 status="Online"
                 contactText="Contact Me"
                 avatarUrl="/assets/image 4.png"
-                showUserInfo={true}
+                showUserInfo={false}
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() =>

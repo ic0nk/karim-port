@@ -282,11 +282,19 @@ export default function TravelWorldPage() {
               </div>
             </div>
             <div className="col-span-12 lg:col-span-5">
-              <div className="relative group max-w-xl lg:ml-auto">
+              <div className="relative group w-full">
                 <div className="absolute -inset-6 bg-[var(--accent)]/20 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition pointer-events-none" aria-hidden="true" />
                 <div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl pop-on-scroll bg-[var(--background)]">
                   <div className="relative w-full aspect-[16/9]">
-                    <video className="absolute inset-0 h-full w-full object-cover" src="https://videos.pexels.com/video-files/856988/856988-hd_1280_720_25fps.mp4" poster="/assets/Travel World Second Section .png" playsInline muted autoPlay loop preload="metadata" />
+                    <Image 
+                      src="/assets/Travel World Second Section .png"
+                      alt="Beautiful travel destination with bay and boats"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      quality={95}
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    />
                   </div>
                 </div>
               </div>
@@ -301,7 +309,7 @@ export default function TravelWorldPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center">
             <div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-4" />
-            <p className="reveal-el font-primary text-3xl md:text-5xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">“Make exploring destinations fun and effortless.”</p>
+            <p className="reveal-el font-primary text-3xl md:text-5xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">“MAKE EXPLORING DESTINATIONS FUN AND EFFORTLESS.”</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             <div className="pop-on-scroll rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
@@ -323,13 +331,41 @@ export default function TravelWorldPage() {
           </div>
           <div className="grid grid-cols-12 gap-6 mt-12">
             <div className="pop-on-scroll col-span-12 rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/travelworld_laptop_4k_transparent_crisp 1.png" alt="Laptop mockup" width={1600} height={900} className="w-full h-auto" />
+              <div className="relative w-full aspect-[21/9]">
+                <Image 
+                  src="/assets/travelworld_laptop_4k_transparent_crisp 1.png" 
+                  alt="Travel World laptop mockup showcasing the full website design" 
+                  fill
+                  className="object-cover"
+                  quality={95}
+                  sizes="100vw"
+                  priority
+                />
+              </div>
             </div>
             <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel World Second Section .png" alt="Section" width={1200} height={700} className="w-full h-auto" />
+              <div className="relative w-full aspect-[4/3]">
+                <Image 
+                  src="/assets/Travel World Second Section .png" 
+                  alt="Travel destination section design" 
+                  fill
+                  className="object-cover"
+                  quality={95}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </div>
             <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel World Second Section .png" alt="Section Alt" width={1200} height={700} className="w-full h-auto" />
+              <div className="relative w-full aspect-[4/3]">
+                <Image 
+                  src="/assets/Travel World Second Section .png" 
+                  alt="Alternative travel section design" 
+                  fill
+                  className="object-cover"
+                  quality={95}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </div>
           </div>
         </div>
