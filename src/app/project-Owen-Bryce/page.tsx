@@ -106,7 +106,7 @@ export default function OwenBrycePage() {
 						{/* Overview image */}
 						<div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl shadow-lg bg-black/5">
 							<Image
-								src="/assets/Owen bryce4.png"
+								src="/assets/owen bryce4.png"
 								alt="Owen Bryce microphone and lights"
 								fill
 								className="object-cover"

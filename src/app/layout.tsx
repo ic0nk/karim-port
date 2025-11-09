@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Projects from "@/components/ProjectsSection";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import MantisLoader from "@/components/MantisLoader";
 
 
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         `}</Script>
       </head>
       <body className="bg-[var(--background)]">
+        <MantisLoader />
         <Header />
         <main>
           {children}
