@@ -37,15 +37,38 @@ export default function RootLayout({
           })();
         `}</Script>
       </head>
-      <body className="bg-[var(--background)]">
-        <MantisLoader />
-        <Header />
-        <main>
-          {children}
-        </main>
-        <Projects />
-        <Footer />
-        <ScrollToTopButton />
+      <body className="bg-[var(--background)] relative">
+        {/* Decorative blur background elements */}
+        <div className="pointer-events-none fixed inset-0 z-0">
+          {/* Top left accent blur */}
+          <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-[var(--accent)]/20 blur-3xl" />
+          
+          {/* Top right accent blur */}
+          <div className="absolute -right-20 top-[10%] h-96 w-96 rounded-full bg-[var(--accent)]/20 blur-3xl" />
+          
+          {/* Middle left white blur */}
+          <div className="absolute -left-32 top-1/2 h-80 w-80 rounded-full bg-white/8 blur-[140px]" />
+          
+          {/* Middle right accent blur */}
+          <div className="absolute -right-32 top-1/2 h-80 w-80 rounded-full bg-[var(--accent)]/18 blur-3xl" />
+          
+          {/* Bottom left accent blur */}
+          <div className="absolute -left-20 bottom-0 h-96 w-96 rounded-full bg-[var(--accent)]/15 blur-3xl" />
+          
+          {/* Bottom right white blur */}
+          <div className="absolute -right-20 bottom-[5%] h-96 w-96 rounded-full bg-white/10 blur-[140px]" />
+        </div>
+        
+        <div className="relative z-10">
+          <MantisLoader />
+          <Header />
+          <main>
+            {children}
+          </main>
+          <Projects />
+          <Footer />
+          <ScrollToTopButton />
+        </div>
       </body>
     </html>
   );

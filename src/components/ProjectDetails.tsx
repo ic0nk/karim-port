@@ -6,6 +6,7 @@ import { setupHomeAnimations } from "@/lib/scrollAnimations";
 import DarkVeil from "@/components/DarkVeil";
 import { ChevronLeft, ChevronRight, ExternalLink, Briefcase, Tag, Sparkles, CheckCircle2, Target } from "lucide-react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import SectionBackground from "@/components/SectionBackground";
 
 
 type Theme = {
@@ -176,6 +177,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
     <main ref={rootRef} className="relative space-y-16 md:space-y-24">
       {/* Simple hero section – adds Home hero-like hover veil animation */}
       <section className="reveal-section group relative bg-[var(--background)] py-20 md:py-50 min-h-screen w-full overflow-hidden">	
+        <SectionBackground />
         {/* Home-hero DarkVeil animation always visible (no hover dependency) */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-100">
           <DarkVeil

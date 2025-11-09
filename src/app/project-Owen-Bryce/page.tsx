@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronDown, Power, GripVertical, Eye, ArrowRight } from "lucide-react";
 import { useState, useRef } from "react";
 import PageAnimator from "@/components/PageAnimator";
+import SectionBackground from "@/components/SectionBackground";
 
 export default function OwenBrycePage() {
 	const [activeTab, setActiveTab] = useState<"instagram" | "quotes" | "spotify" | "feedbacks">("instagram");
@@ -46,6 +47,7 @@ export default function OwenBrycePage() {
 		<main ref={rootRef} className="min-h-screen bg-[var(--background)]">
 			{/* Hero Section */}
 			<section className="reveal-section relative min-h-[90vh] md:min-h-screen overflow-hidden">
+				<SectionBackground />
 				{/* Background image */}
 						<Image
 							src="/assets/Owne bryce pic1.png"

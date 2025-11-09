@@ -4,6 +4,7 @@ import React, { useLayoutEffect } from 'react';
 import { Eye, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import SectionBackground from './SectionBackground';
 
 // --- Types ---
 type Project = {
@@ -168,6 +169,7 @@ export const ProjectsSection = () => {
 
   return (
     <section id="projects" className="reveal-section py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
+      <SectionBackground />
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header mimicking the provided image */}

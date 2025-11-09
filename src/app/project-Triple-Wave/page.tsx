@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DarkVeil from "@/components/DarkVeil";
 import { ChevronLeft, ChevronRight, ChevronDown, ExternalLink, Briefcase, Tag, Sparkles, CheckCircle2, Target } from "lucide-react";
+import SectionBackground from "@/components/SectionBackground";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -222,6 +223,7 @@ export default function TripleWaveProjectPage() {
 			<main className="relative space-y-16 md:space-y-24">
 				{/* Hero */}
 				<section className="reveal-section group relative bg-[var(--background)] py-20 md:py-50 min-h-screen w-full overflow-hidden">
+					<SectionBackground />
 					<div className="pointer-events-none absolute inset-0 z-0 opacity-100">
 						<DarkVeil
 							hueShift={32}

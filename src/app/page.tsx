@@ -8,6 +8,7 @@ import { IoMdMail } from "react-icons/io";
 import ContactSection from '@/components/ContactSection';
 import PageAnimator from "@/components/PageAnimator";
 import ProfileCard from "@/components/ProfileCard";
+import SectionBackground from "@/components/SectionBackground";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -118,6 +119,7 @@ export default function Home() {
 
       {/* ABOUT SECTION */}
   <section id="about" className="reveal-section relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center overflow-hidden">
+        <SectionBackground />
         <div
           className="text-number absolute top-1/3 right-0 hidden lg:block text-[var(--secondary-text)] transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
           aria-hidden
@@ -182,6 +184,7 @@ export default function Home() {
 
       {/* USER EXPERIENCE SECTION */}
   <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative">
+        <SectionBackground />
         <div className="text-number absolute top-9 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
           03
         </div>
