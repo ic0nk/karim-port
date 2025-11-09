@@ -207,6 +207,8 @@ const Header = () => {
                   <p className="text-xs font-semibold tracking-widest text-[var(--accent)] uppercase opacity-80">Projects</p>
                 </div>
 
+
+
                 {/* All Projects Link - Featured */}
                 <div className="px-3 py-2">
                   <Link
