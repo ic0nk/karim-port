@@ -22,15 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="bg-[var(--background)]">
+    <html lang="en" suppressHydrationWarning className="bg-[var(--background)] dark">
       <head>
         {/* Prevent theme flash: set initial theme class before hydration */}
         <Script id="theme-init" strategy="beforeInteractive">{`
           (() => {
             try {
               const s = localStorage.getItem('theme');
-              const m = window.matchMedia('(prefers-color-scheme: dark)').matches;
-              const t = s || (m ? 'dark' : 'light');
+              const t = s ?? 'dark';
               const el = document.documentElement;
               if (t === 'dark') el.classList.add('dark');
               else el.classList.remove('dark');
