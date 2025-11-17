@@ -46,8 +46,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <div className="relative [perspective:1000px]">
       <div
-        className="tilt-card pop-on-scroll w-full max-w-[500px] h-[480px] md:h-[560px] lg:h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto"
-        style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+        className="tilt-card tilt-card-transform pop-on-scroll w-full max-w-[500px] h-[420px] sm:h-[480px] md:h-[520px] lg:h-[560px] xl:h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto"
       >
       
       {/* 1. Project Image */}
@@ -99,12 +98,12 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           transform translate-y-4"
         >
           {/* Project Name */}
-          <h3 className="text-3xl font-[var(--font-primary)] font-bold mb-2 tracking-tight text-[var(--accent)]" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+          <h3 className="project-card-title text-2xl sm:text-3xl font-[var(--font-primary)] font-bold mb-2 tracking-tight text-[var(--accent)]">
             {name.toUpperCase()}
           </h3>
           
           {/* Description */}
-          <p className="text-sm font-[var(--font-secondary)] font-light leading-relaxed mb-4">
+          <p className="text-xs sm:text-sm font-[var(--font-secondary)] font-light leading-relaxed mb-4">
             {description}
           </p>
 
@@ -166,11 +165,11 @@ export const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" className="reveal-section py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
+    <section id="projects" className="reveal-section py-12 sm:py-16 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header mimicking the provided image */}
-        <div className="flex justify-between items-end mb-16 ">
+        <div className="flex justify-between items-end mb-12 sm:mb-16">
           <div>
             {/* My Projects */}
             <h4 className="mb-2 text-right body-text-b reveal-el">My Projects</h4>
@@ -184,7 +183,7 @@ export const ProjectsSection = () => {
         </div>
         
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />
           ))}

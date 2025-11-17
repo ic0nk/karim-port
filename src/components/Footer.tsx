@@ -62,11 +62,13 @@ const navLinks = [
     { name: 'Contact', href: '/#contact' },
 ];
 
-const IconLink = ({ href, icon: IconComponent }: { href: string; icon: React.ElementType }) => (
+const IconLink = ({ href, icon: IconComponent, label }: { href: string; icon: React.ElementType; label: string }) => (
     <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label={label}
+    title={label}
     // Use a custom hover effect to match the subtle transition feel
     className="text-white mx-3 transition-transform duration-300 hover:scale-110"
     >
@@ -86,18 +88,18 @@ const NavItem: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
 
 return (
     // Outer container uses a dark accent color for the background
-    <footer ref={footerRef} id="site-footer" className="reveal-section bg-[var(--accent)] pt-16 pb-4 font-[var(--font-secondary)]">
+    <footer ref={footerRef} id="site-footer" className="reveal-section bg-[var(--accent)] pt-12 sm:pt-16 pb-4 font-[var(--font-secondary)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Main Content Grid (Social | Nav | Logo) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-6 md:gap-8 mb-8 text-center md:text-left">
+            <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-8 md:gap-8 mb-8 text-center md:text-left">
             
                 {/* Left: Social Icons */}
                 <div className="flex justify-center md:justify-start col-span-1 reveal-el">
-                    <IconLink href="#" icon={FaLinkedin} />
-                    <IconLink href="#" icon={MdLocalPhone} />
-                    <IconLink href="#" icon={FaGithub} />
-                    <IconLink href="#" icon={IoMdMail} />
+                    <IconLink href="https://www.linkedin.com/in/karim-massaoud" icon={FaLinkedin} label="LinkedIn" />
+                    <IconLink href="tel:0616537940" icon={MdLocalPhone} label="Phone" />
+                    <IconLink href="https://github.com/ic0nk" icon={FaGithub} label="GitHub" />
+                    <IconLink href="mailto:karimmassoud668@gmail.com" icon={IoMdMail} label="Email" />
                 </div>
 
                 {/* Center: Navigation Links */}

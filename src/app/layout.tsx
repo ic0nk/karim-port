@@ -14,6 +14,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 export const metadata: Metadata = {
   title: "karim",
   description: "karim's portfolio",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 export default function RootLayout({

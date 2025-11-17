@@ -119,7 +119,7 @@ const Header = () => {
   return (
     <header
       suppressHydrationWarning
-      className={`flex items-center justify-between p-6 px-30 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
+      className={`flex items-center justify-between p-4 sm:p-6 px-4 sm:px-30 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
       ${isWhiteHeader
         ? "text-white bg-gradient-to-b from-white/10 to-transparent border-white/10"
         : "bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10"}
@@ -139,7 +139,7 @@ const Header = () => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex flex-1 justify-end">
-        <ul className="flex gap-10 font-bold relative">
+        <ul className="flex gap-6 lg:gap-10 font-bold relative text-sm lg:text-base">
           <li>
             <Link
               href="/#user-experience"
