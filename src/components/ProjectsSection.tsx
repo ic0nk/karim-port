@@ -64,40 +64,41 @@ const ProjectCard: React.FC<{ project: Project; priority?: boolean }> = ({ proje
         />
       </div>
 
-      {/* 2. Dark Overlay */}
+      {/* 2. Dark Overlay - always visible on mobile, hover on desktop */}
       <div
-        className="absolute inset-0 z-10 transition-colors duration-500 ease-in-out bg-black/0 group-hover:bg-black/60"
+        className="absolute inset-0 z-10 transition-colors duration-500 ease-in-out bg-black/50 md:bg-black/0 md:group-hover:bg-black/60"
       />
       
-      {/* 3. Non-Hover Content */}
+      {/* 3. Non-Hover Content - hidden on mobile, visible on desktop until hover */}
       <Link
         href={detailsHref}
-        className="absolute bottom-5 right-5 z-20 text-white font-medium text-sm transition-opacity duration-300 group-hover:opacity-0"
+        className="hidden md:block absolute bottom-5 right-5 z-20 text-white font-medium text-sm transition-opacity duration-300 group-hover:opacity-0"
       >
         SEE MORE <ArrowRight className="inline w-4 h-4 ml-1 -translate-y-[1px]" />
       </Link>
 
-      {/* 4. Hover Content */}
-      <div className="absolute inset-0 z-20 flex flex-col justify-between p-8 text-white">
+      {/* 4. Hover Content - always visible on mobile, hover on desktop */}
+      <div className="absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-8 text-white">
         
-        {/* VIEW LIVE Link */}
+        {/* VIEW LIVE Link - always visible on mobile */}
         <a
           href={liveLink}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center space-x-2 border border-white px-4 py-2 rounded-full w-fit
-                     opacity-0 invisible transition-all duration-300 delay-100 ease-out 
-                     group-hover:opacity-100 group-hover:visible hover:bg-white/10"
+                     opacity-100 visible md:opacity-0 md:invisible transition-all duration-300 delay-100 ease-out 
+                     md:group-hover:opacity-100 md:group-hover:visible hover:bg-white/10"
         >
           <Eye className="w-4 h-4" />
           <span className="text-xs font-semibold tracking-wider">VIEW LIVE</span>
         </a>
 
-        {/* Bottom Content */}
+        {/* Bottom Content - always visible on mobile */}
         <div className="
-          opacity-0 invisible transition-all duration-300 delay-150 ease-out 
-          group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-          transform translate-y-4"
+          opacity-100 visible translate-y-0
+          md:opacity-0 md:invisible md:translate-y-4
+          transition-all duration-300 delay-150 ease-out 
+          md:group-hover:opacity-100 md:group-hover:visible md:group-hover:translate-y-0"
         >
           {/* Project Name */}
           <h3 className="project-card-title text-2xl sm:text-3xl font-[var(--font-primary)] font-bold mb-2 tracking-tight text-[var(--accent)]">
