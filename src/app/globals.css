@@ -10,7 +10,8 @@ html {
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   /* Hide native scrollbars globally while preserving scroll */
   -ms-overflow-style: none; /* IE and old Edge */
-  scrollbar-width: none;    /* Firefox */
+  scrollbar-width: none;    /* Firefox, Chrome 121+, Edge 121+ */
+  /* Note: Safari and older browsers will show default scrollbars */
 }
 
 /* WebKit scrollbar removal (Chrome/Safari/Edge Chromium) */
@@ -117,7 +118,8 @@ font-family: var(--font-secondary);
 /* Utility: hide scrollbar on specific overflow containers if ever needed */
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and old Edge */
-  scrollbar-width: none;    /* Firefox */
+  scrollbar-width: none;    /* Firefox, Chrome 121+, Edge 121+ */
+  /* Note: Safari and older browsers will show default scrollbars */
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;            /* WebKit */
@@ -609,6 +611,17 @@ color: var(--accent);
 .icon-link:hover {
   color: var(--accent-hover);
   transform: translateY(-5px);
+}
+
+/* Project card title styling */
+.project-card-title {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Tilt card transform style */
+.tilt-card-transform {
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* Mobile Menu Animations */

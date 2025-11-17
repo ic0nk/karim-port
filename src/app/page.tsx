@@ -94,7 +94,7 @@ export default function Home() {
 
   return (
     <PageAnimator>
-      <main ref={rootRef} >
+      <main ref={rootRef}>
       {/* HERO SECTION */}
   <section ref={heroRef} id="hero" className="group relative flex flex-col justify-center h-lvh overflow-visible">
         {/* Hover veil like before – fades in on hover */}
@@ -110,24 +110,26 @@ export default function Home() {
           />
         </div>
         <div className="text-center relative z-10">
-          <h1 className="hero-fade" style={{ position: 'relative' }}>PORTFOLIO</h1>
-          <h4 className="portfolio-subtitle hero-fade hero-fade-delay" style={{ position: 'relative' }}>KARIM MASSAOUD</h4>
+          <h1 className="hero-fade">PORTFOLIO</h1>
+          <h4 className="portfolio-subtitle hero-fade hero-fade-delay">KARIM MASSAOUD</h4>
         </div>
-        <div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
-          <MdOutlineKeyboardArrowDown className="scroll-cue__icon" size={34} />
+        <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-arrow">
+          <MdOutlineKeyboardArrowDown
+            fontSize={45}
+            className="animate-bounce text-[var(--accent)]"
+          />
         </div>
       </section>
 
       {/* ABOUT SECTION */}
-  <section id="about" className="reveal-section relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center overflow-hidden">
-        <SectionBackground />
+  <section id="about" className="reveal-section relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center overflow-hidden">
         <div
           className="text-number absolute top-1/3 right-0 hidden lg:block text-[var(--secondary-text)] transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
           aria-hidden
         >
           02
         </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
           <div>
             <div>
               <h4 className="mb-2 text-right body-text-b reveal-el">About</h4>
@@ -135,12 +137,12 @@ export default function Home() {
               <h3 className="font-primary mb-6 pop-on-scroll">CREATIVE DEVELOPMENT</h3>
             </div>
             <div className="min-h-[150px]">
-              <p className="text-base text-[var(--hero-about-text)] mb-4 align-middle pop-on-scroll">
+              <p className="text-base sm:text-lg text-[var(--hero-about-text)] mb-4 align-middle pop-on-scroll leading-relaxed">
                 I'm Karim Massaoud, a media and design student with a strong focus on front-end development. I enjoy creating clean, responsive, and visually engaging digital experiences that combine creativity with functionality. <br />
                 My goal is to grow into a professional front-end developer, turning ideas into impactful designs that connect with people. <br />
               </p>
             </div>
-            <div className="flex items-center space-x-6 justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center sm:space-x-6 space-y-4 sm:space-y-0 sm:justify-between">
               <div className="flex gap-6">
                 <a href="tel:0616537940" className="text-[var(--accent)] hover:text-btn-primary icon-link" aria-label="Call me">
                   <MdLocalPhone size={24} />
@@ -184,26 +186,25 @@ export default function Home() {
       </section>
 
       {/* USER EXPERIENCE SECTION */}
-  <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative">
-        <SectionBackground />
-        <div className="text-number absolute top-9 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
+      <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="text-number absolute top-9 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl hidden md:block">
           03
         </div>
         <div className="max-w-5xl mx-auto">
           <div className="text-right mb-6">
             <h4 className='body-text-b'>User Experience</h4>
             <div className="h-px bg-[var(--secondary-text)] ml-auto max-w-[700px]" />
-            <h3 className="text-4xl text-left font-primary mb-12 max-w-[700px] w-full ml-auto reveal-el">THE HUMAN SIDE OF DIGITAL DESIGN</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl text-left font-primary mb-8 sm:mb-12 max-w-[700px] w-full ml-auto reveal-el">THE HUMAN SIDE OF DIGITAL DESIGN</h3>
           </div>
           <div>
             {experienceData.map((item) => (
-              <div key={item.id} className="ux-item pop-on-scroll border-b border-[var(--secondary-text)] py-4 transition-all duration-300 ease-in-out">
+              <div key={item.id} className="ux-item pop-on-scroll border-b border-[var(--secondary-text)] py-3 sm:py-4 transition-all duration-300 ease-in-out">
                 <div className="flex justify-between items-start cursor-pointer" onClick={() => setOpenId(openId === item.id ? null : item.id)}>
                   <div className="flex items-start">
-                    <span className="text-[var(--secondary-text)] mr-4 min-w-[20px]">{`0${item.id}`}</span>
+                    <span className="text-[var(--secondary-text)] mr-3 sm:mr-4 min-w-[20px] text-sm sm:text-base">{`0${item.id}`}</span>
                     <div>
-                      <h3 className="text-lg text-[var(--text)] body-text-b">{item.title}</h3>
-                      <p className="text-[var(--secondary-text)] text-sm mt-1">{item.description}</p>
+                      <h3 className="text-base sm:text-lg text-[var(--text)] body-text-b">{item.title}</h3>
+                      <p className="text-[var(--secondary-text)] text-xs sm:text-sm mt-1">{item.description}</p>
                     </div>
                   </div>
                   <span className="text-[var(--text)] text-2xl transition-transform duration-300">

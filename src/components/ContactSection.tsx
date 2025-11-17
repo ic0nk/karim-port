@@ -89,9 +89,8 @@ const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
 };
 
 return (
-    <section className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
-        <SectionBackground />
-        <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
+    <section className="reveal-section py-12 sm:py-16 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
+        <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl hidden md:block">
             04
         </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,12 +105,12 @@ return (
         </div>
 
         {/* --- Main Content Grid --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-start">
         
             {/* Left Column: Logo and Social Links */}
-            <div className="flex flex-col items-center justify-center justify-self-center self-center pt-10 pb-16 lg:pb-0 lg:pt-0 reveal-el">
+            <div className="flex flex-col items-center justify-center justify-self-center self-center pt-6 sm:pt-10 pb-12 sm:pb-16 lg:pb-0 lg:pt-0 reveal-el">
                 {/* Logo/Monogram: Uses h1 style, accent color */}
-                <Image src="/assets/K.svg" alt="Logo" width={100} height={100} className='mb-8'/>
+                <Image src="/assets/K.svg" alt="Logo" width={100} height={100} className='mb-6 sm:mb-8'/>
                 
                 {/* Social Icons */}
                 <div className="flex justify-center mb-8 pop-on-scroll">
@@ -131,7 +130,7 @@ return (
             <div className="w-full reveal-el">
                 
                 {/* Title: Uses h2 style, secondary-text color */}
-                <h3 className="text-4xl text-left font-primary mb-12 max-w-[565px] w-full ml-auto pop-on-scroll">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl text-left font-primary mb-8 sm:mb-12 max-w-[565px] w-full ml-auto pop-on-scroll">
                 GET IN TOUCH FOR PROJECTS AND PARTNERSHIPS
                 </h3>
 
@@ -143,7 +142,7 @@ return (
                     type="text"
                     name="name"
                     placeholder="Your Name"
-                    className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
+                    className="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
                     required
                     />
                 </FormField>
@@ -154,7 +153,7 @@ return (
                     type="email"
                     name="email"
                     placeholder="Your Email"
-                    className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
+                    className="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
                     required
                     />
                 </FormField>
@@ -165,7 +164,7 @@ return (
                     type="tel"
                     name="phone"
                     placeholder="Your Number"
-                    className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
+                    className="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r"
                     />
                 </FormField>
                 
@@ -175,7 +174,7 @@ return (
                     name="message"
                     placeholder="Tell me all what you want...."
                     rows={6}
-                    className="w-full py-3 px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r resize-none"
+                    className="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-[var(--radius-sm)] border-none focus:ring-2 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text)] body-text-r resize-none"
                     required
                     />
                 </FormField>

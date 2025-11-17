@@ -253,6 +253,7 @@ html:not(.dark) {
   align-items: center;
   justify-content: space-between;
   background: var(--pc-panel-bg);
+  -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   border: 1px solid var(--pc-panel-border);
   border-radius: 15px;
@@ -313,6 +314,7 @@ html:not(.dark) {
   color: var(--pc-accent);
   cursor: pointer;
   transition: all 0.2s ease;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   background-color: transparent;
 }
@@ -364,8 +366,8 @@ html:not(.dark) {
   background-image: linear-gradient(to bottom, var(--pc-title-grad-start), var(--pc-title-grad-end));
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .pc-details p {
@@ -383,8 +385,8 @@ html:not(.dark) {
   background-image: linear-gradient(to bottom, var(--pc-subtitle-grad-start), var(--pc-subtitle-grad-end));
   background-size: 1em 1.5em;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
 }
 
 /* Light mode: match dark mode title/subtitle styling */
@@ -393,8 +395,8 @@ html:not(.dark) .pc-details p {
   color: #ffffff;
   background-image: none !important;
   -webkit-text-fill-color: currentColor !important;
-  background-clip: border-box !important;
   -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
 }
 
 /* Dark mode: also use solid brand color for title/subtitle */
@@ -403,8 +405,8 @@ html:not(.dark) .pc-details p {
   color: #ffffff;
   background-image: none !important;
   -webkit-text-fill-color: currentColor !important;
-  background-clip: border-box !important;
   -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
 }
 
 /* Dark mode: make handle and status white */

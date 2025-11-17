@@ -56,8 +56,28 @@ Open `http://localhost:3000` to browse the portfolio. Pages in `src/app/` update
 
 Contact form submissions persist to `src/data/contacts.json`. When deploying to a serverless platform, ensure the runtime supports Node.js file operations or switch to a database/storage service. Project copy, imagery, and section content live inside the `src/app` and `src/components` directories for easy iteration.
 
+## Deployment
+
+### Railway (Recommended)
+
+This project is configured for one-click deployment on Railway:
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/ic0nk/karim-port)
+
+Or manually:
+
+1. Push your code to GitHub
+2. Connect your repo to Railway
+3. Railway auto-detects Next.js and deploys
+
+See [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md) for detailed instructions.
+
+### Other Platforms
+
+- **Vercel**: `vercel --prod`
+- **Netlify**: Configure build command as `npm run build` and publish directory as `.next`
+- **Docker**: Use the included Dockerfile (if added)
+
 ## Contributing & Feedback
 
 Feel free to open an issue or submit a pull request on GitHub if you spot bugs, want to propose improvements, or have ideas for new sections. Feedback is always welcome.
-
-

@@ -47,8 +47,7 @@ const ProjectCard: React.FC<{ project: Project; priority?: boolean }> = ({ proje
   return (
     <div className="relative [perspective:1000px]">
       <div
-        className="tilt-card pop-on-scroll w-full max-w-[500px] h-[480px] md:h-[560px] lg:h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto"
-        style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+        className="tilt-card tilt-card-transform pop-on-scroll w-full max-w-[500px] h-[420px] sm:h-[480px] md:h-[520px] lg:h-[560px] xl:h-[600px] bg-[var(--Secondary-Background)] shadow-xl rounded-xl overflow-hidden relative group cursor-pointer mx-auto"
       >
       
       {/* 1. Project Image */}
@@ -65,48 +64,49 @@ const ProjectCard: React.FC<{ project: Project; priority?: boolean }> = ({ proje
         />
       </div>
 
-      {/* 2. Dark Overlay */}
+      {/* 2. Dark Overlay - always visible on mobile, hover on desktop */}
       <div
-        className="absolute inset-0 z-10 transition-colors duration-500 ease-in-out bg-black/0 group-hover:bg-black/60"
+        className="absolute inset-0 z-10 transition-colors duration-500 ease-in-out bg-black/50 md:bg-black/0 md:group-hover:bg-black/60"
       />
       
-      {/* 3. Non-Hover Content */}
+      {/* 3. Non-Hover Content - hidden on mobile, visible on desktop until hover */}
       <Link
         href={detailsHref}
-        className="absolute bottom-5 right-5 z-20 text-white font-medium text-sm transition-opacity duration-300 group-hover:opacity-0"
+        className="hidden md:block absolute bottom-5 right-5 z-20 text-white font-medium text-sm transition-opacity duration-300 group-hover:opacity-0"
       >
         SEE MORE <ArrowRight className="inline w-4 h-4 ml-1 -translate-y-[1px]" />
       </Link>
 
-      {/* 4. Hover Content */}
-      <div className="absolute inset-0 z-20 flex flex-col justify-between p-8 text-white">
+      {/* 4. Hover Content - always visible on mobile, hover on desktop */}
+      <div className="absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-8 text-white">
         
-        {/* VIEW LIVE Link */}
+        {/* VIEW LIVE Link - always visible on mobile */}
         <a
           href={liveLink}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center space-x-2 border border-white px-4 py-2 rounded-full w-fit
-                     opacity-0 invisible transition-all duration-300 delay-100 ease-out 
-                     group-hover:opacity-100 group-hover:visible hover:bg-white/10"
+                     opacity-100 visible md:opacity-0 md:invisible transition-all duration-300 delay-100 ease-out 
+                     md:group-hover:opacity-100 md:group-hover:visible hover:bg-white/10"
         >
           <Eye className="w-4 h-4" />
           <span className="text-xs font-semibold tracking-wider">VIEW LIVE</span>
         </a>
 
-        {/* Bottom Content */}
+        {/* Bottom Content - always visible on mobile */}
         <div className="
-          opacity-0 invisible transition-all duration-300 delay-150 ease-out 
-          group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-          transform translate-y-4"
+          opacity-100 visible translate-y-0
+          md:opacity-0 md:invisible md:translate-y-4
+          transition-all duration-300 delay-150 ease-out 
+          md:group-hover:opacity-100 md:group-hover:visible md:group-hover:translate-y-0"
         >
           {/* Project Name */}
-          <h3 className="text-3xl font-[var(--font-primary)] font-bold mb-2 tracking-tight text-[var(--accent)]" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+          <h3 className="project-card-title text-2xl sm:text-3xl font-[var(--font-primary)] font-bold mb-2 tracking-tight text-[var(--accent)]">
             {name.toUpperCase()}
           </h3>
           
           {/* Description */}
-          <p className="text-sm font-[var(--font-secondary)] font-light leading-relaxed mb-4">
+          <p className="text-xs sm:text-sm font-[var(--font-secondary)] font-light leading-relaxed mb-4">
             {description}
           </p>
 
@@ -168,12 +168,11 @@ export const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" className="reveal-section py-20 md:py-10 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
-      <SectionBackground />
+    <section id="projects" className="reveal-section py-12 sm:py-16 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header mimicking the provided image */}
-        <div className="flex justify-between items-end mb-16 ">
+        <div className="flex justify-between items-end mb-12 sm:mb-16">
           <div>
             {/* My Projects */}
             <h4 className="mb-2 text-right body-text-b reveal-el">My Projects</h4>
@@ -187,7 +186,7 @@ export const ProjectsSection = () => {
         </div>
         
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {projects.map((project, index) => (
             <ProjectCard key={project.name} project={project} priority={index === 0} />
           ))}

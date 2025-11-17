@@ -61,7 +61,7 @@ export const Footer: FC = () => {
                 id="site-footer"
                 className="relative overflow-hidden bg-gradient-to-b from-[var(--Secondary-Background)]/95 via-[var(--footer-secondary)]/90 to-[var(--background)] py-16 text-[var(--text)] font-secondary"
             >
-                <div className="pointer-events-none absolute inset-0">
+                    <div className="pointer-events-none absolute inset-0">
                     <div className="absolute -right-10 top-[-6rem] h-64 w-64 rounded-full bg-[var(--accent)]/25 blur-3xl" />
                     <div className="absolute bottom-[-8rem] left-[-6rem] h-72 w-72 rounded-full bg-white/10 blur-[140px]" />
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
