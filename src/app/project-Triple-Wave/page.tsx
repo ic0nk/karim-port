@@ -5,7 +5,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DarkVeil from "@/components/DarkVeil";
-import { ChevronLeft, ChevronRight, ExternalLink, Briefcase, Tag, Sparkles, CheckCircle2, Target } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, ExternalLink, Briefcase, Tag, Sparkles, CheckCircle2, Target } from "lucide-react";
+import SectionBackground from "@/components/SectionBackground";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,26 +15,26 @@ type Theme = { id: number; title: string; images: string[] };
 const themes: Theme[] = [
 	{
 		id: 1,
-		title: "Luxury Beach Getaways",
+		title: "Housing",
 		images: [
-			"/assets/travelworld_laptop_4k_transparent_crisp 1.png",
-			"/assets/Travel World Second Section .png",
+			"/assets/Room2.avif",
+			"/assets/room3.jpg",
 		],
 	},
 	{
 		id: 2,
-		title: "Mountain Adventures",
+		title: "Transportation",
 		images: [
-			"/assets/Travel World Second Section .png",
-			"/assets/travelworld_laptop_4k_transparent_crisp 1.png",
+			"/assets/OV chip card.png",
+			"/assets/Bike triple wave.webp",
 		],
 	},
 	{
 		id: 3,
-		title: "Luxury Cruise Experiences",
+		title: "Local Events",
 		images: [
-			"/assets/travelworld_laptop_4k_transparent_crisp 1.png",
-			"/assets/Travel World Second Section .png",
+			"/assets/Local event 1 .png",
+			"/assets/Local Event 2.webp",
 		],
 	},
 ];
@@ -75,7 +76,7 @@ export default function TripleWaveProjectPage() {
 		const id = window.setInterval(() => {
 			setCurrentThemeIndex((i) => (i + 1) % themes.length);
 			setCurrentImageIndex(0);
-		}, 5000);
+		}, 2000);
 		return () => window.clearInterval(id);
 	}, [isPaused]);
 
@@ -222,6 +223,7 @@ export default function TripleWaveProjectPage() {
 			<main className="relative space-y-16 md:space-y-24">
 				{/* Hero */}
 				<section className="reveal-section group relative bg-[var(--background)] py-20 md:py-50 min-h-screen w-full overflow-hidden">
+					<SectionBackground />
 					<div className="pointer-events-none absolute inset-0 z-0 opacity-100">
 						<DarkVeil
 							hueShift={32}
@@ -258,6 +260,9 @@ export default function TripleWaveProjectPage() {
 																</div>
 															</div>
 						</div>
+					</div>
+					<div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
+						<ChevronDown className="scroll-cue__icon" />
 					</div>
 				</section>
 
@@ -328,13 +333,21 @@ export default function TripleWaveProjectPage() {
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 							<div className="col-span-12 lg:col-span-5 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5 border border-white/10">
-								<Image src="/assets/Eindhoven Triple Wave .png"
-								 alt="Travel World" width={100} height={300} className="w-full h-auto max-h-150 object-cover" />
+								<Image 
+									src="/assets/Eindhoven Triple Wave .png"
+									alt="Triple Wave Eindhoven" 
+									width={1200} 
+									height={800} 
+									className="w-full h-auto max-h-150 object-cover"
+									quality={95}
+									priority
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
+								/>
 							</div>
 							<div className="col-span-12 lg:col-span-7 lg:pl-4">
 								<div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
 									<p className="text-xs tracking-wide text-[var(--secondary-text)] mb-1">Project Summary</p>
-									<h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A friendly travel experience</h3>
+									<h3 className="font-primary text-[var(--text)] text-3xl md:text-3xl leading-tight">MODERN EINDHOVEN EXPERIENCE</h3>
 									<div className="w-24 h-1 rounded-full bg-[var(--accent)] mt-3 mb-4" />
 									<p className="text-[var(--text)]/90 leading-relaxed mb-4">
 										A bold, modern website for Triple Wave that makes exploring services and content feel smooth and intuitive.
@@ -346,11 +359,12 @@ export default function TripleWaveProjectPage() {
 									</ul>
 									<div className="mt-5">
 										<a
-											href="https://travel-website-complete-w0th.onrender.com/index.html"
+											href="https://triple-wave.netlify.app/"
 											target="_blank"
 											rel="noopener noreferrer"
 											className="inline-flex items-center gap-2 bg-[var(--accent)] text-white px-5 py-2.5 rounded-md font-semibold hover:bg-[var(--accent-hover)] transition shadow-md"
 										>
+			
 											<ExternalLink size={16} />
 											<span>Open Live Demo</span>
 										</a>
@@ -366,8 +380,9 @@ export default function TripleWaveProjectPage() {
 					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-5 -rotate-90 select-none pointer-events-none">04</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 						<div className="text-center">
-							<div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-4" />
-							<p className="reveal-el font-primary text-3xl md:text-5xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">“Make exploring destinations fun and effortless.”</p>
+							<div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-10" />
+							<p className="reveal-el font-primary text-3xl md:text-5xl leading-tight
+							 tracking-wide text-[var(--text)] max-w-4xl mx-auto">“MAKE EXPLORING TRIPLE WAVE’S WORLD SMOOTH AND INSPIRING.”</p>
 						</div>
 
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
@@ -377,9 +392,9 @@ export default function TripleWaveProjectPage() {
 									<h4 className="font-primary text-lg text-[var(--text)]">What I did</h4>
 								</div>
 								<ul className="space-y-2 text-sm text-[var(--secondary-text)]">
-									<li>Designed reusable destination cards with clear hierarchy.</li>
-									<li>Structured special offers with strong visual focus.</li>
-									<li>Clear CTAs and consistent spacing rhythm.</li>
+									<li>Designed a clean, responsive layout with flowing wave elements.</li>
+									<li>Built reusable sections for services, projects, and contact details.</li>
+									<li>Focused on intuitive navigation and strong visual consistency.</li>
 								</ul>
 							</div>
 							<div className="pop-on-scroll rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
@@ -388,9 +403,9 @@ export default function TripleWaveProjectPage() {
 									<h4 className="font-primary text-lg text-[var(--text)]">Focus</h4>
 								</div>
 								<ul className="space-y-2 text-sm text-[var(--secondary-text)]">
-									<li>Editorial layout with alternating bands.</li>
-									<li>Better readability in both light and dark mode.</li>
-									<li>Soft motion with no hydration issues.</li>
+									<li>Modern aesthetic with soft wave animations.</li>
+									<li>Balanced readability across light and dark modes.</li>
+									<li>Seamless user flow with engaging transitions and clarity.</li>
 								</ul>
 							</div>
 						</div>
@@ -401,27 +416,37 @@ export default function TripleWaveProjectPage() {
 								<div className="relative w-full aspect-[16/9]">
 									{/* Screen image clipped to the laptop display */}
 									<Image
-										src="/assets/Eindhoven Project Background 2.jpg"
+										src="/assets/Triple Wvee.jpg"
 										alt="Triple Wave screenshot"
 										fill
-										className="object-cover"
-										sizes="100vw"
-										style={{ top: "12.8%", left: "11.8%", right: "11.8%", bottom: "32.5%" }}
-									/>
-									<Image
-										src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
-										alt="Laptop frame"
-										fill
-										className="object-contain pointer-events-none"
-										sizes="100vw"
+										className="object-center object-cover"
+										sizes="250vw"
+										
 									/>
 								</div>
 							</div>
 							<div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-								<Image src="/assets/Travel World Second Section .png" alt="Section" width={1200} height={700} className="w-full h-auto" />
+								<div className="relative w-full aspect-[4/3]">
+									<Image
+										src="/assets/Triple Wave2.jpg"
+										alt="Triple Wave section"
+										fill
+										className="object-center object-cover"
+										sizes="(max-width: 768px) 200vw, 100vw"
+									/>
+								</div>
 							</div>
 							<div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-								<Image src="/assets/Travel World Second Section .png" alt="Section Alt" width={1200} height={700} className="w-full h-auto" />
+								<div className="relative w-full aspect-[4/3]">
+									<Image
+										src="/assets/Room2.avif"
+										alt="Triple Wave interior"
+										fill
+										quality={95}
+										className="object-cover"
+										sizes="(max-width: 768px) 200vw, 100vw"
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -431,9 +456,9 @@ export default function TripleWaveProjectPage() {
 				<section className="reveal-section relative w-full py-16 md:py-20">
 					<div className="hidden lg:block text-number text-9x1 text-[var(--secondary-text)] absolute -right-0 top-0 -rotate-90 select-none pointer-events-none">05</div>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<p className="reveal-el text-[11px] tracking-[0.18em] text-[var(--secondary-text)] uppercase mb-2">Curated journeys</p>
+						<p className="reveal-el text-[11px] tracking-[0.18em] text-[var(--secondary-text)] uppercase mb-2">EXPLORE EINDHOVEN</p>
 						<div className="reveal-el w-24 h-1 rounded-full bg-[var(--accent)] mt-1 mb-1" />
-						<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8 reveal-el">TRIP THEMES</h2>
+						<h2 className="text-[var(--text)] font-primary text-4xl md:text-5xl mb-8 reveal-el">CITY VIBES</h2>
 
 						<div
 							className="relative flex items-center justify-center gap-8"
@@ -452,7 +477,8 @@ export default function TripleWaveProjectPage() {
 							</button>
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
-								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
+								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl ring-1 
+								ring-black/5 border border-white/10 bg-[var(--background)]">
 									<Image
 										key={`${currentTheme.id}-a`}
 										src={currentImage}
@@ -462,7 +488,8 @@ export default function TripleWaveProjectPage() {
 										sizes="(max-width: 768px) 100vw, 50vw"
 									/>
 								</div>
-								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
+								<div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl ring-1 
+								ring-black/5 border border-white/10 bg-[var(--background)]">
 									<Image
 										key={`${currentTheme.id}-b`}
 										src={currentTheme.images[(currentImageIndex + 1) % currentTheme.images.length]}
@@ -477,11 +504,20 @@ export default function TripleWaveProjectPage() {
 							<button
 								onClick={handleNextTheme}
 								aria-label="Next theme"
-								className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-[var(--Secondary-Background)]/70 hover:bg-[var(--Secondary-Background)] text-[var(--text)] shadow-lg border border-white/10 backdrop-blur"
+								className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full 
+								bg-[var(--Secondary-Background)]/70 hover:bg-[var(--Secondary-Background)]
+								text-[var(--text)] shadow-lg border border-white/10 backdrop-blur"
 							>
 								<ChevronRight size={28} />
 							</button>
 						</div>
+
+						<h3 className="mt-10 text-center font-primary text-3xl md:text-4xl tracking-wide text-[var(--text)]">
+							DISCOVER THE CITY'S ENERGY
+						</h3>
+						<p className="mt-3 text-center text-sm md:text-base text-[var(--secondary-text)] max-w-3xl mx-auto">
+							Swipe through vibrant neighborhoods, iconic landmarks, and hidden gems that give Eindhoven its character.
+						</p>
 
 						<p className="text-center text-sm text-[var(--secondary-text)] mt-5">{currentTheme.title}</p>
 						<div className="flex items-center justify-center gap-2 mt-3">
@@ -498,44 +534,6 @@ export default function TripleWaveProjectPage() {
 					</div>
 				</section>
 
-				{/* Special offers */}
-				<section className="reveal-section relative w-full bg-[var(--Secondary-Background)] py-16 md:py-20">
-					<div className="hidden lg:block text-number text-6xl text-[var(--secondary-text)] absolute left-0 top-6 -rotate-90 select-none pointer-events-none">06</div>
-					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<p className="reveal-el text-sm text-[var(--secondary-text)] mb-4">Take advantage of our limited-time deals and save on your next adventure.</p>
-						<div className="reveal-el w-24 h-1 rounded-full bg-[var(--accent)] mb-6" />
-						<h2 className="reveal-el text-[var(--text)] font-primary text-4xl md:text-5xl mb-8">SPECIAL OFFERS</h2>
-
-						<div className="reveal-el rounded-3xl bg-[var(--background)] border border-black/5 dark:border-white/10 shadow-xl p-6 md:p-8">
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-								<div className="pop-on-scroll group rounded-2xl bg-white dark:bg-[var(--Secondary-Background)] text-[var(--foreground)] border border-black/5 dark:border-white/10 shadow-md p-5 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-									<span className="absolute -top-3 right-4 bg-[#e25b45] text-white text-xs font-bold px-2 py-1 rounded-md shadow">Save 25%</span>
-									<h3 className="font-semibold text-[var(--text)] text-xl">Summer Escape to Bali</h3>
-									<p className="text-[var(--secondary-text)] text-sm mt-2">7 nights at a luxury beachfront resort with daily breakfast and transfers.</p>
-									<div className="mt-4 text-sm"><span className="line-through opacity-70 mr-2">$1,199</span><span className="font-bold">$899</span></div>
-									<button className="mt-4 inline-flex items-center gap-2 text-[var(--accent)] border border-[var(--accent)]/40 px-3 py-1.5 rounded-md hover:bg-[var(--accent)] hover:text-white transition">Book Now</button>
-								</div>
-
-								<div className="pop-on-scroll group rounded-2xl bg-white dark:bg-[var(--Secondary-Background)] text-[var(--foreground)] border border-black/5 dark:border-white/10 shadow-md p-5 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-									<span className="absolute -top-3 right-4 bg-[#e25b45] text-white text-xs font-bold px-2 py-1 rounded-md shadow">Save 20%</span>
-									<h3 className="font-semibold text-[var(--text)] text-xl">Romantic Paris Getaway</h3>
-									<p className="text-[var(--secondary-text)] text-sm mt-2">5 nights near the Eiffel Tower with Seine cruise and museum passes.</p>
-									<div className="mt-4 text-sm"><span className="line-through opacity-70 mr-2">$1,349</span><span className="font-bold">$1,079</span></div>
-									<button className="mt-4 inline-flex items-center gap-2 text-[var(--accent)] border border-[var(--accent)]/40 px-3 py-1.5 rounded-md hover:bg-[var(--accent)] hover:text-white transition">Book Now</button>
-								</div>
-
-								<div className="pop-on-scroll group rounded-2xl bg-white dark:bg-[var(--Secondary-Background)] text-[var(--foreground)] border border-black/5 dark:border-white/10 shadow-md p-5 relative transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
-									<span className="absolute -top-3 right-4 bg-[#e25b45] text-white text-xs font-bold px-2 py-1 rounded-md shadow">Save 30%</span>
-									<h3 className="font-semibold text-[var(--text)] text-xl">Greek Island Hopping</h3>
-									<p className="text-[var(--secondary-text)] text-sm mt-2">10-day adventure through the Cyclades with transfers and guided tours.</p>
-									<div className="mt-4 text-sm"><span className="line-through opacity-70 mr-2">$1,899</span><span className="font-bold">$1,329</span></div>
-									<button className="mt-4 inline-flex items-center gap-2 text-[var(--accent)] border border-[var(--accent)]/40 px-3 py-1.5 rounded-md hover:bg-[var(--accent)] hover:text-white transition">Book Now</button>
-								</div>
-							</div>
-							<p className="text-[var(--secondary-text)] text-sm mt-4">Limited-time deals to save on your next adventure.</p>
-						</div>
-					</div>
-				</section>
 
 				{/* CTA */}
 				<section className="reveal-section relative w-full py-16 md:py-20">
@@ -547,7 +545,7 @@ export default function TripleWaveProjectPage() {
 
 						<div className="max-w-3xl md:max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-stretch">
 							<a
-								href="https://travel-website-complete-w0th.onrender.com/index.html"
+								href="https://triple-wave.netlify.app/"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="pop-on-scroll ticket-button group relative rounded-xl bg-[var(--accent)] text-white shadow-lg ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-[2px] w-full"
@@ -567,7 +565,7 @@ export default function TripleWaveProjectPage() {
 							</a>
 
 							<a
-								href="https://www.figma.com/design/rzN9N9qsHKqxYUwQpsEwfn/Untitled?node-id=0-1&p=f&t=aGmk5l4FXR8dXmtn-0"
+								href="https://www.figma.com/design/q9bDKW2cMNRxMIYQSlBnXP/Eindhoven-Project?node-id=0-1&p=f&t=nKN6wv6YFlZYCyO7-0"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="pop-on-scroll ticket-button group relative rounded-xl bg-[var(--accent)] text-white shadow-lg ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-[2px] w-full"

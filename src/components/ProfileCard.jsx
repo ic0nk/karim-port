@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import Image from "next/image";
 
 /**
  * @typedef {Object} ProfileCardProps
@@ -281,14 +282,17 @@ const ProfileCardComponent = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <img
+            <Image
               className="avatar"
               src={avatarUrl}
               alt={`${name || 'User'} avatar`}
-              loading="lazy"
-              onError={e => {
-                const target = e.target;
-                target.style.display = 'none';
+              fill
+              priority
+              quality={95}
+              sizes="(max-width: 768px) 75vw, 420px"
+              style={{ objectFit: 'contain', objectPosition: 'center bottom' }}
+              onError={({ currentTarget }) => {
+                currentTarget.style.display = 'none';
               }}
             />
             {showUserInfo && (

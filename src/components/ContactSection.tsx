@@ -5,6 +5,7 @@ import { MdLocalPhone } from "react-icons/md";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import Image from "next/image";
+import SectionBackground from './SectionBackground';
 
 // --- Type Definitions ---
 interface IconLinkProps {
@@ -88,8 +89,14 @@ const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
 };
 
 return (
+<<<<<<< HEAD
     <section className="reveal-section py-12 sm:py-16 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
         <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl hidden md:block">
+=======
+    <section className="reveal-section py-20 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative" id="contact">
+        <SectionBackground />
+        <div className="text-number absolute top-5 right-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
+>>>>>>> 0afbb248df36aaa188611f01ce19abd146ad01a8
             04
         </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

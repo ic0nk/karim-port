@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { setupHomeAnimations } from "@/lib/scrollAnimations";
 import DarkVeil from "@/components/DarkVeil";
 import { ChevronLeft, ChevronRight, ExternalLink, Briefcase, Tag, Sparkles, CheckCircle2, Target } from "lucide-react";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import SectionBackground from "@/components/SectionBackground";
 
 
 type Theme = {
@@ -71,15 +73,21 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
     setCurrentImageIndex(0);
   };
 
-  // Auto-advance carousel (pause on hover)
+  // Auto-advance carousel frames to the right (pause on hover)
   useEffect(() => {
     if (isPaused) return;
+    const imageCount = themes[currentThemeIndex]?.images.length ?? 1;
     const id = setInterval(() => {
-      setCurrentThemeIndex((i) => (i + 1) % themes.length);
-      setCurrentImageIndex(0);
-    }, 5000);
+      setCurrentImageIndex((idx) => {
+        const nextIdx = (idx + 1) % imageCount;
+        if (nextIdx === 0) {
+          setCurrentThemeIndex((themeIdx) => (themeIdx + 1) % themes.length);
+        }
+        return nextIdx;
+      });
+    }, 2000);
     return () => clearInterval(id);
-  }, [isPaused]);
+  }, [currentThemeIndex, isPaused]);
 
   // Touch swipe handlers (mobile)
   const onTouchStart = (e: React.TouchEvent) => {
@@ -169,6 +177,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
     <main ref={rootRef} className="relative space-y-16 md:space-y-24">
       {/* Simple hero section – adds Home hero-like hover veil animation */}
       <section className="reveal-section group relative bg-[var(--background)] py-20 md:py-50 min-h-screen w-full overflow-hidden">	
+        <SectionBackground />
         {/* Home-hero DarkVeil animation always visible (no hover dependency) */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-100">
           <DarkVeil
@@ -192,20 +201,39 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
               </p>	
             </div>
 
-            {/* Right: Large laptop image */}<div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-12 overflow-hidden">
-              <div className="reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
+            {/* Right: Large laptop image */}
+            <div className="relative mx-auto w-full max-w-[2100px] px-8 md:px-12 lg:px-12 overflow-hidden">
+              <div className="relative reveal-el scale-[1.15] md:scale-[1.2] transition-transform duration-500 ease-out group-hover:scale-[1.23]">
                 <Image
-                src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
-                alt="Travel World laptop mockup"
-                width={2000}
-                height={1125}
-                priority
-                className="w-full h-auto object-contain"
+                  src="/assets/travelworld_laptop_4k_transparent_crisp 1.png"
+                  alt="Travel World laptop mockup"
+                  width={2000}
+                  height={1125}
+                  priority
+                  className="w-full h-auto object-contain"
                 />
+                {/* Screen content overlay to showcase updated imagery */}
+                <div
+                  className="absolute overflow-hidden rounded-[14px] shadow-[0_8px_20px_rgba(0,0,0,0.22)]"
+                  style={{ left: "11%", top: "7%", width: "78%", height: "70%" }}
+                >
+                  <Image
+                    src="/assets/Travel World22.jpg"
+                    alt="Travel World experience preview"
+                    fill
+                    quality={95}
+                    sizes="(min-width: 1024px) 40vw, (min-width: 768px) 60vw, 90vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
                 <div className="mx-auto mt-8 h-3 w-10/12 rounded-full bg-black/20 blur-[3px]" />
               </div>
             </div>
           </div>
+        </div>
+        <div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
+          <MdOutlineKeyboardArrowDown className="scroll-cue__icon" />
         </div>
       </section>
 
@@ -263,21 +291,18 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
             {/* Right: single centered video */}
             <div className="col-span-12 lg:col-span-5">
-              <div className="relative group max-w-xl mx-auto lg:-mt-9">
-                <div className="absolute -inset-6 bg-[var(--accent)]/20 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition pointer-events-none" aria-hidden="true" />
+              <div className="relative group max-w-xl mx-auto lg:-mt-30">
 
-                {/* Single video card centered */}
+                {/* Single image card centered */}
                 <div className="w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl]">
                   <div className="relative w-full aspect-[16/9]">
-                    <video
-                      className="absolute inset-0 h-full w-full object-cover"
-                      src="https://videos.pexels.com/video-files/856988/856988-hd_1280_720_25fps.mp4"
-                      poster="/assets/Travel World Second Section .png"
-                      playsInline
-                      muted
-                      autoPlay
-                      loop
-                      preload="metadata"
+                    <Image
+                      src="/assets/Travel world laptop2.jpg"
+                      alt="Travel World promotional still"
+                      fill
+                      quality={95}
+                      sizes="(min-width: 1024px) 40vw, (min-width: 768px) 60vw, 90vw"
+                      className="object-cover"
                     />
                   </div>
                 </div>
@@ -303,7 +328,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
             <div className="col-span-12 lg:col-span-7 lg:pl-4">
               <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-[var(--Secondary-Background)]/70 shadow-sm p-6">
                 <p className="text-xs tracking-wide text-[var(--secondary-text)] mb-1">Overview</p>
-                <h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A Seamless Travel Experience</h3>
+                <h3 className="font-primary text-[var(--text)] text-3xl md:text-4xl leading-tight">A SEAMLESS TRAVEL EXPERIENCE</h3>
                 <div className="w-24 h-1 rounded-full bg-[var(--accent)] mt-3 mb-4" />
                 <p className="text-[var(--text)]/90 leading-relaxed mb-4">
                  A modern, user-friendly travel website designed to make discovering new destinations enjoyable and effortless.
@@ -340,9 +365,9 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
 
           {/* Pull quote */}
           <div className="text-center">
-            <div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-4" />
-            <p className="reveal-el font-primary text-3x9 md:text-6xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">
-              “Make exploring destinations fun and effortless.”
+            <div className="mx-auto w-24 h-1 rounded-full bg-[var(--accent)] mb-10" />
+            <p className="reveal-el font-primary text-3x9 md:text-5xl leading-tight tracking-wide text-[var(--text)] max-w-4xl mx-auto">
+              “MAKE EXPLORING DESTINATIONS FUN AND EFFORTLESS.”
             </p>
           </div>
 
@@ -376,13 +401,34 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
           {/* Image strip */}
           <div className="grid grid-cols-12 gap-6 mt-12">
             <div className="pop-on-scroll col-span-12 rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel world Background .png" alt="Laptop mockup" width={1600} height={900} className="w-full h-auto" />
+              <Image
+                src="/assets/Travel world Background .png"
+                alt="Laptop mockup"
+                width={1000}
+                height={900}
+                quality={95}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)] relative min-h-[260px]">
+              <Image
+                src="/assets/Travel world Third section Picture.png"
+                alt="Section"
+                fill
+                quality={95}
+                sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
             </div>
             <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel world Third section Picture.png" alt="Section" width={1200} height={700} className="w-full h-auto" />
-            </div>
-            <div className="pop-on-scroll col-span-12 md:col-span-6 rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 border border-white/10 bg-[var(--background)]">
-              <Image src="/assets/Travel world Fourth Picture .png" alt="Section Alt" width={1200} height={700} className="w-full h-auto" />
+              <Image
+                src="/assets/Travel world Fourth Picture .png"
+                alt="Section Alt"
+                width={1200}
+                height={900}
+                quality={95}
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -425,6 +471,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
                   src={currentImage}
                   alt={`${currentTheme.title} - Image ${currentImageIndex + 1}`}
                   fill
+                  quality={95}
                   className="object-cover transition-opacity duration-500"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
@@ -436,6 +483,7 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
                   src={currentTheme.images[(currentImageIndex + 1) % currentTheme.images.length]}
                   alt={`${currentTheme.title} - Image ${((currentImageIndex + 1) % currentTheme.images.length) + 1}`}
                   fill
+                  quality={95}
                   className="object-cover transition-opacity duration-500"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
@@ -445,7 +493,8 @@ export default function ProjectDetails({ enableAnimations = true }: ProjectDetai
             <button
               onClick={handleNextTheme}
               aria-label="Next theme"
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-[var(--Secondary-Background)]/70 hover:bg-[var(--Secondary-Background)] text-[var(--text)] shadow-lg border border-white/10 backdrop-blur"
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full 
+              bg-[var(--Secondary-Background)]/70 hover:bg-[var(--Secondary-Background)] text-[var(--text)] shadow-lg border border-white/10 backdrop-blur"
             >
               <ChevronRight size={28} />
             </button>
