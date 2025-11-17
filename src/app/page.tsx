@@ -93,7 +93,7 @@ export default function Home() {
 
   return (
     <PageAnimator>
-      <main ref={rootRef} className="overflow-x-hidden">
+      <main ref={rootRef}>
       {/* HERO SECTION */}
   <section id="hero" className="group relative flex flex-col justify-center h-lvh overflow-hidden">
         {/* Hover veil like before – fades in on hover */}
@@ -112,26 +112,16 @@ export default function Home() {
           <h1 className="hero-fade px-4">PORTFOLIO</h1>
           <h4 className="portfolio-subtitle hero-fade hero-fade-delay px-4">KARIM MASSAOUD</h4>
         </div>
-<<<<<<< HEAD
         <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-arrow">
           <MdOutlineKeyboardArrowDown
             fontSize={45}
             className="animate-bounce text-[var(--accent)]"
           />
-=======
-        <div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
-          <MdOutlineKeyboardArrowDown className="scroll-cue__icon" size={34} />
->>>>>>> 0afbb248df36aaa188611f01ce19abd146ad01a8
         </div>
       </section>
 
       {/* ABOUT SECTION */}
-<<<<<<< HEAD
   <section id="about" className="reveal-section relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center overflow-hidden">
-=======
-  <section id="about" className="reveal-section relative py-20 px-4 sm:px-6 lg:px-8 h-lvh flex items-center overflow-hidden">
-        <SectionBackground />
->>>>>>> 0afbb248df36aaa188611f01ce19abd146ad01a8
         <div
           className="text-number absolute top-1/3 right-0 hidden lg:block text-[var(--secondary-text)] transform -translate-y-1/2 rotate-90 origin-center pointer-events-none select-none"
           aria-hidden
@@ -195,14 +185,8 @@ export default function Home() {
       </section>
 
       {/* USER EXPERIENCE SECTION */}
-<<<<<<< HEAD
-  <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative">
+      <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="text-number absolute top-9 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl hidden md:block">
-=======
-  <section id="user-experience" className="reveal-section bg-[var(--Secondary-Background)] text-[var(--text)] py-20 px-4 sm:px-6 lg:px-8 relative">
-        <SectionBackground />
-        <div className="text-number absolute top-9 left-0 -mt-0 -ml-0 text-[var(--secondary-text)] transform -rotate-270 text-6xl">
->>>>>>> 0afbb248df36aaa188611f01ce19abd146ad01a8
           03
         </div>
         <div className="max-w-5xl mx-auto">

@@ -147,11 +147,8 @@ const Header = () => {
   return (
     <header
       suppressHydrationWarning
-<<<<<<< HEAD
       className={`flex items-center justify-between p-4 sm:p-6 px-4 sm:px-30 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
-      ${isWhiteHeader
-        ? "text-white bg-gradient-to-b from-white/10 to-transparent border-white/10"
-        : "bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10"}
+      bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10
       `}
     >
       <div className="text-lg font-bold z-20">
@@ -159,7 +156,7 @@ const Header = () => {
           <Image src={logoSrc} alt="Logo" width={50} height={50} />
           {/* Hover-reveal full name next to logo */}
           <span
-            className={`absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm tracking-wider opacity-0 -translate-x-1 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 ${isWhiteHeader && !isDark ? 'text-white' : 'text-[var(--accent)]'}`}
+            className={`absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm tracking-wider opacity-0 -translate-x-1 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[var(--accent)]`}
           >
             KARIM MASSAOUD
           </span>
@@ -174,38 +171,10 @@ const Header = () => {
               href="/#user-experience"
               onClick={() => setIsMenuOpen(false)}
               className="nav-link cursor-pointer"
-=======
-      className={`flex items-center justify-center p-6 px-30 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
-      bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10
-      `}
-    >
-      <div className="flex w-full max-w-6xl items-center justify-between">
-        <div className="text-lg font-bold z-20">
-          <button suppressHydrationWarning onClick={handleLogoClick} aria-label="Go home or scroll to hero" className="cursor-pointer group relative inline-flex items-center gap-2">
-            <Image src={logoSrc} alt="Logo" width={50} height={50} />
-            {/* Hover-reveal full name next to logo */}
-            <span
-              className={`absolute left-10 top-1/2 -translate-y-1/2 whitespace-nowrap text-sm tracking-wider opacity-0 -translate-x-1 pointer-events-none 
-                transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[var(--accent)]`}
->>>>>>> 0afbb248df36aaa188611f01ce19abd146ad01a8
             >
-              KARIM MASSAOUD
-            </span>
-          </button>
-        </div>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex flex-1 justify-center">
-          <ul className="glow-bleed glow-static flex gap-10 font-bold relative">
-            <li>
-              <Link
-                href="/#user-experience"
-                onClick={() => setIsMenuOpen(false)}
-                className={`nav-link cursor-pointer transition-colors ${activeSection === "user-experience" ? "text-[var(--accent)] font-bold" : ""}`}
-              >
-                USER EXPERIENCE
-              </Link>
-            </li>
+              USER EXPERIENCE
+            </Link>
+          </li>
             <li className="relative">
               <button
                 ref={projectsBtnRef}
@@ -317,21 +286,20 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Right controls: theme toggle + mobile menu */}
-        <div className="flex items-center gap-3 z-20 ml-6">
-          <ThemeToggle />
-          <div className="md:hidden">
-            <button suppressHydrationWarning
-              ref={menuToggleRef}
-              className={`hamburger-button ${isMenuOpen ? "open" : ""}`}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <div className="hamburger-line"></div>
-              <div className="hamburger-line"></div>
-              <div className="hamburger-line"></div>
-            </button>
-          </div>
+      {/* Right controls: theme toggle + mobile menu */}
+      <div className="flex items-center gap-3 z-20 ml-6">
+        <ThemeToggle />
+        <div className="md:hidden">
+          <button suppressHydrationWarning
+            ref={menuToggleRef}
+            className={`hamburger-button ${isMenuOpen ? "open" : ""}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <div className="hamburger-line"></div>
+            <div className="hamburger-line"></div>
+            <div className="hamburger-line"></div>
+          </button>
         </div>
       </div>
 

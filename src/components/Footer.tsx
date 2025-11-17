@@ -55,57 +55,16 @@ export const Footer: FC = () => {
         </Link>
     );
 
-<<<<<<< HEAD
-const IconLink = ({ href, icon: IconComponent, label }: { href: string; icon: React.ElementType; label: string }) => (
-    <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={label}
-    title={label}
-    // Use a custom hover effect to match the subtle transition feel
-    className="text-white mx-3 transition-transform duration-300 hover:scale-110"
-    >
-    <IconComponent className="w-6 h-6" />
-    </a>
-);
-
-const NavItem: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
-    <a
-    href={href}
-    // Use the secondary font for the navigation links
-    className="text-white text-sm uppercase tracking-wider font-[var(--font-secondary)] hover:text-gray-300 transition-colors duration-200 block mb-2"
-    >
-    {children}
-    </a>
-);
-
-return (
-    // Outer container uses a dark accent color for the background
-    <footer ref={footerRef} id="site-footer" className="reveal-section bg-[var(--accent)] pt-12 sm:pt-16 pb-4 font-[var(--font-secondary)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            {/* Main Content Grid (Social | Nav | Logo) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-8 md:gap-8 mb-8 text-center md:text-left">
-            
-                {/* Left: Social Icons */}
-                <div className="flex justify-center md:justify-start col-span-1 reveal-el">
-                    <IconLink href="https://www.linkedin.com/in/karim-massaoud" icon={FaLinkedin} label="LinkedIn" />
-                    <IconLink href="tel:0616537940" icon={MdLocalPhone} label="Phone" />
-                    <IconLink href="https://github.com/ic0nk" icon={FaGithub} label="GitHub" />
-                    <IconLink href="mailto:karimmassoud668@gmail.com" icon={IoMdMail} label="Email" />
-=======
     return (
         <PageAnimator>
             <footer
                 id="site-footer"
                 className="relative overflow-hidden bg-gradient-to-b from-[var(--Secondary-Background)]/95 via-[var(--footer-secondary)]/90 to-[var(--background)] py-16 text-[var(--text)] font-secondary"
             >
-                <div className="pointer-events-none absolute inset-0">
+                    <div className="pointer-events-none absolute inset-0">
                     <div className="absolute -right-10 top-[-6rem] h-64 w-64 rounded-full bg-[var(--accent)]/25 blur-3xl" />
                     <div className="absolute bottom-[-8rem] left-[-6rem] h-72 w-72 rounded-full bg-white/10 blur-[140px]" />
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
->>>>>>> 0afbb248df36aaa188611f01ce19abd146ad01a8
                 </div>
 
                 <section className="reveal-section relative mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 sm:px-8">
