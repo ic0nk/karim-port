@@ -12,6 +12,7 @@ import SectionBackground from "@/components/SectionBackground";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const heroRef = useRef<HTMLDivElement | null>(null);
   const [backgroundColor, setBackgroundColor] = useState<[number, number, number]>([0.88, 0.87, 0.86]);
   const [openId, setOpenId] = useState<number | null>(4);
 
@@ -95,7 +96,7 @@ export default function Home() {
     <PageAnimator>
       <main ref={rootRef} >
       {/* HERO SECTION */}
-  <section id="hero" className="group relative flex flex-col justify-center h-lvh overflow-hidden">
+  <section ref={heroRef} id="hero" className="group relative flex flex-col justify-center h-lvh overflow-visible">
         {/* Hover veil like before – fades in on hover */}
   <div className="pointer-events-none absolute -inset-2 transform-gpu z-0 opacity-100">
           <DarkVeil
@@ -109,8 +110,8 @@ export default function Home() {
           />
         </div>
         <div className="text-center relative z-10">
-          <h1 className="hero-fade">PORTFOLIO</h1>
-          <h4 className="portfolio-subtitle hero-fade hero-fade-delay">KARIM MASSAOUD</h4>
+          <h1 className="hero-fade" style={{ position: 'relative' }}>PORTFOLIO</h1>
+          <h4 className="portfolio-subtitle hero-fade hero-fade-delay" style={{ position: 'relative' }}>KARIM MASSAOUD</h4>
         </div>
         <div className="scroll-cue text-[var(--accent)]" aria-hidden="true">
           <MdOutlineKeyboardArrowDown className="scroll-cue__icon" size={34} />

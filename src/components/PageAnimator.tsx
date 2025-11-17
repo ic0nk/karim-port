@@ -30,6 +30,48 @@ export default function PageAnimator({ children, enable = true }: PageAnimatorPr
     const ctx = gsap.context((self) => {
       const select = self.selector?.bind(self) ?? ((q: string) => Array.from(root.querySelectorAll(q)));
 
+      // Hero title scroll animations
+      const heroTitle = root.querySelector('section#hero h1');
+      const heroSubtitle = root.querySelector('section#hero h4');
+      
+      if (heroTitle) {
+        gsap.set(heroTitle, { x: 0, opacity: 1 });
+        gsap.to(heroTitle, {
+          x: "150vw",
+          opacity: 0,
+          ease: "power3.in",
+          scrollTrigger: {
+            trigger: root.querySelector('section#hero'),
+            start: "top top",
+            end: "60% top",
+            scrub: 1,
+            markers: false,
+          }
+        });
+        console.log("Hero title animation created");
+      } else {
+        console.log("Hero title NOT found");
+      }
+
+      if (heroSubtitle) {
+        gsap.set(heroSubtitle, { x: 0, opacity: 1 });
+        gsap.to(heroSubtitle, {
+          x: "-150vw",
+          opacity: 0,
+          ease: "power3.in",
+          scrollTrigger: {
+            trigger: root.querySelector('section#hero'),
+            start: "top top",
+            end: "60% top",
+            scrub: 1,
+            markers: false,
+          }
+        });
+        console.log("Hero subtitle animation created");
+      } else {
+        console.log("Hero subtitle NOT found");
+      }
+
       // Section reveals (fade+slide) with symmetric up/down behavior
       (gsap.utils.toArray<HTMLElement>(select("section.reveal-section")) || []).forEach((sec) => {
         const children = sec.querySelectorAll<HTMLElement>(".reveal-el");

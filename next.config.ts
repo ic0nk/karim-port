@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   // different root when multiple lockfiles exist; make tracing root explicit.
   // `outputFileTracingRoot` is a top-level option, not under `output`.
   outputFileTracingRoot: path.resolve(__dirname),
+  images: {
+    qualities: [75, 90, 95],
+  },
   async redirects() {
     return [
       // Legacy nested project paths -> canonical top-level routes
