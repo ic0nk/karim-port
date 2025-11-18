@@ -168,7 +168,7 @@ export const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" className="reveal-section py-12 sm:py-16 md:py-20 bg-[var(--background)] font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
+    <section id="projects" className="reveal-section py-12 sm:py-16 md:py-20 font-[var(--font-secondary)] min-h-screen relative overflow-hidden max-w-7xl mx-auto">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header mimicking the provided image */}
