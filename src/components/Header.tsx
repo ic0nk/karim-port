@@ -148,7 +148,7 @@ const Header = () => {
   return (
     <header
       suppressHydrationWarning
-      className={`flex items-center justify-between p-4 sm:p-6 px-4 sm:px-30 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
+      className={`flex items-center justify-between p-4 sm:p-6 px-4 sm:px-70 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
       bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10
       `}
     >
@@ -165,8 +165,17 @@ const Header = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex flex-1 justify-end">
+      <nav className="hidden md:flex flex-1 justify-center">
         <ul className="flex gap-6 lg:gap-10 font-bold relative text-sm lg:text-base">
+          <li>
+            <Link
+              href="/#about"
+              onClick={() => setIsMenuOpen(false)}
+              className={`nav-link cursor-pointer transition-colors ${activeSection === "about" ? "text-[var(--accent)] font-bold" : ""}`}
+            >
+              ABOUT
+            </Link>
+          </li>
           <li>
             <Link
               href="/#user-experience"
@@ -174,6 +183,15 @@ const Header = () => {
               className="nav-link cursor-pointer"
             >
               USER EXPERIENCE
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/#contact"
+              onClick={() => setIsMenuOpen(false)}
+              className={`nav-link cursor-pointer transition-colors ${activeSection === "contact" ? "text-[var(--accent)] font-bold" : ""}`}
+            >
+              CONTACT
             </Link>
           </li>
             <li className="relative">
@@ -266,24 +284,6 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li>
-              <Link
-                href="/#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className={`nav-link cursor-pointer transition-colors ${activeSection === "contact" ? "text-[var(--accent)] font-bold" : ""}`}
-              >
-                CONTACT
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#about"
-                onClick={() => setIsMenuOpen(false)}
-                className={`nav-link cursor-pointer transition-colors ${activeSection === "about" ? "text-[var(--accent)] font-bold" : ""}`}
-              >
-                ABOUT
-              </Link>
-            </li>
           </ul>
         </nav>
 
@@ -310,11 +310,29 @@ const Header = () => {
           <ul className="flex flex-col items-center gap-10 font-bold text-2xl">
             <li>
               <Link
+                href="/#about"
+                onClick={() => setIsMenuOpen(false)}
+                className={`nav-link cursor-pointer transition-colors ${activeSection === "about" ? "text-[var(--accent)] font-bold" : ""}`}
+              >
+                ABOUT
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/#user-experience"
                 onClick={() => setIsMenuOpen(false)}
                 className={`nav-link cursor-pointer transition-colors ${activeSection === "user-experience" ? "text-[var(--accent)] font-bold" : ""}`}
               >
                 USER EXPERIENCE
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/#contact"
+                onClick={() => setIsMenuOpen(false)}
+                className={`nav-link cursor-pointer transition-colors ${activeSection === "contact" ? "text-[var(--accent)] font-bold" : ""}`}
+              >
+                CONTACT
               </Link>
             </li>
             <li>
@@ -350,24 +368,6 @@ const Header = () => {
                   </li>
                 </ul>
               </div>
-            </li>
-            <li>
-              <Link
-                href="/#about"
-                onClick={() => setIsMenuOpen(false)}
-                className={`nav-link cursor-pointer transition-colors ${activeSection === "about" ? "text-[var(--accent)] font-bold" : ""}`}
-              >
-                ABOUT
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className={`nav-link cursor-pointer transition-colors ${activeSection === "contact" ? "text-[var(--accent)] font-bold" : ""}`}
-              >
-                CONTACT
-              </Link>
             </li>
           </ul>
         </nav>

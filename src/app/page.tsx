@@ -112,6 +112,14 @@ export default function Home() {
         <div className="text-center relative z-10">
           <h1 className="hero-fade">PORTFOLIO</h1>
           <h4 className="portfolio-subtitle hero-fade hero-fade-delay">KARIM MASSAOUD</h4>
+          <div className="mt-6 sm:mt-8 hero-fade hero-fade-delay flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <a href="#projects" className="btn btn-primary text-sm py-2 px-6">
+              VIEW PROJECTS
+            </a>
+            <a href="#contact" className="btn text-sm py-2 px-6 backdrop-blur-md bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-all duration-300 text-[var(--text)] font-medium text-center">
+              GET IN TOUCH
+            </a>
+          </div>
         </div>
         <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-arrow">
           <MdOutlineKeyboardArrowDown
