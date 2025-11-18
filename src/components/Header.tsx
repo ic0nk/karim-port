@@ -147,7 +147,7 @@ const Header = () => {
   return (
     <header
       suppressHydrationWarning
-      className={`flex items-center justify-between p-4 sm:p-6 px-4 sm:px-90 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
+      className={`flex items-center justify-between p-4 sm:p-6 px-4 sm:px-80 fixed w-full z-[100] backdrop-blur-md border-b transition-colors duration-300
       bg-gradient-to-b from-[var(--Secondary-Background)]/70 to-transparent border-black/5 dark:border-white/10
       `}
     >
