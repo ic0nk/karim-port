@@ -144,6 +144,7 @@ const Header = () => {
 
   const logoSrc = "/assets/K.svg";
 
+  
   return (
     <header
       suppressHydrationWarning
