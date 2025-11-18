@@ -116,7 +116,7 @@ export default function Home() {
             <a href="#projects" className="btn btn-primary text-sm py-2 px-6">
               VIEW PROJECTS
             </a>
-            <a href="#contact" className="btn btn-secondary text-sm py-2 px-6">
+            <a href="#contact" className="btn text-sm py-2 px-6 backdrop-blur-md bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-all duration-300 text-[var(--text)] font-medium text-center">
               GET IN TOUCH
             </a>
           </div>
